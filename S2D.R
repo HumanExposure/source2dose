@@ -2,7 +2,7 @@
 
 
 s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
-  wd <- "C:/HEMforICF/QAtests"
+  wd <- "C:/main/HEM/May2018"
   setwd(wd)
   library(data.table)
   library(stringr)
@@ -413,8 +413,8 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   
   # eval.dermal.rates determines the rate constants for removal processes from skin 
   
-  eval.dermal.rates = function(fug.cvars,hp,prime,pucs.areas,prod.chem,nc) {
-    np    <- nrow(pucs.areas)
+  eval.dermal.rates = function(fug.cvars,hp,prime,pucs.areas,prod.chem,nc,house.num) {
+    np    <- nrow(pucs.areas)                                             # last one is for indirect
     kaw   <- 1/(fug.cvars$solub/fug.cvars$vapor*8.314*hp$temp)            # inverse of SHEDS convention
     phi.a <- 8 * kaw
     phi.w <- 20.6/fug.cvars$molwt^0.4757
@@ -434,11 +434,12 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     frac.area[is.na(frac.area)]  <- 0.01
     prod.area                    <- frac.area * prime$skin.area
     # volume in cm3 = product mass in grams * fraction applied to skin (assume density=1 g/cm3)
-    prod.vol  <- pucs.areas$mass * prod.chem$fsk
+    prod.vol  <- pucs.areas$mass * c(prod.chem$fsk,1)
     # thickness is volume / affected skin area (cm3/cm2)
     prod.thick <- prod.vol / prod.area 
-    h     <- prod.thick / 100        # convert cm to meters
-    h     <- pmax(1E-6,h)            # minimum of 1 micron to avoid division by zero below
+    h            <- prod.thick / 100        # convert cm to meters
+    h[length(h)] <- pucs.areas$h[length(h)]
+    h            <- pmax(5E-8,h)            # minimum of 0.05 micron to avoid division by zero below
     source.id <- rep(pucs.areas$source.id,nc)
     dtxsid    <- unlist(lapply(fug.cvars$dtxsid,rep,np))
     rates     <- data.table(source.id,dtxsid,matrix(0,length(dtxsid),ncol=5))
@@ -458,7 +459,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     return(rates)
   }
   
-   
+  
   
   
   # eval.direct produces a daily summary of direct exposure variables
@@ -483,7 +484,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     post.hand    <- post.derm * puc.wipe.rinse$fhands
     post.body    <- post.derm * puc.wipe.rinse$fbody
     vol.cloud    <- pucs$hand.dur/2                         # cloud size is 0.5 m3 for each minute of handling
-    rates        <- as.data.table(dermal.rates)
+    rates        <- as.data.table(dermal.rates)[!dermal.rates$source.id=="Indirect"]
     f.hands      <- puc.wipe.rinse$fhands
     f.hands[is.na(f.hands)] <- 0.05
     hand.area    <- 0.05*prime$skin.area         
@@ -506,11 +507,11 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
       dp <- cbind(dp,zero)
       if (chems[c]>0) {
         if (g$prog=="y") cat(paste0("\n   Chemical ",c,"  ",chem.list[c]))
-        ka <- pmax(0.0001,rates$ka[rates$dtxsid==chem.list[c]])
-        ks <- pmax(0.0001,rates$ks[rates$dtxsid==chem.list[c]])
-        kh <- pmax(0.0001,rates$kh[rates$dtxsid==chem.list[c]])
-        kr <- pmax(0.0001,rates$kr[rates$dtxsid==chem.list[c]])
-        hw <- pmax(0.0001,rates$hw[rates$dtxsid==chem.list[c]])
+        ka <- pmax(0.00001,rates$ka[rates$dtxsid==chem.list[c]])
+        ks <- pmax(0.00001,rates$ks[rates$dtxsid==chem.list[c]])
+        kh <- pmax(0.00001,rates$kh[rates$dtxsid==chem.list[c]])
+        kr <- pmax(0.00001,rates$kr[rates$dtxsid==chem.list[c]])
+        hw <- pmax(0.00001,rates$hw[rates$dtxsid==chem.list[c]])
         dp$f.use.lost       <- 1-exp(-(ka+ks)*dp$use.dur.hr) #?
         dp$use.avg.air      <- use.avg.air[c]
         dp$use.avg.derm     <- use.avg.derm[c]
@@ -533,7 +534,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
         dp$use.inhal.mass[pucs$spray] <- 0.25*dp$use.inhal.mass[pucs$spray] 
         dp$use.inges.abs    <- dp$use.inges.exp * fug.cvars$fabs[c]
         dp$use.inhal.abs    <- dp$use.inhal.mass * 0.16                       # assume 16% absorption 
-      
+        
         dp$f.hands.lost     <- 1-exp(-(ka+ks+kh+kr)*8/hw)                     # dur on hands is (8/handwashes) hrs
         dp$f.body.lost      <- 1-exp(-(ka+ks+kr)*8)                           # dur on body is 8 hrs
         dp$post.dermal.exp  <- post.derm[c]
@@ -636,7 +637,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     return(direct)
   }
   
- 
+  
   
   # eval.env.impact produces a daily summary of emissions from the house
   
@@ -687,7 +688,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     return(env.impact)
   }
   
- 
+  
   
   
   # eval.flows detetmines the flow rate constants between house compartments
@@ -816,7 +817,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     return(fugs)
   }
   
- 
+  
   
   
   # eval.fug.concs.st solves the fugacity equations using a finite time step 
@@ -959,7 +960,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     return(house.props)
   }
   
- 
+  
   
   
   # eval.indirect calculates the indirect exposures on a daily basis
@@ -994,7 +995,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     fh$min.awake <- rep(0,8736)
     fh$min.out   <- rep(0,8736)
     dt           <- as.data.table(fh)
-    rates        <- as.data.table(dermal.rates)
+    rates        <- as.data.table(dermal.rates)[dermal.rates$source.id=="Indirect"]
     x <- matrix(status.min,nrow=60,ncol=8736)
     for (i in 1:8736){
       y <- plyr::count(x[,i])
@@ -1023,11 +1024,11 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
       survar       <- str_c("sur",c)
       airvar       <- str_c("air",c)
       if (sum(fug[survar],fug[airvar])>0) {
-        ka <- max(0.0001,mean(rates$ka[rates$dtxsid==chem.list[c]]))
-        ks <- max(0.0001,mean(rates$ks[rates$dtxsid==chem.list[c]]))
-        kh <- max(0.0001,mean(rates$kh[rates$dtxsid==chem.list[c]]))
-        kr <- max(0.0001,mean(rates$kr[rates$dtxsid==chem.list[c]]))
-        hw <- max(0.0001,mean(rates$hw[rates$dtxsid==chem.list[c]]))
+        ka <- max(0.00001,rates$ka[rates$dtxsid==chem.list[c]])
+        ks <- max(0.00001,rates$ks[rates$dtxsid==chem.list[c]])
+        kh <- max(0.00001,rates$kh[rates$dtxsid==chem.list[c]])
+        kr <- max(0.00001,rates$kr[rates$dtxsid==chem.list[c]])
+        hw <- max(0.00001,rates$hw[rates$dtxsid==chem.list[c]])
         f.hands.lost <- 1-exp(-(ka+ks+kh+kr)*8/hw)                        # dur on hands is (8/handwashes) hours
         sur.eff      <- as.vector(unlist(fug[survar]))
         sur.conc     <- as.vector(sur.eff/(10000*hp$area.sur))            # units are converted to [mg/cm2]
@@ -1038,7 +1039,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
         hands.air    <- hands.exp * ka/(ka+ks+kh+kr) * f.hands.lost
         hands.ing    <- hands.exp * kh/(ka+ks+kh+kr) * f.hands.lost
         hands.aconc  <- hands.air/2                                       # assumes personal cloud = 2 m3
-      
+        
         air.eff      <- as.vector(unlist(fug[airvar]))
         air.conc     <- air.eff/(hp$area.sur*hp$height) + hands.aconc
         inhal.exp    <- air.conc * (fug$min.sleep+fug$min.awake)/60
@@ -1085,7 +1086,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   }
   
   
- 
+  
   
   # eval.lcia calculates the PIF fractions for each household
   
@@ -1167,7 +1168,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   
   
   # eval.prod.chem produces a table of chemical masses and compartment fractions for each PUC
- 
+  
   eval.prod.chem = function(pucs,brand.list,chem.list,chem.fracs,release.fracs,q,house.num) {
     y  <- pucs$source.id
     nc <- length(chem.list)
@@ -1217,33 +1218,63 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     return(prod.chem)
   }
   
- 
+  
   
   
   # eval.pucs.areas determines the affected skina areas for each puc
   
   eval.pucs.areas = function(pucs,skin.areas,q) {
-    x <- left_join(pucs,select(skin.areas,source.id,adult,child,variation),by="source.id")
+    x <- left_join(pucs,select(skin.areas,source.id,adult,child,hand_variability,body_variability),by="source.id")
     mode(x$mass) <- "numeric"
-    x$adult[is.na(x$adult)] <- 0
-    x$child[is.na(x$child)] <- 0
-    x$variation[is.na(x$variation)] <- "none"
-    x$f.adult <- 0
-    x$f.child <- 0
-    x$mult[x$variation=="low"]    <- 12
-    x$mult[x$variation=="medium"] <- 4
-    x$mult[x$variation=="high"]   <- 1
+    x$adult[is.na(x$adult)] <- 0.01
+    x$child[is.na(x$child)] <- 0.01
+    x$hand_variability[is.na(x$hand_variability)] <- "low"
+    x$body_variability[is.na(x$body_variability)] <- "low"
+    x$f.adult <- 0.01
+    x$f.child <- 0.01
+    x$hand_mult[x$hand_variability=="low"]    <- 12
+    x$hand_mult[x$hand_variability=="medium"] <- 4
+    x$hand_mult[x$hand_variability=="high"]   <- 1
+    x$body_mult[x$body_variability=="low"]    <- 12
+    x$body_mult[x$body_variability=="medium"] <- 4
+    x$body_mult[x$body_variability=="high"]   <- 1
     for (i in 1:nrow(x)) {
       qname <- str_c("skin.frac",i)
-      if (x$variation[i]!="none") {
-        cadult <- x$mult[i]
+      if (x$hand_variability[i]!="none") {
+        cadult <- x$hand_mult[i]
         dadult <- cadult/x$adult[i]-cadult
-        cchild <- x$mult[i]
+        cchild <- x$hand_mult[i]
         dchild <- cchild/x$child[i]-cchild
-        x$f.adult[i] <- qbeta(q[[qname]],cadult,dadult)
-        x$f.child[i] <- qbeta(q[[qname]],cchild,dchild)
+        x$f.adult[i] <- qbeta(q[[qname]],cadult,dadult)*0.05
+        x$f.child[i] <- qbeta(q[[qname]],cchild,dchild)*0.05
+      }
+      if (x$body_variability[i]!="none") {
+        cadult <- x$body_mult[i]
+        dadult <- cadult/x$adult[i]-cadult
+        cchild <- x$body_mult[i]
+        dchild <- cchild/x$child[i]-cchild
+        x$f.adult[i] <- x$f.adult[i] + qbeta(q[[qname]],cadult,dadult)*0.95
+        x$f.child[i] <- x$f.adult[i] + qbeta(q[[qname]],cchild,dchild)*0.95
       }
     }
+    x$h                <- NA
+    y                  <- x[1]
+    y$source.id        <- "Indirect"
+    y$product_type     <- "none"
+    y$indoor_outdoor   <- "I"
+    y$hand.dur         <- 0
+    y$mass             <- 0
+    y$code             <- "IND"
+    y$met              <- 2.2
+    y$spray            <- FALSE
+    y$adult            <- 0.04
+    y$child            <- 0.04
+    y$hand_variability <- "none"
+    y$body_variability <- "none"
+    y$f.adult          <- 0.04
+    y$f.child          <- 0.04
+    y$h                <- 5E-8 + 1.45E-6*q$thick.indir
+    x                  <- rbind(x,y)
     return(x)
   }
   
@@ -1375,7 +1406,6 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   
   # eval.use.data creates a matrix of chemical masses in 9 compartments, for each PUC
   eval.use.data = function(pucs,prod.chem,fug.cvars,dermal.rates,puc.wipe.rinse,nc,house.num) {
-    # nc  <- nrow(dermal.rates)
     pm  <- pucs$mass*1000                                                               # chemical mass from grams to milligrams [mg]
     df  <- as.data.frame(prod.chem)                                               
     y1  <- select_vars(names(prod.chem),starts_with("X"))                               # mass fractions by chemical
@@ -1481,7 +1511,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     }
     return(use.data)
   }
- 
+  
   
   
   # get.house.num extracts the house number from the file name
@@ -1560,7 +1590,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     ran.house      <- c("aer.out","height","lg.carb.f","lg.clean.air","lg.clean.sur","lg.depos","lg.load.air",
                         "lg.load.sur","lg.resus","sm.carb.f","sm.clean.air","sm.clean.sur","sm.depos",
                         "sm.load.air","sm.load.sur","sm.resus","temp","thick.bou","thick.sur","basal.vent",
-                        "hand.wash","hand.mouth")
+                        "hand.wash","hand.mouth","thick.indir")
     prod.rv    <- c("prod.id","form.id","skin.frac")
     y <- ""
     for (i in 1:np) {
@@ -1580,7 +1610,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   
   # get.seeds returns random number seeds for each variable
   
-   get.seeds = function(init.seed,num) {
+  get.seeds = function(init.seed,num) {
     n     <- 2*num
     base  <- as.integer64(2147483647)
     mult  <- as.integer64(397204094)
@@ -1594,7 +1624,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   }
   
   
-   
+  
   # list.persons details all the persons in this household 
   
   list.persons = function(ph) {
@@ -1674,7 +1704,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     if (nrow(chem.fracs)==0) cat ("\n No product-chemical fractions left in run \n")
     return(chem.fracs)
   }
- 
+  
   
   
   
@@ -1729,8 +1759,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     if (is.null(control.file)) control.file <- "S2D_control_file.txt"
     lc <- str_length(control.file)
     if(!substr(control.file,lc-3,lc)=='.txt') control.file <- paste0(control.file,".txt")
-    x <- fread(paste0("input/",control.file),header=FALSE)
-    setnames(x,c("key","setting"))
+    x <- fread(paste0("input/",control.file),header=FALSE,skip=0,col.names=c("key","setting"))
     x$key          <- tolower(x$key)
     chem.list      <- list(c(x$setting[x$key=="chem"]))
     puc.list       <- list(c(x$setting[x$key=="puc"]))
@@ -1798,19 +1827,20 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   read.diary = function(diary.prefix,run.name,house.num,persons) {
     if (is.null(diary.prefix)) diary.prefix <- g$diary.prefix
     if (is.null(run.name))         run.name <- g$run.name
-    format <- c("Clusters"="Character","Appliances"="Character","Impacted_by"="character")
-    diary <- fread(paste0("output/ABM/", diary.prefix, house.num, ".csv"),stringsAsFactors = FALSE, na.strings = c("","NA"),colClasses=format)
+    diary <- fread(paste0("output/ABM/", diary.prefix, house.num, ".csv"),stringsAsFactors = FALSE, na.strings = c("","NA"))
     setnames(diary,tolower(names(diary)))
-    if(exists("person_household_index",diary))              setnames(diary,"person_household_index","p")
-    if(exists("day_of_the_year",diary))                     setnames(diary,"day_of_the_year","daynum")
-    if(exists("sheds_id",diary))                            setnames(diary,"sheds_id","source.id")
-    if(exists("start_time_hr_using_military_time",diary))   setnames(diary,"start_time_hr_using_military_time","start")
-    # if(exists("duration_min",diary))                        setnames(diary,"duration_min","hand.dur")
-    if(exists("handling_time",diary))                       setnames(diary,"duration_min","hand.dur")
-    if(exists("household_index",diary))                     setnames(diary,"household_index","house.num")
-    if(exists("person_gender",diary))                       setnames(diary,"person_gender","sex")
-    if(exists("person_age",diary))                          setnames(diary,"person_age","age")
-    if(exists("primary_person",diary))                      setnames(diary,"primary_person","primary")
+    if(exists("person.index",diary))                        setnames(diary,"person.index","p")
+    if(exists("day.of.the.year",diary))                     setnames(diary,"day.of.the.year","daynum")
+    if(exists("sheds.id.refined",diary))                    setnames(diary,"sheds.id.refined","source.id")
+    if(exists("start.time.hr.using.military.time",diary))   setnames(diary,"start.time.hr.using.military.time","start")
+    if(exists("use.ht",diary))                              setnames(diary,"use.ht","hand.dur")
+    if(exists("use.mass",diary))                            setnames(diary,"use.mass","mass")
+    if(exists("household.index",diary))                     setnames(diary,"household.index","house.num")
+    if(exists("person.gender",diary))                       setnames(diary,"person.gender","sex")
+    if(exists("person.age",diary))                          setnames(diary,"person.age","age")
+    if(exists("primary.person",diary))                      setnames(diary,"primary.person","primary")
+    if(exists("indoor.outdoor",diary))                      setnames(diary,"indoor.outdoor","indoor_outdoor")
+    if(exists("pucid.productype",diary))                    setnames(diary,"pucid.productype","product_type")
     primenum <- persons$pnum[persons$primary==1]
     diary$person[diary$primary==1] <- primenum
     diary$person[diary$primary==0 & diary$p<=primenum] <- diary$p[diary$primary==0 & diary$p<=primenum]-1
@@ -1856,7 +1886,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   
   
   # read.pophouse reads the output from the HEM RPGen module 
- 
+  
   
   read.pophouse = function(run.name) {
     if (g$prog=="y") cat("\n  Reading pophouse...")
@@ -1867,7 +1897,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     pophouse$house <- 1:nrow(pophouse)
     return(pophouse)
   }
- 
+  
   
   
   # read.puc.met reads the input file containing the mean MET value for each PUC
@@ -1876,14 +1906,15 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     if (is.null(puc.met.file)) puc.met.file <- g$puc.met.file
     x <- fread(paste0("input/",puc.met.file))
     setnames(x,tolower(names(x)))
-    if (exists("puc",x)) setnames(x,"puc","source.id")
+    if (exists("new_puc",x)) setnames(x,"new_puc","source.id")
     if(length(puc.list>0)) {
       x <- x[x$source.id %in% puc.list] 
       for (i in 1:length(puc.list)) {
         if (!puc.list[i] %in% x$source.id) cat("  PUC ",puc.list[i]," not on PUC MET file")
       }
     }
-    setnames(x,c("source.id","category","product_type","refined","chad_act","met"))
+    setnames(x,c("new_general_category","new_product type","new_refined product type","chad activity","mean mets from apex"),
+             c("category","product_type","refined","chad_act","met"))
     return(x)
   }
   
@@ -1895,6 +1926,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     if (is.null(puc.type.file)) puc.type.file <- g$puc.type.file
     x <- fread(paste0("input/",puc.type.file))
     setnames(x,tolower(names(x)))
+    if (exists("new_source.id",x)) setnames(x,"new_source.id","source.id")
     if(length(puc.list>0)) {
       x <- x[x$source.id %in% puc.list] 
       for (i in 1:length(puc.list)) {
@@ -1914,7 +1946,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     if (is.null(removal.file)) removal.file <- g$removal.file
     x <- fread(paste0("input/",removal.file))
     setnames(x,tolower(names(x)))
-    if (exists("puc",x)) setnames(x,"puc","source.id")
+    if (exists("new_puc",x)) setnames(x,"new_puc","source.id")
     return(x)
   }
   
@@ -1926,6 +1958,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     if (is.null(skin.area.file)) skin.area.file <- g$skin.area.file  
     x <- fread(paste0("input/",skin.area.file))
     setnames(x,tolower(names(x)))
+    if (exists("new_puc",x)) setnames(x,"new_puc","source.id")
     skin.areas <- unique(x,by="source.id")
     return(skin.areas)
   }
@@ -2011,9 +2044,9 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     }  
     return(cat("\nS2D finished\n\n"))
   }   
-    
-    
-
+  
+  
+  
   write.all.houses = function() {
     houses <- list.files(paste0(g$out,"/Chem"),pattern="^[House_]")
     if (length(houses)>0) {
@@ -2035,7 +2068,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   }
   
   
- 
+  
   
   
   
@@ -2084,7 +2117,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
         compart.list     <- select_vars(names(prod.chem),starts_with("f"),exclude="formulation_id")
         chem.props       <- eval.chem.props(fug.cvars,chem.list,ran.vars,q)
         flows            <- eval.flows(hp,chem.props)
-        dermal.rates     <- eval.dermal.rates(fug.cvars,hp,prime,pucs.areas,prod.chem,nc)
+        dermal.rates     <- eval.dermal.rates(fug.cvars,hp,prime,pucs.areas,prod.chem,nc,house.num)
         use.data         <- eval.use.data(pucs,prod.chem,fug.cvars,dermal.rates,puc.wipe.rinse,nc,house.num)
         chem.release     <- eval.chem.release(pucs,use.data,use.chem,compart.list,diary,nc,calendar.hours)
         if (g$save.r.objects=="y" & any(chem.release[8:ncol(chem.release)]>0)) {
@@ -2107,6 +2140,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
           fug.day        <- select(fugs[1:364],c(1,3:(4*nc+2)))
           if (g$save.r.objects=="y" & any(fug.day[,2:ncol(fug.day)]>0)) write.csv(fug.day,paste0(g$out,"/Temp/fug.day_",house.num,"_",run.name,".csv"))
           fug.hour       <- select(fugs[365:9100],c(1:(2*nc+2)))
+          if (g$save.r.objects=="y" & any(fug.hour[,2:ncol(fug.hour)]>0)) write.csv(fug.hour,paste0(g$out,"/Temp/fug.hour_",house.num,"_",run.name,".csv"))
           indirect       <- eval.indirect(d,fug.hour,dermal.rates,hp,nc,prime,fug.cvars,chem.list)
           if (g$save.r.objects=="y" & any(indirect[2:ncol(indirect)]>0)) write.csv(indirect,paste0(g$out,"/Temp/indirect_",house.num,"_",run.name,".csv"))
         }  
@@ -2122,12 +2156,12 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     } 
     return(lcia)
   }    
-
-    
+  
+  
   ###################################################################
   ############## End of function definitions ########################
   ###################################################################
-
+  
   
   
   
@@ -2165,7 +2199,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   fug.hvars      <- read.fug.inputs(g$fug.file) 
   fug.cvars      <- read.chem.props(g$chem.file,chem.list)
   if(length(chem.list)==0 | is.null(chem.list)) chem.list <- unique(fug.cvars$dtxsid)
-
+  
   puc.types      <- read.puc.types(g$puc.type.file,puc.list)
   puc.met        <- read.puc.met(g$puc.met.file,puc.list)
   puc.codes      <- join(select(puc.types,source.id,code),select(puc.met,source.id,met),by="source.id")
@@ -2186,7 +2220,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   setorder(all.chems,chem.num)
   fug.cvars      <- fug.cvars[fug.cvars$dtxsid %in% chem.list]
   fug.cvars      <- fug.cvars[order(fug.cvars$dtxsid,chem.list)]
-
+  
   ventilation    <- read.vent.file(g$vent.file)
   skin.areas     <- read.skin.areas(g$skin.area.file)
   removal.fracs  <- read.removals(g$removal.file)
@@ -2197,7 +2231,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   if(is.na(g$last.house)) g$last.house <- g$n.houses
   person.data    <- pophouse[g$first.house:g$last.house]
   if (g$prog=="y") cat("\nDone with reading input data...")
- 
+  
   nc             <- length(chem.list)
   np             <- length(puc.list)
   ran.vars       <- get.ran.vars(nc,np)
@@ -2211,7 +2245,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   all.houses     <- data.table(matrix(0,nrow=g$n.houses,ncol=cols))
   all.lcia <- NULL
   if (g$prog=="y") cat("\nStarting ",g$n.houses," houses...")
-
+  
   
   # Call S2D runner
   if (g$parallel=="y") {
@@ -2230,8 +2264,8 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     on.exit(stopCluster(cl))
     all.lcia <- rbindlist(out2)
   }
-
- 
+  
+  
   if (g$parallel=="n") {
     for (i in g$first.house:g$last.house) {
       lcia <- S2D_Runner(i)
