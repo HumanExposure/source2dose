@@ -1,0 +1,331 @@
+old_PUC,new_PUC,old_Category,new_Category,old_Product.Type,new_Product.Type,old_refined_product_type,new_refined_product_type,Body.Part..s..for.calculation.of.mean.area,Adult,Child,Hand_Variability,Body_Variability
+P.PC.100.000,PC.2800.010.099.F,personal care,specialized bath products ,bath oil,bath oil ,,NOC,Body minus Head,0.925,0.85,low,low
+P.PC.120.000,PC.2800.020.099.F,personal care,specialized bath products ,bath salts,bath salts ,,NOC,Body minus Head,0.925,0.85,low,low
+P.PC.220.000,PC.2800.030.099.F,personal care,specialized bath products ,bubble bath,bubble bath ,,NOC,Body minus Head,0.925,0.85,low,low
+P.IH.030.023,CP.0400.030.053.F,inside the home,dishwasher and dishes ,automatic dishwashing detergent,automatic dishwashing detergent,powder,powder,NA,NA,NA,low,low
+P.IH.130.000,CP.1200.020.099.F,inside the home,laundry and fabric treatment ,dryer sheets,dryer sheets,,NOC,NA,NA,NA,low,low
+P.IH.260.023,CP.1200.060.053.F,inside the home,laundry and fabric treatment ,laundry detergent,laundry detergent,powder,powder,NA,NA,NA,low,low
+P.PC.050.000,PC.0800.030.001.F,personal care,child specific ,baby powder,baby powder,,child,Trunk,0.37,0.33,low,low
+P.PC.140.000,PC.2300.010.099.F,personal care,make-up and related ,blush/bronzer,blush/bronzer,,NOC,Cheeks,0.0125,0.025,low,low
+P.PC.180.000,PC.0700.010.099.F,personal care,body powder ,body powder,body powder,,NOC,Trunk,0.37,0.33,high,high
+P.PC.310.029,PC.2000.070.050.F,personal care,hair styling and care ,dry shampoo,dry shampoo,spray,spray,Scalp,0.0375,0.075,low,medium
+P.PC.390.000,PC.2300.050.099.F,personal care,make-up and related ,eye shadow,eye shadow,,NOC,Eyelids,0.00375,0.0075,low,low
+P.PC.430.000,PC.2300.060.099.F,personal care,make-up and related ,face powder,face powder,,NOC,Face,0.0375,0.075,low,low
+P.PC.490.000,PC.1800.010.099.F,personal care,glitter ,glitter,glitter,,NOC,Trunk,0.37,0.33,high,high
+P.PC.590.023,PC.2000.150.053.F,personal care,hair styling and care ,hair styling,hair styling,powder,powder,Scalp,0.0375,0.075,low,low
+P.PC.720.000,PC.2300.140.099.F,personal care,make-up and related ,makeup set,makeup set,,NOC,Face,0.0375,0.075,high,high
+P.IH.080.000,CP.0300.020.099.F,inside the home,carpet and floor ,carpet deodorizer,carpet deodorizer,,NOC,NA,NA,NA,low,low
+P.LY.100.000,LY.0600.040.099.F,landscape/yard,plants and garden ,potting soil,potting soil,,NOC,NA,NA,NA,high,low
+P.PE.050.000,PE.0500.010.099.F,pesticides,rodenticide ,rodenticide,rodenticide ,,NOC,NA,NA,NA,low,low
+P.LY.020.000,LY.0600.010.099.F,landscape/yard,plants and garden ,garden care,garden care,,NOC,NA,NA,NA,high,low
+P.LY.030.000,LY.0600.020.099.F,landscape/yard,plants and garden ,garden fertilizer,garden fertilizer,,NOC,NA,NA,NA,low,low
+P.LY.060.000,LY.0400.010.099.F,landscape/yard,lawn fertilizer ,lawn fertilizer,lawn fertilizer,,NOC,NA,NA,NA,low,low
+P.LY.080.000,LY.0600.030.099.F,landscape/yard,plants and garden ,mulch,mulch,,NOC,NA,NA,NA,high,medium
+P.AP.010.000,VE.0500.010.099.F,auto products,engine maintenance ,antifreeze,antifreeze ,,NOC,NA,NA,NA,low,low
+P.PT.010.000,PT.0400.010.099.F,pet care,fish ,aquarium,aquarium ,,NOC,NA,NA,NA,low,low
+P.AP.030.029,VE.0500.020.050.F,auto products,engine maintenance ,auto fluids and additives,auto fluids and additives ,spray,spray,NA,NA,NA,low,low
+P.AP.030.999,VE.0500.020.099.F,auto products,engine maintenance ,auto fluids and additives,auto fluids and additives ,NOC,NOC,NA,NA,NA,low,low
+P.AP.060.000,VE.0500.040.099.F,auto products,engine maintenance ,auto refrigerant,auto refrigerant ,,NOC,NA,NA,NA,low,low
+P.IH.020.000,CP.0400.020.099.F,inside the home,dishwasher and dishes ,automatic dishwashing additive,automatic dishwashing additive,,NOC,NA,NA,NA,low,low
+P.IH.030.007,CP.0400.030.051.F,inside the home,dishwasher and dishes ,automatic dishwashing detergent,automatic dishwashing detergent,gel,gel,NA,NA,NA,low,low
+P.IH.030.999,CP.0400.030.099.F,inside the home,dishwasher and dishes ,automatic dishwashing detergent,automatic dishwashing detergent,NOC,NOC,NA,NA,NA,low,low
+P.AP.080.000,VE.0200.040.099.F,auto products,boat care and maintenance ,boat engine fluids,boat engine fluids ,,NOC,NA,NA,NA,low,low
+P.IH.170.000,CP.1200.050.099.F,inside the home,laundry and fabric treatment ,fabric softener,fabric softener,,NOC,NA,NA,NA,low,low
+P.LY.040.000,LY.0200.010.099.F,landscape/yard,grill/camping fuel ,grill/camping fuel,grill/camping fuel,,NOC,NA,NA,NA,low,low
+P.IH.250.000,CP.1100.010.099.F,inside the home,lamp oil/lighter fluid ,lamp oil/lighter fluid,lamp oil/lighter fluid,,NOC,NA,NA,NA,low,low
+P.IH.260.013,CP.1200.060.052.F,inside the home,laundry and fabric treatment ,laundry detergent,laundry detergent,liquid,liquid,NA,NA,NA,low,low
+P.IH.260.999,CP.1200.060.099.F,inside the home,laundry and fabric treatment ,laundry detergent,laundry detergent,NOC,NOC,NA,NA,NA,low,low
+P.IH.270.000,CP.1200.070.099.F,inside the home,laundry and fabric treatment ,laundry fragrance,laundry fragrance,,NOC,NA,NA,NA,low,low
+P.LY.070.000,LY.0500.010.099.F,landscape/yard,lawnmower ,lawnmower fluids,lawnmower fluids,,NOC,NA,NA,NA,low,low
+P.AP.140.000,VE.0500.050.099.F,auto products,engine maintenance ,motor oil,motor oil ,,NOC,NA,NA,NA,low,low
+P.HO.010.000,EL.0300.050.099.F,home office,computers and accessories/supplies ,printer ink,printer ink,,NOC,NA,NA,NA,low,low
+P.HO.020.000,EL.0300.060.099.F,home office,computers and accessories/supplies ,printer toner,printer toner,,NOC,NA,NA,NA,low,low
+P.HM.200.000,HM.1700.010.099.F,home maintenance,refrigerant ,refrigerant,refrigerant,,NOC,NA,NA,NA,low,low
+P.PC.010.999,PC.0100.010.099.F,personal care,acne treatment ,acne spot treatment,acne spot treatment,NOC,NOC,Spot,0.005,0.005,low,low
+P.PC.020.000,PC.2700.040.099.F,personal care,shaving and hair removal ,aftershave,aftershave ,,NOC,Face,0.0375,0.075,low,low
+P.PC.030.000,PC.0800.010.001.F,personal care,child specific ,baby lotion,baby lotion,,child,Trunk,0.37,0.33,medium,medium
+P.PC.030.000,PC.0800.010.001.F,personal care,child specific ,baby lotion,baby lotion,,child,Trunk,0.37,0.33,medium,medium
+P.PC.040.000,PC.0800.020.001.F,personal care,child specific ,baby oil,baby oil,,child,Trunk,0.37,0.33,medium,medium
+P.PC.040.000,PC.0800.020.001.F,personal care,child specific ,baby oil,baby oil,,child,Trunk,0.37,0.33,medium,medium
+P.PC.060.000,PC.0800.040.001.F,personal care,child specific ,baby shampoo,baby shampoo,,child,Scalp,0.0375,0.075,low,low
+P.PC.060.000,PC.0800.040.001.F,personal care,child specific ,baby shampoo,baby shampoo,,child,Scalp,0.0375,0.075,low,low
+P.PC.070.000,PC.0800.050.001.F,personal care,child specific ,baby wash,baby wash,,child,Body minus Head,0.925,0.85,low,low
+P.PC.070.000,PC.0800.050.001.F,personal care,child specific ,baby wash,baby wash,,child,Body minus Head,0.925,0.85,low,low
+P.PC.080.000,PC.0800.060.001.F,personal care,child specific ,baby wipes,baby wipes,,child,Genital area,0.07,0.07,low,low
+P.PC.080.000,PC.0800.060.001.F,personal care,child specific ,baby wipes,baby wipes,,child,Genital area,0.07,0.07,low,low
+P.PC.130.000,PC.0200.010.099.F,personal care,bite relief ,bite relief,bite relief,,NOC,Spot,0.005,0.005,low,low
+P.PC.150.000,PC.0300.010.099.F,personal care,body adhesive ,body adhesive,body adhesive,,NOC,Spot,0.005,0.005,high,high
+P.PC.160.000,PC.0400.010.099.F,personal care,body care set ,body care set,body care set,,NOC,Trunk,0.37,0.33,high,high
+P.PC.170.999,PC.0600.010.099.F,personal care,body oil ,body oil,body oil,NOC,NOC,Trunk,0.37,0.33,low,low
+P.AC.050.029,AC.0100.010.050.F,arts and crafts,body paint ,body paint,body paint,spray,spray,Trunk,0.37,0.33,high,high
+P.AC.050.999,AC.0100.010.099.F,arts and crafts,body paint ,body paint,body paint,NOC,NOC,Trunk,0.37,0.33,high,high
+P.PC.190.000,PC.0500.020.099.F,personal care,body hygiene ,body scrub,body scrub,,NOC,Body minus Head,0.925,0.85,low,low
+P.PC.200.000,PC.0500.030.099.F,personal care,body hygiene ,body wash,body wash,,NOC,Body minus Head,0.925,0.85,low,low
+P.PC.210.000,PC.0500.040.099.F,personal care,body hygiene ,body wipes,body wipes,,NOC,Trunk,0.37,0.33,high,high
+P.PC.240.999,PC.1100.020.099.F,personal care,eye care and contacts ,contact care,contact care,NOC,NOC,Eye Edges,0.001875,0.00375,low,low
+P.PC.260.000,PC.0900.030.099.F,personal care,dental care ,denture adhesive,denture adhesive,,NOC,Mouth,0.00375,0.0075,low,low
+P.PC.270.000,PC.0900.040.099.F,personal care,dental care ,denture cleaner,denture cleaner,,NOC,Mouth,0.00375,0.0075,low,low
+P.PC.280.007,PC.1000.010.051.F,personal care,deodorant ,deodorant,deodorant,gel,gel,Underarm,0.007,0.007,low,low
+P.PC.280.028,PC.1000.010.056.F,personal care,deodorant ,deodorant,deodorant,solid,solid,Underarm,0.007,0.007,low,low
+P.PC.280.999,PC.1000.010.099.F,personal care,deodorant ,deodorant,deodorant,NOC,NOC,Underarm,0.007,0.007,low,low
+P.PC.290.999,PC.2700.060.099.F,personal care,shaving and hair removal ,depilatory,depilatory ,NOC,NOC,Legs,0.3,0.25,high,high
+P.PC.300.000,PC.0800.080.001.F,personal care,child specific ,diaper cream,diaper cream,,child,Genital area,0.07,0.07,low,low
+P.PC.300.000,PC.0800.080.001.F,personal care,child specific ,diaper cream,diaper cream,,child,Genital area,0.07,0.07,low,low
+P.PC.320.000,PC.2000.080.099.F,personal care,hair styling and care ,ethnic hair care,ethnic hair care,,NOC,Scalp,0.0375,0.075,low,low
+P.PC.330.000,PC.1100.030.099.F,personal care,eye care and contacts ,eye cream,eye cream,,NOC,Eyelids,0.00375,0.0075,low,low
+P.PC.340.000,PC.1100.040.099.F,personal care,eye care and contacts ,eye drops,eye drops,,NOC,Eye Edges,0.001875,0.00375,low,low
+P.PC.360.013,PC.2300.030.052.F,personal care,make-up and related ,eye liner,eye liner,liquid,liquid,Eye Edges,0.001875,0.00375,low,low
+P.PC.360.999,PC.2300.030.099.F,personal care,make-up and related ,eye liner,eye liner,NOC,NOC,Eye Edges,0.001875,0.00375,low,low
+P.PC.370.000,PC.2300.040.099.F,personal care,make-up and related ,eye makeup,eye makeup,NOC,NOC,Eyelids,0.00375,0.0075,low,low
+P.PC.380.000,PC.1100.060.099.F,personal care,eye care and contacts ,eye products,eye products,NOC,NOC,Eyelids,0.00375,0.0075,low,low
+P.PC.400.000,PC.1200.010.099.F,personal care,facial cleansing and moisturizing ,face cleansing wipes,face cleansing wipes,,NOC,Face,0.0375,0.075,low,low
+P.PC.410.999,PC.1200.020.099.F,personal care,facial cleansing and moisturizing ,face cream/moisturizer,face cream/moisturizer,NOC,NOC,Face,0.0375,0.075,low,low
+P.PC.420.000,PC.1200.030.099.F,personal care,facial cleansing and moisturizing ,face mask,face mask,,NOC,Face,0.0375,0.075,low,low
+P.PC.440.001,PC.0100.020.099.F,personal care,acne treatment ,face scrub,face scrub,acne,NOC,Face,0.0375,0.075,low,low
+P.PC.440.999,PC.1200.040.099.F,personal care,facial cleansing and moisturizing ,face scrub,face scrub,NOC,NOC,Face,0.0375,0.075,low,low
+P.PC.450.001,PC.0100.030.099.F,personal care,acne treatment ,face wash,face wash,acne,NOC,Face,0.0375,0.075,low,low
+P.PC.450.999,PC.1200.050.099.F,personal care,facial cleansing and moisturizing ,face wash,face wash,NOC,NOC,Face,0.0375,0.075,low,low
+P.PC.460.999,PC.1500.010.099.F,personal care,foot care ,foot care,foot care,NOC,NOC,Feet,0.0375,0.075,low,low
+P.PC.470.000,PC.2300.070.099.F,personal care,make-up and related ,foundation/concealer,foundation/concealer,,NOC,Face,0.0375,0.075,medium,medium
+P.PC.480.999,PC.1600.010.099.F,personal care,fragrance ,fragrance,fragrance,NOC,NOC,Trunk,0.37,0.33,high,high
+P.PC.500.000,PC.1900.010.099.F,personal care,hair coloring ,hair bleach,hair bleach,,NOC,Scalp,0.0375,0.075,low,low
+P.PC.510.019,PC.1900.030.099.F,personal care,hair coloring ,hair color,hair color - permanent,permanent,NOC,Scalp,0.0375,0.075,low,low
+P.PC.510.024,PC.1900.040.099.F,personal care,hair coloring ,hair color,hair color - professional,professional,NOC,Scalp,0.0375,0.075,low,low
+P.PC.510.030,PC.1900.050.099.F,personal care,hair coloring ,hair color,hair color - temporary,temporary,NOC,Scalp,0.0375,0.075,low,low
+P.PC.510.999,PC.1900.020.099.F,personal care,hair coloring ,hair color,hair color,NOC,NOC,Scalp,0.0375,0.075,low,low
+P.PC.520.000,PC.1900.060.099.F,personal care,hair coloring ,hair color activator,hair color activator,,NOC,Scalp,0.0375,0.075,low,low
+P.PC.530.000,PC.1900.070.099.F,personal care,hair coloring ,hair color developer,hair color developer,,NOC,Scalp,0.0375,0.075,low,low
+P.PC.540.000,PC.1900.080.099.F,personal care,hair coloring ,hair color toner,hair color toner,,NOC,Scalp,0.0375,0.075,low,low
+P.PC.550.011,PC.2000.100.099.F,personal care,hair styling and care ,hair conditioner,hair conditioner - leave-in,leave-in,NOC,Scalp,0.0375,0.075,low,low
+P.PC.550.999,PC.2000.090.099.F,personal care,hair styling and care ,hair conditioner,hair conditioner,NOC,NOC,Scalp,0.0375,0.075,low,low
+P.PC.560.024,PC.2000.120.099.F,personal care,hair styling and care ,hair conditioning treatment,hair conditioning treatment - professional,professional,NOC,Scalp,0.0375,0.075,low,low
+P.PC.560.029,PC.2000.110.050.F,personal care,hair styling and care ,hair conditioning treatment,hair conditioning treatment,spray,spray,Scalp,0.0375,0.075,low,low
+P.PC.560.999,PC.2000.110.099.F,personal care,hair styling and care ,hair conditioning treatment,hair conditioning treatment,NOC,NOC,Scalp,0.0375,0.075,low,low
+P.PC.570.000,PC.2000.130.099.F,personal care,hair styling and care ,hair relaxer,hair relaxer,,NOC,Scalp,0.0375,0.075,low,low
+P.PC.590.007,PC.2000.160.051.F,personal care,hair styling and care ,hair styling,hair styling - gel,gel,gel,Scalp,0.0375,0.075,low,low
+P.PC.590.014,PC.2000.170.058.F,personal care,hair styling and care ,hair styling,hair styling - mousse,mousse,mousse,Scalp,0.0375,0.075,low,low
+P.PC.590.999,PC.2000.150.099.F,personal care,hair styling and care ,hair styling,hair styling,NOC,NOC,Scalp,0.0375,0.075,low,low
+P.IH.220.000,CP.0800.010.099.F,inside the home,hand cleaner ,hand cleaner,hand cleaner,,NOC,Hands,0.05,0.05,low,low
+P.PC.600.999,PC.0500.050.099.F,personal care,body hygiene ,hand sanitizer,hand sanitizer,NOC,NOC,Hands,0.05,0.05,low,low
+P.PC.610.000,PC.0500.060.099.F,personal care,body hygiene ,hand soap,hand soap,,NOC,Hands,0.05,0.05,low,low
+P.PC.620.000,PC.0500.070.099.F,personal care,body hygiene ,hand wipes,hand wipes,,NOC,Hands,0.05,0.05,low,low
+P.PC.630.007,PC.1700.010.051.F,personal care,general moisturizing ,hand/body lotion,hand/body lotion,gel,gel,Trunk,0.37,0.33,high,high
+P.PC.630.999,PC.1700.010.099.F,personal care,general moisturizing ,hand/body lotion,hand/body lotion,NOC,NOC,Trunk,0.37,0.33,high,high
+P.PE.030.026,PE.0300.030.099.F,pesticides,insect repellent ,insect repellent,insect repellent - skin ,skin,NOC,Arms and Legs,0.44,0.39,high,high
+P.PE.030.999,PE.0300.010.099.F,pesticides,insect repellent ,insect repellent,insect repellent ,NOC,NOC,Arms and Legs,0.44,0.39,high,high
+P.PC.640.000,PC.2000.180.099.F,personal care,hair styling and care ,lice shampoo,lice shampoo,,NOC,Scalp,0.0375,0.075,low,low
+P.PC.650.000,PC.2200.010.099.F,personal care,liniment ,liniment,liniment,,NOC,Arms and Legs,0.44,0.39,high,high
+P.PC.660.000,PC.2300.080.099.F,personal care,make-up and related ,lip balm,lip balm,,NOC,Lips,0.00375,0.0075,low,low
+P.PC.670.000,PC.2300.090.099.F,personal care,make-up and related ,lip color,lip color,,NOC,Lips,0.00375,0.0075,low,low
+P.PC.680.000,PC.2300.100.099.F,personal care,make-up and related ,lip gloss,lip gloss,,NOC,Lips,0.00375,0.0075,low,low
+P.PC.690.000,PC.2300.110.099.F,personal care,make-up and related ,lip liner,lip liner,,NOC,Lips,0.00375,0.0075,low,low
+P.PC.700.000,PC.2300.120.099.F,personal care,make-up and related ,makeup primer,makeup primer,,NOC,Face,0.0375,0.075,medium,medium
+P.PC.710.000,PC.2300.130.099.F,personal care,make-up and related ,makeup remover,makeup remover,,NOC,Face,0.0375,0.075,medium,medium
+P.PC.730.000,PC.2300.150.099.F,personal care,make-up and related ,mascara,mascara,,NOC,Eye Edges,0.001875,0.00375,low,low
+P.PC.740.999,PC.0900.050.099.F,personal care,dental care ,mouthwash,mouthwash,NOC,NOC,Mouth,0.00375,0.0075,low,low
+P.PC.750.000,PC.2400.010.099.F,personal care,nails ,nail adhesive,nail adhesive,,NOC,Nails,0.0025,0.0025,low,low
+P.PC.760.000,PC.2400.020.099.F,personal care,nails ,nail polish,nail polish,,NOC,Nails,0.0025,0.0025,low,low
+P.PC.770.000,PC.2400.030.099.F,personal care,nails ,nail polish remover,nail polish remover,,NOC,Nails,0.0025,0.0025,low,low
+P.PC.780.999,PC.2400.040.099.F,personal care,nails ,nail products,other nail products,NOC,NOC,Nails,0.0025,0.0025,low,low
+P.PC.780.018,PC.2400.040.050.F,personal care,nails ,nail products,other nail products,other|spray,spray,Nails,0.0025,0.0025,low,low
+P.PC.790.999,PC.2000.190.099.F,personal care,hair styling and care ,scalp treatment,scalp treatment,NOC,NOC,Scalp,0.0375,0.075,low,low
+P.PC.800.999,PC.2500.010.099.F,personal care,self-tanner ,self-tanner,self-tanner,NOC,NOC,Arms and Legs,0.44,0.39,high,high
+P.PC.810.000,PC.2600.010.099.F,personal care,sexual wellness ,sexual wellness,sexual wellness,,NOC,Genital area,0.07,0.07,medium,medium
+P.PC.820.004,PC.2000.200.099.F,personal care,hair styling and care ,shampoo,shampoo - dandruff,dandruff,NOC,Scalp,0.0375,0.075,low,low
+P.PC.820.999,PC.2000.210.099.F,personal care,hair styling and care ,shampoo,shampoo,NOC,NOC,Scalp,0.0375,0.075,low,low
+P.PC.830.007,PC.2700.070.051.F,personal care,shaving and hair removal ,shaving cream,shaving cream ,gel,gel,Face,0.0375,0.075,high,high
+P.PC.830.999,PC.2700.070.099.F,personal care,shaving and hair removal ,shaving cream,shaving cream ,NOC,NOC,Face,0.0375,0.075,high,high
+P.PC.840.100,PC.2900.010.001.F,personal care,sunscreen ,sunscreen,sunscreen ,children,child,"Arms, Legs, and Face",0.4775,0.465,high,high
+P.PC.840.100,PC.2900.010.001.F,personal care,sunscreen ,sunscreen,sunscreen ,children,child,"Arms, Legs, and Face",0.4775,0.465,high,high
+P.PC.840.999,PC.2900.010.099.F,personal care,sunscreen ,sunscreen,sunscreen ,NOC,NOC,"Arms, Legs, and Face",0.4775,0.465,high,high
+P.PC.850.000,PC.0900.060.099.F,personal care,dental care ,teeth whitener,teeth whitener,,NOC,"Arms, Legs, and Face",0.4775,0.465,low,low
+P.PC.860.000,PC.2300.160.099.F,personal care,make-up and related ,toner,toner,,NOC,Face,0.0375,0.075,low,low
+P.PC.870.007,PC.0900.070.051.F,personal care,dental care ,toothpaste,toothpaste,gel,gel,Mouth,0.00375,0.0075,low,low
+P.PC.870.999,PC.0900.070.099.F,personal care,dental care ,toothpaste,toothpaste,NOC,NOC,Mouth,0.00375,0.0075,low,low
+P.PC.880.000,PC.2700.080.099.F,personal care,shaving and hair removal ,waxing,waxing ,,NOC,Legs,0.3,0.25,high,high
+P.IH.110.000,CP.0500.010.099.F,inside the home,drain ,drain,drain,,NOC,NA,NA,NA,low,low
+P.HM.220.000,HM.1900.010.099.F,home maintenance,septic system ,septic system,septic system,,NOC,NA,NA,NA,low,low
+P.HM.010.999,HM.0100.010.099.F,home maintenance,adhesives and adhesive removers ,adhesive remover,adhesive remover,NOC,NOC,NA,NA,NA,medium,low
+P.IH.010.013,CP.0100.010.052.F,inside the home,air freshener ,air freshener,air freshener,liquid,liquid,NA,NA,NA,low,low
+P.IH.010.016,CP.0100.010.054.F,inside the home,air freshener ,air freshener,air freshener,oil or diffuse,oil or diffuse,NA,NA,NA,low,low
+P.AC.010.999,AC.0500.010.099.F,arts and crafts,general arts and crafts supplies ,arts and crafts adhesive,arts and crafts adhesive,NOC,NOC,NA,NA,NA,medium,low
+P.AC.020.000,AC.0500.020.099.F,arts and crafts,general arts and crafts supplies ,arts and crafts cleaner,arts and crafts cleaner,,NOC,NA,NA,NA,medium,low
+P.AC.030.999,AC.0500.030.099.F,arts and crafts,general arts and crafts supplies ,arts and crafts finish,arts and crafts finish,NOC,NOC,NA,NA,NA,medium,low
+P.AC.040.000,AC.0500.040.099.F,arts and crafts,general arts and crafts supplies ,arts and crafts paint,arts and crafts paint,,NOC,NA,NA,NA,medium,low
+P.IH.040.999,CP.0200.010.099.F,inside the home,bathroom ,bathroom cleaner,bathroom cleaner,NOC,NOC,NA,NA,NA,medium,low
+P.IH.050.000,CP.0700.010.099.F,inside the home,general household cleaning ,bleach,bleach,,NOC,NA,NA,NA,medium,low
+P.AC.060.000,AC.0200.010.099.F,arts and crafts,children's art and toys ,bubble solution,bubble solution,,NOC,NA,NA,NA,medium,low
+P.IH.070.999,CP.0300.010.099.F,inside the home,carpet and floor ,carpet cleaner,carpet cleaner,NOC,NOC,NA,NA,NA,medium,low
+P.HM.020.000,HM.0400.010.099.F,home maintenance,caulk/sealant ,caulk/sealant,caulk/sealant,,NOC,NA,NA,NA,low,low
+P.PC.230.000,PC.2700.050.099.F,personal care,shaving and hair removal ,clipper lubricant/cleaner,clipper lubricant/cleaner ,,NOC,NA,NA,NA,low,low
+P.HM.040.999,HM.0600.010.099.F,home maintenance,corrosion protection ,corrosion protection,corrosion protection,NOC,NOC,NA,NA,NA,low,low
+P.PC.250.000,PC.2300.020.099.F,personal care,make-up and related ,cosmetic tool cleaner,cosmetic tool cleaner,,NOC,NA,NA,NA,low,low
+P.AC.070.000,AC.0500.050.099.F,arts and crafts,general arts and crafts supplies ,craft kit,craft kit,,NOC,NA,NA,NA,medium,low
+P.HM.050.000,HM.0700.010.099.F,home maintenance,degreaser ,degreaser,degreaser,,NOC,NA,NA,NA,medium,low
+P.IH.090.000,CP.0400.040.099.F,inside the home,dishwasher and dishes ,dish soap,dish soap,,NOC,NA,NA,NA,high,low
+P.IH.100.999,CP.0700.020.099.F,inside the home,general household cleaning ,disinfectant,disinfectant,NOC,NOC,NA,NA,NA,medium,low
+P.IH.120.000,CP.1200.010.099.F,inside the home,laundry and fabric treatment ,dry cleaner,dry cleaner,,NOC,NA,NA,NA,low,low
+P.AC.090.000,AC.0300.010.099.F,arts and crafts,fabric treatment and dye ,dye,fabric dye,,NOC,NA,NA,NA,medium,low
+P.IH.140.999,EL.0400.010.099.F,inside the home,electronics cleaner ,electronics cleaner,electronics cleaner,NOC,NOC,NA,NA,NA,medium,low
+P.AC.100.999,AC.0300.020.099.F,arts and crafts,fabric treatment and dye ,fabric paints and sealers,fabric paints and sealers,NOC,NOC,NA,NA,NA,medium,low
+P.IH.190.000,CP.0300.030.099.F,inside the home,carpet and floor ,floor cleaner,floor cleaner,,NOC,NA,NA,NA,medium,low
+P.IH.200.000,CP.0300.040.099.F,inside the home,carpet and floor ,floor polish,floor polish,,NOC,NA,NA,NA,medium,low
+P.IH.210.999,CP.0700.030.099.F,inside the home,general household cleaning ,glass cleaner,glass cleaner,NOC,NOC,NA,NA,NA,medium,low
+P.HM.070.000,HM.2100.010.099.F,home maintenance,tiling ,grout sealer,grout sealer,,NOC,NA,NA,NA,medium,low
+P.AC.150.000,AC.0600.010.099.F,arts and crafts,gun cleaner ,gun cleaner,gun cleaner,,NOC,NA,NA,NA,medium,low
+P.IH.230.999,CP.0900.010.099.F,inside the home,heavy duty cleaner ,heavy duty cleaner,heavy duty cleaner,NOC,NOC,NA,NA,NA,medium,low
+P.PE.040.009,PE.0400.030.099.F,pesticides,insecticide ,insecticide,insecticide - interior ,interior,NOC,NA,NA,NA,low,low
+P.PE.040.999,PE.0400.010.099.F,pesticides,insecticide ,insecticide,insecticide ,NOC,NOC,NA,NA,NA,low,low
+P.IH.280.999,CP.1200.080.099.F,inside the home,laundry and fabric treatment ,laundry stain remover,laundry stain remover,NOC,NOC,NA,NA,NA,low,low
+P.IH.300.000,CP.1300.010.099.F,inside the home,lime remover ,lime remover,lime remover,,NOC,NA,NA,NA,low,low
+P.HM.080.000,HM.1200.010.099.F,home maintenance,lock deicer ,lock deicer,lock deicer,,NOC,NA,NA,NA,low,low
+P.HM.090.999,HM.1300.010.099.F,home maintenance,lubricant ,lubricant,lubricant,NOC,NOC,NA,NA,NA,low,low
+P.IH.310.000,CP.1400.010.099.F,inside the home,metal specific ,metal polish,metal polish,,NOC,NA,NA,NA,medium,low
+P.HM.100.000,HM.2100.020.099.F,home maintenance,tiling ,mortar or grout,mortar or grout,,NOC,NA,NA,NA,medium,low
+P.HM.110.999,HM.0100.020.099.F,home maintenance,adhesives and adhesive removers ,multipurpose adhesive,multipurpose adhesive,NOC,NOC,NA,NA,NA,medium,low
+P.PT.030.999,PT.0100.060.099.F,pet care,all pets ,other pet treatments,other pet treatments ,NOC,NOC,NA,NA,NA,low,low
+P.HM.120.999,HM.1400.010.099.F,home maintenance,paint/stain and related products ,paint,paint,NOC,NOC,NA,NA,NA,medium,low
+P.HM.130.999,HM.1400.020.099.F,home maintenance,paint/stain and related products ,paint cleaner,paint cleaner,NOC,NOC,NA,NA,NA,medium,low
+P.HM.140.000,HM.1400.030.099.F,home maintenance,paint/stain and related products ,paint texture,paint texture,,NOC,NA,NA,NA,medium,low
+P.HM.150.000,HM.1400.040.099.F,home maintenance,paint/stain and related products ,paint thinner,paint thinner,,NOC,NA,NA,NA,medium,low
+P.HM.160.000,HM.1500.010.099.F,home maintenance,patch and repair ,patch and repair,patch and repair,,NOC,NA,NA,NA,medium,low
+P.AC.160.000,AC.0700.020.099.F,arts and crafts,home office ,pens and markers,pens and markers,,NOC,NA,NA,NA,low,low
+P.PT.040.020,PT.0100.070.099.F,pet care,all pets ,pesticide,pesticide - pet ,pet,NOC,NA,NA,NA,low,low
+P.PT.050.000,PT.0100.080.099.F,pet care,all pets ,pet shampoo,pet shampoo ,,NOC,NA,NA,NA,high,medium
+P.PT.060.999,PT.0100.090.099.F,pet care,all pets ,pet stain cleaner,pet stain cleaner ,NOC,NOC,NA,NA,NA,medium,medium
+P.HM.180.009,HM.1400.050.041.F,home maintenance,paint/stain and related products ,primer,primer,interior,interior,NA,NA,NA,medium,low
+P.HM.180.999,HM.1400.050.099.F,home maintenance,paint/stain and related products ,primer,primer,NOC,NOC,NA,NA,NA,medium,low
+P.HM.190.000,HM.1500.020.099.F,home maintenance,patch and repair ,putty or filler,putty or filler,,NOC,NA,NA,NA,medium,low
+P.IH.330.000,CP.1600.010.099.F,inside the home,shoes ,shoe polish or protectant,shoe polish or protectant,,NOC,NA,NA,NA,low,low
+P.HM.230.000,HM.1000.010.099.F,home maintenance,insulation ,spray foam,spray foam,,NOC,NA,NA,NA,low,low
+P.HM.260.999,HM.2000.040.099.F,home maintenance,surface sealers ,surface sealer,surface sealer,NOC,NOC,NA,NA,NA,medium,low
+P.HO.030.000,AC.0700.030.099.F,home office,home office ,white out,white out,,NOC,NA,NA,NA,low,low
+P.HM.280.000,HM.0100.030.099.F,home maintenance,adhesives and adhesive removers ,wood adhesive,wood adhesive,,NOC,NA,NA,NA,low,low
+P.IH.360.999,CP.1800.010.099.F,inside the home,wood specific ,wood polish,wood polish,NOC,NOC,NA,NA,NA,medium,low
+P.PE.010.999,PE.0100.010.099.F,pesticides,animal repellent ,animal repellent,animal repellent ,NOC,NOC,NA,NA,NA,low,low
+P.AP.040.029,VE.0500.030.050.F,auto products,engine maintenance ,auto lubricant,auto lubricant ,spray,spray,NA,NA,NA,low,low
+P.AP.040.999,VE.0500.030.099.F,auto products,engine maintenance ,auto lubricant,auto lubricant ,NOC,NOC,NA,NA,NA,low,low
+P.AP.050.029,VE.0100.010.050.F,auto products,auto body work ,auto paint,auto paint ,spray,spray,NA,NA,NA,medium,medium
+P.AP.050.999,VE.0100.010.099.F,auto products,auto body work ,auto paint,auto paint ,NOC,NOC,NA,NA,NA,medium,low
+P.AP.070.000,VE.0200.020.099.F,auto products,boat care and maintenance ,boat cleaner,boat cleaner - general ,,NOC,NA,NA,NA,high,medium
+P.AP.090.000,VE.0400.010.099.F,auto products,car surface treatment ,body cleaner,body cleaner ,,NOC,NA,NA,NA,high,medium
+P.AP.100.999,VE.0100.020.099.F,auto products,auto body work ,body repair,body repair ,NOC,NOC,NA,NA,NA,medium,low
+P.AP.110.999,VE.0400.020.099.F,auto products,car surface treatment ,body wax,body wax ,NOC,NOC,NA,NA,NA,medium,low
+P.LY.010.005,LY.0100.010.040.F,landscape/yard,cleaner ,cleaner,cleaner,exterior,exterior,NA,NA,NA,high,medium
+P.HM.030.000,HM.0500.010.099.F,home maintenance,concrete ,concrete,concrete,,NOC,NA,NA,NA,medium,low
+P.AP.120.999,VE.0400.040.099.F,auto products,car surface treatment ,degreaser,degreaser ,NOC,NOC,NA,NA,NA,medium,low
+P.AP.130.999,VE.0100.030.099.F,auto products,auto body work ,detailing,detailing ,NOC,NOC,NA,NA,NA,medium,low
+P.PE.020.999,PE.0200.010.099.F,pesticides,fungicide ,fungicide,fungicide ,NOC,NOC,NA,NA,NA,low,low
+P.LY.050.999,LY.0300.010.099.F,landscape/yard,herbicide ,herbicide,herbicide,NOC,NOC,NA,NA,NA,low,low
+P.PE.030.005,PE.0300.020.099.F,pesticides,insect repellent ,insect repellent,insect repellent - exterior ,exterior,NOC,NA,NA,NA,low,low
+P.PE.040.005,PE.0400.020.099.F,pesticides,insecticide ,insecticide,insecticide - exterior ,exterior,NOC,NA,NA,NA,low,low
+P.HM.120.005,HM.1400.010.040.F,home maintenance,paint/stain and related products ,paint,paint,exterior,exterior,NA,NA,NA,medium,low
+P.HM.120.009,HM.1400.010.041.F,home maintenance,paint/stain and related products ,paint,paint,interior,interior,NA,NA,NA,medium,low
+P.HM.180.005,HM.1400.050.040.F,home maintenance,paint/stain and related products ,primer,primer,exterior,exterior,NA,NA,NA,medium,low
+P.HM.210.000,HM.1800.010.099.F,home maintenance,roof ,roof,roof,,NOC,NA,NA,NA,medium,low
+P.HM.240.005,HM.1400.060.040.F,home maintenance,paint/stain and related products ,stain,stain,exterior,exterior,NA,NA,NA,medium,low
+P.HM.240.999,HM.1400.060.099.F,home maintenance,paint/stain and related products ,stain,stain,NOC,NOC,NA,NA,NA,medium,low
+P.HM.250.999,HM.1400.070.099.F,home maintenance,paint/stain and related products ,stripper,stripper,NOC,NOC,NA,NA,NA,low,low
+P.LY.110.000,LY.0800.010.099.F,landscape/yard,surface deicer ,surface deicer,surface deicer,,NOC,NA,NA,NA,low,low
+P.HM.260.005,HM.2000.040.040.F,home maintenance,surface sealers ,surface sealer,surface sealer,exterior,exterior,NA,NA,NA,low,low
+P.LY.120.000,LY.0600.050.099.F,landscape/yard,plants and garden ,trees,trees,,NOC,NA,NA,NA,low,low
+P.AP.150.999,VE.0100.040.099.F,auto products,auto body work ,windows/windshield,windows/windshield ,NOC,NOC,NA,NA,NA,medium,low
+P.AC.110.000,AC.0200.030.099.F,arts and crafts,children's art and toys ,finger paint,finger paint,,NOC,Hands,0.05,0.05,low,low
+P.PC.010.029,PC.0100.010.050.F,personal care,acne treatment ,acne spot treatment,acne spot treatment,spray,spray,Spot,0.005,0.005,low,low
+P.PC.170.029,PC.0600.010.050.F,personal care,body oil ,body oil,body oil,spray,spray,Trunk,0.37,0.33,high,high
+P.PC.240.029,PC.1100.020.050.F,personal care,eye care and contacts ,contact care,contact care,spray,spray,Eye Edges,0.001875,0.00375,low,low
+P.PC.280.029,PC.1000.010.050.F,personal care,deodorant ,deodorant,deodorant,spray,spray,Underarm,0.007,0.007,low,low
+P.PC.290.029,PC.2700.060.050.F,personal care,shaving and hair removal ,depilatory,depilatory ,spray,spray,Legs,0.3,0.25,high,high
+P.PC.310.999,PC.2000.070.099.F,personal care,hair styling and care ,dry shampoo,dry shampoo,NOC,NOC,Scalp,0.0375,0.075,low,low
+P.PC.350.000,PC.1100.050.050.F,personal care,eye care and contacts ,eye lid spray,eye lid spray,spray,spray,Eyelids,0.00375,0.0075,low,low
+P.PC.410.029,PC.1200.020.050.F,personal care,facial cleansing and moisturizing ,face cream/moisturizer,face cream/moisturizer,spray,spray,Face,0.0375,0.075,low,low
+P.PC.450.029,PC.1200.050.050.F,personal care,facial cleansing and moisturizing ,face wash,face wash,spray,spray,Face,0.0375,0.075,low,low
+P.PC.460.029,PC.1500.010.050.F,personal care,foot care ,foot care,foot care,spray,spray,Feet,0.0375,0.075,low,low
+P.PC.480.029,PC.1600.010.050.F,personal care,fragrance ,fragrance,fragrance,spray,spray,Trunk,0.37,0.33,high,high
+P.PC.510.031,PC.1900.050.050.F,personal care,hair coloring ,hair color,hair color - temporary,temporary|spra,spray,Scalp,0.0375,0.075,low,low
+P.PC.550.012,PC.2000.100.050.F,personal care,hair styling and care ,hair conditioner,hair conditioner - leave-in,leave-in|spray,spray,Scalp,0.0375,0.075,low,low
+P.PC.550.029,PC.2000.090.050.F,personal care,hair styling and care ,hair conditioner,hair conditioner,spray,spray,Scalp,0.0375,0.075,low,low
+P.PC.580.000,PC.2000.140.099.F,personal care,hair styling and care ,hair spray,hair spray,,NOC,Scalp,0.0375,0.075,low,low
+P.PC.590.008,PC.2000.160.057.F,personal care,hair styling and care ,hair styling,hair styling - gel,gel|spray,gel|spray,Scalp,0.0375,0.075,low,low
+P.PC.590.015,PC.2000.170.059.F,personal care,hair styling and care ,hair styling,hair styling - mousse,mousse|spray,mousse|spray,Scalp,0.0375,0.075,low,low
+P.PC.590.029,PC.2000.150.050.F,personal care,hair styling and care ,hair styling,hair styling,spray,spray,Scalp,0.0375,0.075,low,low
+P.PC.600.029,PC.0500.050.050.F,personal care,body hygiene ,hand sanitizer,hand sanitizer,spray,spray,Hands,0.05,0.05,low,low
+P.PC.630.008,PC.1700.010.057.F,personal care,general moisturizing ,hand/body lotion,hand/body lotion,gel|spray,gel|spray,Trunk,0.37,0.33,high,high
+P.PC.630.029,PC.1700.010.050.F,personal care,general moisturizing ,hand/body lotion,hand/body lotion,spray,spray,Trunk,0.37,0.33,high,high
+P.PE.030.027,PE.0300.030.050.F,pesticides,insect repellent ,insect repellent,insect repellent - skin ,skin|spray,spray,Arms and Legs,0.44,0.39,high,high
+P.PE.030.029,PE.0300.010.050.F,pesticides,insect repellent ,insect repellent,insect repellent ,spray,spray,Arms and Legs,0.44,0.39,high,high
+P.PE.040.006,PE.0400.020.050.F,pesticides,insecticide ,insecticide,insecticide - exterior ,exterior|spray,spray,NA,NA,NA,NA,NA
+P.PE.040.010,PE.0400.030.050.F,pesticides,insecticide ,insecticide,insecticide - interior ,interior|spray,spray,NA,NA,NA,NA,NA
+P.PC.740.029,PC.0900.050.050.F,personal care,dental care ,mouthwash,mouthwash,spray,spray,Mouth,0.00375,0.0075,low,low
+P.PT.040.021,PT.0100.070.050.F,pet care,all pets ,pesticide,pesticide - pet ,pet|spray,spray,NA,NA,NA,NA,NA
+P.PC.790.029,PC.2000.190.050.F,personal care,hair styling and care ,scalp treatment,scalp treatment,spray,spray,Scalp,0.0375,0.075,low,low
+P.PC.800.029,PC.2500.010.050.F,personal care,self-tanner ,self-tanner,self-tanner,spray,spray,Arms and Legs,0.44,0.39,high,high
+P.PC.840.101,PC.2900.010.011.F,personal care,sunscreen ,sunscreen,sunscreen ,children|spray,child | spray,"Arms, Legs, and Face",0.4775,0.465,high,high
+P.PC.840.101,PC.2900.010.011.F,personal care,sunscreen ,sunscreen,sunscreen ,children|spray,child | spray,"Arms, Legs, and Face",0.4775,0.465,high,high
+P.PC.840.029,PC.2900.010.050.F,personal care,sunscreen ,sunscreen,sunscreen ,spray,spray,"Arms, Legs, and Face",0.4775,0.465,high,high
+P.IH.010.029,CP.0100.010.050.F,inside the home,air freshener ,air freshener,air freshener,spray,spray,NA,NA,NA,low,medium
+P.HM.010.029,HM.0100.010.050.F,home maintenance,adhesives and adhesive removers ,adhesive remover,adhesive remover,spray,spray,NA,NA,NA,low,medium
+P.AC.010.029,AC.0500.010.050.F,arts and crafts,general arts and crafts supplies ,arts and crafts adhesive,arts and crafts adhesive,spray,spray,NA,NA,NA,low,medium
+P.AC.030.029,AC.0500.030.050.F,arts and crafts,general arts and crafts supplies ,arts and crafts finish,arts and crafts finish,spray,spray,NA,NA,NA,low,medium
+P.AP.020.029,VE.0300.010.050.F,auto products,car interior ,auto air freshener,auto air freshener ,spray,spray,NA,NA,NA,low,medium
+P.IH.040.029,CP.0200.010.050.F,inside the home,bathroom ,bathroom cleaner,bathroom cleaner,spray,spray,NA,NA,NA,medium,medium
+P.IH.070.029,CP.0300.010.050.F,inside the home,carpet and floor ,carpet cleaner,carpet cleaner,spray,spray,NA,NA,NA,low,medium
+P.HM.040.029,HM.0600.010.050.F,home maintenance,corrosion protection ,corrosion protection,corrosion protection,spray,spray,NA,NA,NA,low,medium
+P.AP.130.029,VE.0100.030.050.F,auto products,auto body work ,detailing,detailing ,spray,spray,NA,NA,NA,low,medium
+P.IH.100.029,CP.0700.020.050.F,inside the home,general household cleaning ,disinfectant,disinfectant,spray,spray,NA,NA,NA,low,medium
+P.IH.140.029,EL.0400.010.050.F,inside the home,electronics cleaner ,electronics cleaner,electronics cleaner,spray,spray,NA,NA,NA,medium,medium
+P.IH.150.000,CP.1200.030.099.F,inside the home,laundry and fabric treatment ,fabric deodorizer,fabric deodorizer,,NOC,NA,NA,NA,low,low
+P.AC.100.029,AC.0300.020.050.F,arts and crafts,fabric treatment and dye ,fabric paints and sealers,fabric paints and sealers,spray,spray,NA,NA,NA,medium,medium
+P.IH.160.000,CP.1200.040.099.F,inside the home,laundry and fabric treatment ,fabric protectant,fabric protectant,,NOC,NA,NA,NA,medium,low
+P.HM.060.029,HM.0800.010.050.F,home maintenance,finish ,finish,finish,spray,spray,NA,NA,NA,medium,medium
+P.HM.060.999,HM.0800.010.099.F,home maintenance,finish ,finish,finish,NOC,NOC,NA,NA,NA,medium,low
+P.AC.120.000,AC.0500.060.050.F,arts and crafts,general arts and crafts supplies ,flocking,flocking,spray,spray,NA,NA,NA,low,medium
+P.IH.210.029,CP.0700.030.050.F,inside the home,general household cleaning ,glass cleaner,glass cleaner,spray,spray,NA,NA,NA,medium,medium
+P.IH.230.029,CP.0900.010.050.F,inside the home,heavy duty cleaner ,heavy duty cleaner,heavy duty cleaner,spray,spray,NA,NA,NA,medium,medium
+P.IH.240.029,CP.1000.010.050.F,inside the home,houseplant care ,houseplant care,houseplant care,spray,spray,NA,NA,NA,low,medium
+P.IH.240.999,CP.1000.010.099.F,inside the home,houseplant care ,houseplant care,houseplant care,NOC,NOC,NA,NA,NA,low,low
+P.PE.040.029,PE.0400.010.050.F,pesticides,insecticide ,insecticide,insecticide ,spray,spray,NA,NA,NA,low,low
+P.IH.280.029,CP.1200.080.050.F,inside the home,laundry and fabric treatment ,laundry stain remover,laundry stain remover,spray,spray,NA,NA,NA,low,low
+P.IH.290.029,CP.1200.090.050.F,inside the home,laundry and fabric treatment ,laundry starch,laundry starch,spray,spray,NA,NA,NA,low,medium
+P.IH.290.999,CP.1200.090.099.F,inside the home,laundry and fabric treatment ,laundry starch,laundry starch,NOC,NOC,NA,NA,NA,low,low
+P.HM.090.029,HM.1300.010.050.F,home maintenance,lubricant ,lubricant,lubricant,spray,spray,NA,NA,NA,low,medium
+P.HM.110.029,HM.0100.020.050.F,home maintenance,adhesives and adhesive removers ,multipurpose adhesive,multipurpose adhesive,spray,spray,NA,NA,NA,low,medium
+P.PT.030.029,PT.0100.060.050.F,pet care,all pets ,other pet treatments,other pet treatments ,spray,spray,NA,NA,NA,low,low
+P.IH.320.029,CP.1500.010.050.F,inside the home,oven ,oven cleaner,oven cleaner,spray,spray,NA,NA,NA,low,low
+P.IH.320.999,CP.1500.010.099.F,inside the home,oven ,oven cleaner,oven cleaner,NOC,NOC,NA,NA,NA,low,low
+P.HM.120.029,HM.1400.010.050.F,home maintenance,paint/stain and related products ,paint,paint,spray,spray,NA,NA,NA,medium,medium
+P.HM.130.029,HM.1400.020.050.F,home maintenance,paint/stain and related products ,paint cleaner,paint cleaner,spray,spray,NA,NA,NA,medium,medium
+P.PT.060.029,PT.0100.090.050.F,pet care,all pets ,pet stain cleaner,pet stain cleaner ,spray,spray,NA,NA,NA,medium,medium
+P.HM.180.029,HM.1400.050.050.F,home maintenance,paint/stain and related products ,primer,primer,spray,spray,NA,NA,NA,medium,medium
+P.IH.340.029,CP.0700.040.050.F,inside the home,general household cleaning ,surface cleaner,surface cleaner,spray,spray,NA,NA,NA,medium,medium
+P.IH.340.999,CP.0700.040.099.F,inside the home,general household cleaning ,surface cleaner,surface cleaner,NOC,NOC,NA,NA,NA,medium,medium
+P.HM.260.029,HM.2000.040.050.F,home maintenance,surface sealers ,surface sealer,surface sealer,spray,spray,NA,NA,NA,medium,medium
+P.IH.350.000,CP.1700.010.099.F,inside the home,upholstery specific ,upholstery cleaner,upholstery cleaner,,NOC,NA,NA,NA,medium,low
+P.IH.360.029,CP.1800.010.050.F,inside the home,wood specific ,wood polish,wood polish,spray,spray,NA,NA,NA,medium,medium
+P.IH.010.007,CP.0100.010.051.F,inside the home,air freshener ,air freshener,air freshener,gel,gel,NA,NA,NA,low,low
+P.IH.010.999,CP.0100.010.099.F,inside the home,air freshener ,air freshener,air freshener,NOC,NOC,NA,NA,NA,low,low
+P.AP.020.999,VE.0300.010.099.F,auto products,car interior ,auto air freshener,auto air freshener ,NOC,NOC,NA,NA,NA,low,low
+P.PC.090.000,PC.0500.010.099.F,personal care,body hygiene ,bar soap,bar soap,,NOC,NA,NA,NA,high,low
+P.PC.110.000,PC.0800.070.001.F,personal care,child specific ,bath paints/crayons,bath paints/crayons,,child,NA,NA,NA,high,low
+P.PT.020.000,PT.0200.010.099.F,pet care,cats ,cat litter,cat litter ,,NOC,NA,NA,NA,low,low
+P.AC.080.000,AC.0200.020.099.F,arts and crafts,children's art and toys ,crayons,crayons,,NOC,NA,NA,NA,low,low
+P.AC.170.000,AC.0200.040.099.F,arts and crafts,children's art and toys ,play dough,play dough,,NOC,NA,NA,NA,high,low
+P.HM.170.000,HM.1600.010.099.F,home maintenance,plumbing ,plumbing,plumbing,,NOC,NA,NA,NA,low,low
+P.PE.010.029,PE.0100.010.050.F,pesticides,animal repellent ,animal repellent,animal repellent ,spray,spray,NA,NA,NA,low,medium
+P.AP.100.029,VE.0100.020.050.F,auto products,auto body work ,body repair,body repair ,spray,spray,NA,NA,NA,high,medium
+P.AP.110.029,VE.0400.020.050.F,auto products,car surface treatment ,body wax,body wax ,spray,spray,NA,NA,NA,high,medium
+P.AP.120.029,VE.0400.040.050.F,auto products,car surface treatment ,degreaser,degreaser ,spray,spray,NA,NA,NA,medium,medium
+P.PE.020.029,PE.0200.010.050.F,pesticides,fungicide ,fungicide,fungicide ,spray,spray,NA,NA,NA,medium,medium
+P.LY.050.029,LY.0300.010.050.F,landscape/yard,herbicide ,herbicide,herbicide,spray,spray,NA,NA,NA,medium,medium
+P.PE.030.006,PE.0300.020.050.F,pesticides,insect repellent ,insect repellent,insect repellent - exterior ,exterior|spray,spray,NA,NA,NA,medium,medium
+P.HM.250.029,HM.1400.070.050.F,home maintenance,paint/stain and related products ,stripper,stripper,spray,spray,NA,NA,NA,medium,medium
+P.AP.150.029,VE.0100.040.050.F,auto products,auto body work ,windows/windshield,windows/windshield ,spray,spray,NA,NA,NA,medium,medium
+P.IH.180.000,CP.0600.010.099.F,inside the home,fireplace ,fireplace,fireplace,,NOC,NA,NA,NA,low,low
+P.AC.130.000,AC.0400.010.099.F,arts and crafts,fogger ,fogger,fogger,,NOC,NA,NA,NA,low,low
+P.AC.140.000,AC.0800.010.099.F,arts and crafts,pottery making ,glaze,glaze,,NOC,NA,NA,NA,low,low
+P.LY.090.002,LY.0700.010.030.F,landscape/yard,pool ,pool chemicals,pool chemicals,algaecide,algaecide,NA,NA,NA,low,low
+P.LY.090.003,LY.0700.010.031.F,landscape/yard,pool ,pool chemicals,pool chemicals,chlorinating,chlorinating,NA,NA,NA,low,low
+P.LY.090.022,LY.0700.010.032.F,landscape/yard,pool ,pool chemicals,pool chemicals,ph control,ph control,NA,NA,NA,low,low
+P.LY.090.025,LY.0700.010.033.F,landscape/yard,pool ,pool chemicals,pool chemicals,shock,shock,NA,NA,NA,low,low
+P.LY.090.999,LY.0700.010.099.F,landscape/yard,pool ,pool chemicals,pool chemicals,NOC,NOC,NA,NA,NA,low,low
+P.HM.270.000,HM.2400.010.099.F,home maintenance,welding ,welding,welding,,NOC,NA,NA,NA,low,low

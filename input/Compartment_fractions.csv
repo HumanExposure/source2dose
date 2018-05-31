@@ -1,0 +1,65 @@
+<<<<<<< HEAD
+description,code,fia: indoor air,fis : indoor surfaces,fdr: drain,fws: waste,fsk: skin,foa: outdoor air,fos: outdoor surfaces,fap: applicance,fsl: solid,fgi: gi,fhn: hair_nails,Sum,indoor
+Aerosols for application to body surfaces,ABS,0.02,0.03,0,0.01,0.94,0,0,0,0,0,0,1,1
+"Aerosols for application to nose, mouth, or lips",AGI,0.02,0.03,0,0.01,0.1,0,0,0,0,0.84,0,1,1
+Aerosols for application to non-dermal body (hair/nails),AHN,0.02,0.03,0,0.01,0,0,0,0,0,0,0.94,1,1
+Aerosols for application to indoor air,AIA,0.396,0.594,0,0.01,0,0,0,0,0,0,0,1,1
+Aerosols for application to indoor surfaces,AIS,0.02,0.97,0,0.01,0,0,0,0,0,0,0,1,1
+Aerosols for application to outdoor air,AOA,0,0,0,0.01,0,0.99,0,0,0,0,0,1,0
+Aerosols for application to outdoor surfaces,AOS,0,0,0,0.01,0,0.05,0.94,0,0,0,0,1,0
+Soluble products added to bath water,BAT,0,0,0.96,0.01,0.03,0,0,0,0,0,0,1,1
+Dusts or powders for application within appliances,DAP,0,0,0,0.01,0.01,0,0,0.98,0,0,0,1,1
+Dusts or powders for application to body surfaces,DBS,0,0.03,0,0.01,0.96,0,0,0,0,0,0,1,1
+"Dusts or powders for application to nose, mouth, or lips",DGI,0,0,0,0.01,0.98,0,0,0,0,0.01,0,1,1
+Dusts or powders for application to non-dermal body (hair/nails),DHN,0,0,0,0.01,0.1,0,0,0,0,0,0.89,1,1
+Dusts or powders for application to indoor surfaces,DIS,0,0.98,0,0.01,0.01,0,0,0,0,0,0,1,1
+Dusts or powders for application to outdoor surfaces,DOS,0,0,0,0.01,0.01,0,0.98,0,0,0,0,1,0
+"Liquids, lotions, or gels for application within appliances",LAP,0,0,0,0.01,0.01,0,0,0.98,0,0,0,1,1
+"Liquids, lotions, or gels for application to body surfaces",LBS,0,0,0,0.01,0.99,0,0,0,0,0,0,1,1
+"Liquids, lotions, or gels for application to drains",LDR,0,0,0.99,0.01,0,0,0,0,0,0,0,1,1
+"Liquids, lotions, or gels for application to nose, mouth, or lips",LGI,0,0,0,0.01,0.98,0,0,0,0,0.01,0,1,1
+"Liquids, lotions, or gels for application to non-dermal body (hair/nails)",LHN,0,0,0,0.01,0.1,0,0,0,0,0,0.89,1,1
+"Liquids, lotions, or gels for application to indoor surfaces",LIS,0,0.98,0,0.01,0.01,0,0,0,0,0,0,1,1
+"Liquids, lotions, or gels for application to outdoor surfaces",LOS,0,0,0,0.01,0.001,0,0.989,0,0,0,0,1,0
+"Liquids, lotions, or gels for application to indoor surfaces with hands",LSH,0,0.89,0,0.01,0.1,0,0,0,0,0,0,1,1
+Sprays (pump) for application to body surfaces,SBS,0.003,0.047,0,0.01,0.94,0,0,0,0,0,0,1,1
+"Sprays (pump) for application to nose, mouth, or lips",SGI,0.003,0.047,0,0.01,0.1,0,0,0,0,0.84,0,1,1
+Sprays (pump) for application to non-dermal body (hair/nails),SHN,0.003,0.047,0,0.01,0,0,0,0,0,0,0.94,1,1
+Sprays (pump) for application to indoor air,SIA,0.0594,0.9306,0,0.01,0,0,0,0,0,0,0,1,1
+Sprays (pump)s for application to indoor surfaces,SIS,0.003,0.987,0,0.01,0,0,0,0,0,0,0,1,1
+Sprays (pump) for application to outdoor air,SOA,0,0,0,0.01,0,0.99,0,0,0,0,0,1,0
+Solid formulations,SOL,0,0,0,0,0,0,0,0,1,0,0,1,1
+Sprays (pump) for application to outdoor surfaces,SOS,0,0,0,0.01,0,0.05,0.94,0,0,0,0,1,0
+=======
+description,code,fia: indoor air,fis : indoor surfaces,fdr: drain,fws: waste,fsk: skin,foa: outdoor air,fos: outdoor surfaces,fap: applicance,fsl: solid,fgi: gi,fhn: hair_nails,Sum,indoor
+Aerosols for application to body surfaces,ABS,0.02,0.03,0,0.01,0.94,0,0,0,0,0,0,1,1
+"Aerosols for application to nose, mouth, or lips",AGI,0.02,0.03,0,0.01,0.1,0,0,0,0,0.84,0,1,1
+Aerosols for application to non-dermal body (hair/nails),AHN,0.02,0.03,0,0.01,0,0,0,0,0,0,0.94,1,1
+Aerosols for application to indoor air,AIA,0.396,0.594,0,0.01,0,0,0,0,0,0,0,1,1
+Aerosols for application to indoor surfaces,AIS,0.02,0.97,0,0.01,0,0,0,0,0,0,0,1,1
+Aerosols for application to outdoor air,AOA,0,0,0,0.01,0,0.99,0,0,0,0,0,1,0
+Aerosols for application to outdoor surfaces,AOS,0,0,0,0.01,0,0.05,0.94,0,0,0,0,1,0
+Soluble products added to bath water,BAT,0,0,0.96,0.01,0.03,0,0,0,0,0,0,1,1
+Dusts or powders for application within appliances,DAP,0,0,0,0.01,0.01,0,0,0.98,0,0,0,1,1
+Dusts or powders for application to body surfaces,DBS,0,0.03,0,0.01,0.96,0,0,0,0,0,0,1,1
+"Dusts or powders for application to nose, mouth, or lips",DGI,0,0,0,0.01,0.98,0,0,0,0,0.01,0,1,1
+Dusts or powders for application to non-dermal body (hair/nails),DHN,0,0,0,0.01,0.1,0,0,0,0,0,0.89,1,1
+Dusts or powders for application to indoor surfaces,DIS,0,0.98,0,0.01,0.01,0,0,0,0,0,0,1,1
+Dusts or powders for application to outdoor surfaces,DOS,0,0,0,0.01,0.01,0,0.98,0,0,0,0,1,0
+"Liquids, lotions, or gels for application within appliances",LAP,0,0,0,0.01,0.01,0,0,0.98,0,0,0,1,1
+"Liquids, lotions, or gels for application to body surfaces",LBS,0,0,0,0.01,0.99,0,0,0,0,0,0,1,1
+"Liquids, lotions, or gels for application to drains",LDR,0,0,0.99,0.01,0,0,0,0,0,0,0,1,1
+"Liquids, lotions, or gels for application to nose, mouth, or lips",LGI,0,0,0,0.01,0.98,0,0,0,0,0.01,0,1,1
+"Liquids, lotions, or gels for application to non-dermal body (hair/nails)",LHN,0,0,0,0.01,0.1,0,0,0,0,0,0.89,1,1
+"Liquids, lotions, or gels for application to indoor surfaces",LIS,0,0.98,0,0.01,0.01,0,0,0,0,0,0,1,1
+"Liquids, lotions, or gels for application to outdoor surfaces",LOS,0,0,0,0.01,0.001,0,0.989,0,0,0,0,1,0
+"Liquids, lotions, or gels for application to indoor surfaces with hands",LSH,0,0.89,0,0.01,0.1,0,0,0,0,0,0,1,1
+Sprays (pump) for application to body surfaces,SBS,0.003,0.047,0,0.01,0.94,0,0,0,0,0,0,1,1
+"Sprays (pump) for application to nose, mouth, or lips",SGI,0.003,0.047,0,0.01,0.1,0,0,0,0,0.84,0,1,1
+Sprays (pump) for application to non-dermal body (hair/nails),SHN,0.003,0.047,0,0.01,0,0,0,0,0,0,0.94,1,1
+Sprays (pump) for application to indoor air,SIA,0.0594,0.9306,0,0.01,0,0,0,0,0,0,0,1,1
+Sprays (pump)s for application to indoor surfaces,SIS,0.003,0.987,0,0.01,0,0,0,0,0,0,0,1,1
+Sprays (pump) for application to outdoor air,SOA,0,0,0,0.01,0,0.99,0,0,0,0,0,1,0
+Solid formulations,SOL,0,0,0,0,0,0,0,0,1,0,0,1,1
+Sprays (pump) for application to outdoor surfaces,SOS,0,0,0,0.01,0,0.05,0.94,0,0,0,0,1,0
+>>>>>>> ea1aa2a3521b0ddfe24e4e2e9f63306d35692060

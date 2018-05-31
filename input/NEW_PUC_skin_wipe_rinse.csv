@@ -1,0 +1,331 @@
+,old_PUC,Category,Product,Refined,description,type,fHands,fBody,sum_f,fRinseH,fwipeH,sum_H,fRinseB,fWipeB,Sum_B,fRinseS,fWipeS,Sum_S,AllHands,new_PUC
+1,P.AC.010.029,arts and crafts,arts and crafts adhesive,spray,"spray adhesives for primarily craft purposes, including spray mounts and stencil placement sprays",SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,AC.0500.010.050.F
+2,P.AC.010.999,arts and crafts,arts and crafts adhesive,NOC,"glue sticks, glitter glues, fabric glues, craft glue, and other adhesives used for primarily craft purposes",LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,AC.0500.010.099.F
+3,P.AC.020.000,arts and crafts,arts and crafts cleaner,,"solvent-based products for cleaning paint, adhesives, etc. from hands or surfaces",LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,AC.0500.020.099.F
+4,P.AC.030.029,arts and crafts,arts and crafts finish,spray,spray shellacs or polyurethane coatings for primarily craft purposes,SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,AC.0500.030.050.F
+5,P.AC.030.999,arts and crafts,arts and crafts finish,NOC,shellacs or polyurethane coatings for primarily craft purposes,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,AC.0500.030.099.F
+6,P.AC.040.000,arts and crafts,arts and crafts paint,,paints and colorants for primarily craft purposes (including acrylic and enamel paints),LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,AC.0500.040.099.F
+7,P.AC.050.029,arts and crafts,body paint,spray,"body paints, markers, glitters, play cosmetics, and halloween cosmetics (spray or aerosol formulation specified)",LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,AC.0100.010.050.F
+8,P.AC.050.999,arts and crafts,body paint,NOC,"body paints, markers, glitters, play cosmetics, and halloween cosmetics",LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,AC.0100.010.099.F
+9,P.AC.060.000,arts and crafts,bubble solution,,"liquid bubble solutions, including solutions for bubble machines",LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,AC.0200.010.099.F
+10,P.AC.070.000,arts and crafts,craft kit,,multi-component crafting kits where individual products are not designated,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,AC.0500.050.099.F
+11,P.AC.080.000,arts and crafts,crayons,,wax crayons for coloring or illustration,SOL,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,AC.0200.020.099.F
+12,P.AC.090.000,arts and crafts,dye,,products for dying fabrics,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,AC.0300.010.099.F
+13,P.AC.100.029,arts and crafts,fabric paints and sealers,spray,paints or sealers for treating fabrics (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,AC.0300.020.050.F
+14,P.AC.100.999,arts and crafts,fabric paints and sealers,NOC,paints or sealers for treating fabrics,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,AC.0300.020.099.F
+15,P.AC.110.000,arts and crafts,finger paint,,non-edible finger paints,LSH,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,AC.0200.030.099.F
+16,P.AC.120.000,arts and crafts,flocking,spray,flocking and artificial snow (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,1,1,NA,AC.0500.060.050.F
+17,P.AC.130.000,arts and crafts,fogger,,liquid solutions for fogger machines,XXX,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,AC.0400.010.099.F
+18,P.AC.140.000,arts and crafts,glaze,,liquid products for glazing craft pottery,XXX,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,AC.0800.010.099.F
+19,P.AC.150.000,arts and crafts,gun cleaner,,liquid solutions for cleaning interior or exterior of firearms,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.5,0.5,NA,AC.0600.010.099.F
+20,P.AC.160.000,arts and crafts,pens and markers,,writing utensils containing liquid or gel ink,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,AC.0700.020.099.F
+21,P.AC.170.000,arts and crafts,play dough,,children's play modeling clays,SOL,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,AC.0200.040.099.F
+22,P.AP.010.000,auto products,antifreeze,,antifreeze and/or coolant solutions for motorized vehicles,LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,VE.0500.010.099.F
+23,P.AP.020.029,auto products,auto air freshener,spray,air fresheners for car interiors (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,VE.0300.010.050.F
+24,P.AP.020.999,auto products,auto air freshener,NOC,"air fresheners for car interiors, including products for vents",SOL,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,VE.0300.010.099.F
+25,P.AP.030.029,auto products,auto fluids and additives,spray,"power steering fluids, transmission fluids, brake fluids, fuel injector cleaners, gas treatments, or leak stoppers (spray or aerosol formulation specified)",LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,VE.0500.020.050.F
+26,P.AP.030.999,auto products,auto fluids and additives,NOC,"power steering fluids, transmission fluids, brake fluids, fuel injector cleaners, gas treatments, or leak stoppers",LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,VE.0500.020.099.F
+27,P.AP.040.029,auto products,auto lubricant,spray,"engine lubricants and belt dressings, not including motor oils (spray or aerosol formulation specified)",LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,VE.0500.030.050.F
+28,P.AP.040.999,auto products,auto lubricant,NOC,"engine lubricants and belt dressings, not including motor oils",LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,VE.0500.030.099.F
+29,P.AP.050.029,auto products,auto paint,spray,paints and primers for auto body or engine (spray or aerosol formulation specified),LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,VE.0100.010.050.F
+30,P.AP.050.999,auto products,auto paint,NOC,paints and primers for auto body or engine,LOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,VE.0100.010.099.F
+31,P.AP.060.000,auto products,auto refrigerant,,refrigerants and freon products for auto applications,LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,VE.0500.040.099.F
+32,P.AP.070.000,auto products,boat cleaner,,"cleaners, washes, and polishes for exterior marine applications",LOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,1,VE.0200.020.099.F
+33,P.AP.080.000,auto products,boat engine fluids,,engine fluids for marine applications,LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,VE.0200.040.099.F
+34,P.AP.090.000,auto products,body cleaner,,"cleaners, shampoos, and washes for auto body exterior (not including wax products)",LOS,0.8,0.2,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,1,VE.0400.010.099.F
+35,P.AP.100.029,auto products,body repair,spray,"products for repairing auto body exteriors, including bondo-type products and scratch fillers (spray or aerosol formulation specified)",SOS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,VE.0100.020.050.F
+36,P.AP.100.999,auto products,body repair,NOC,"products for repairing auto body exteriors, including bondo-type products and scratch fillers",LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,VE.0100.020.099.F
+37,P.AP.110.029,auto products,body wax,spray,"auto body waxes and coatings, including combo wash/wax products (spray or aerosol formulation specified)",SOS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.5,0.1,0.6,NA,VE.0400.020.050.F
+38,P.AP.110.999,auto products,body wax,NOC,"auto body waxes and coatings, including combo wash/wax products",LOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0.5,0.1,0.6,NA,VE.0400.020.099.F
+39,P.AP.120.029,auto products,degreaser,spray,"auto, engine and brake degreasers (spray or aerosol formulation specified)",SOS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,VE.0400.040.050.F
+40,P.AP.120.999,auto products,degreaser,NOC,"auto, engine and brake degreasers",LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,VE.0400.040.099.F
+41,P.AP.130.029,auto products,detailing,spray,"products for cleaning, polishing, or protecting car interior surfaces, apholstery, leather, carpeting, tires, or rims (spray or aerosol formulation specified",SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,VE.0100.030.050.F
+42,P.AP.130.999,auto products,detailing,NOC,"products for cleaning, polishing, or protecting car interior surfaces, apholstery, leather, carpeting, tires, or rims",LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,VE.0100.030.099.F
+43,P.AP.140.000,auto products,motor oil,,petroleum-based or synthetic engine lubricants,LAP,1,0,1,0,0.99,0.99,0,0.99,0.99,0,0,0,NA,VE.0500.050.099.F
+44,P.AP.150.029,auto products,windows/windshield,spray,products for washing or protecting windshields or windows (spray or aerosol formulation specified),SOS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,VE.0100.040.050.F
+45,P.AP.150.999,auto products,windows/windshield,NOC,products for washing or protecting windshields or windows,LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,VE.0100.040.099.F
+46,P.HM.010.029,home maintenance,adhesive remover,spray,solvent products for removing adhesives from surfaces (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,HM.0100.010.050.F
+47,P.HM.010.999,home maintenance,adhesive remover,NOC,solvent products for removing adhesives from surfaces,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,HM.0100.010.099.F
+48,P.HM.020.000,home maintenance,caulk/sealant,,"caulks and sealers for household use, including silicone products",LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.0400.010.099.F
+49,P.HM.030.000,home maintenance,concrete,,products for patching or cleaning concrete surfaces,LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.0500.010.099.F
+50,P.HM.040.029,home maintenance,corrosion protection,spray,products for protecting metal surfaces from corrosion or removing corrosion (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,HM.0600.010.050.F
+51,P.HM.040.999,home maintenance,corrosion protection,NOC,products for protecting metal surfaces from corrosion or removing corrosion,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,HM.0600.010.099.F
+52,P.HM.050.000,home maintenance,degreaser,,products for degreasing indoor surfaces,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,HM.0700.010.099.F
+53,P.HM.060.029,home maintenance,finish,spray,"products for permanently coating and protecting wood surfaces, including polyurethane products (spray or aerosol formulation specified)",SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.0800.010.050.F
+54,P.HM.060.999,home maintenance,finish,NOC,"products for permanently coating and protecting wood surfaces, including polyurethane products",SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.0800.010.099.F
+55,P.HM.070.000,home maintenance,grout sealer,,products for coating and protecting tile or grout,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.2100.010.099.F
+56,P.HM.080.000,home maintenance,lock deicer,,products for deicing car or residential locks,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1200.010.099.F
+57,P.HM.090.029,home maintenance,lubricant,spray,household maintenance lubricants (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1300.010.050.F
+58,P.HM.090.999,home maintenance,lubricant,NOC,household maintenance lubricants,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1300.010.099.F
+59,P.HM.100.000,home maintenance,mortar or grout,,products for attaching and grouting interior tiles,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.2100.020.099.F
+60,P.HM.110.029,home maintenance,multipurpose adhesive,spray,"general purpose repair adhesives including all purpose glues, super glue, and epoxies; not including wood glues (spray or aerosol formulation specified)",SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.0100.020.050.F
+61,P.HM.110.999,home maintenance,multipurpose adhesive,NOC,"general purpose repair adhesives including all purpose glues, super glue, and epoxies; not including wood glues",LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.0100.020.099.F
+62,P.HM.120.005,home maintenance,paint,exterior,home improvement paints characterized as exterior use,LOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1400.010.040.F
+63,P.HM.120.009,home maintenance,paint,interior,home improvement paints characterized as interior use,LOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1400.010.041.F
+64,P.HM.120.029,home maintenance,paint,spray,home improvement paints not characterized as to interior or exterior use (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1400.010.050.F
+65,P.HM.120.999,home maintenance,paint,NOC,home improvement paints not characterized as to interior or exterior use,LIS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1400.010.099.F
+66,P.HM.130.029,home maintenance,paint cleaner,spray,paint removing products for clean-up (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,HM.1400.020.050.F
+67,P.HM.130.999,home maintenance,paint cleaner,NOC,paint removing products for clean-up,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,HM.1400.020.099.F
+68,P.HM.140.000,home maintenance,paint texture,,textured paints including ceiling texture,LIS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1400.030.099.F
+69,P.HM.150.000,home maintenance,paint thinner,,paint or lacquer thinners,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1400.040.099.F
+70,P.HM.160.000,home maintenance,patch and repair,,"drywall, ceiling, and joint compounds, spackles, or fillers",LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1500.010.099.F
+71,P.HM.170.000,home maintenance,plumbing,,"miscellaneous plumbing repair products (putties, tapes, cements)",SOL,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1600.010.099.F
+72,P.HM.180.005,home maintenance,primer,exterior,home improvement primers characterized as exterior use,LOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1400.050.040.F
+73,P.HM.180.009,home maintenance,primer,interior,home improvement primers characterized as interior use,LIS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1400.050.041.F
+74,P.HM.180.029,home maintenance,primer,spray,home improvement primers not characterized as to interior or exterior use (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1400.050.050.F
+75,P.HM.180.999,home maintenance,primer,NOC,home improvement primers not characterized as to interior or exterior use,LIS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1400.050.099.F
+76,P.HM.190.000,home maintenance,putty or filler,,"putty-type crack, hole, and wood fillers",LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1500.020.099.F
+77,P.HM.200.000,home maintenance,refrigerant,,air conditioner or other refrigerants,LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,HM.1700.010.099.F
+78,P.HM.210.000,home maintenance,roof,,"products for roof maintenance or repair, including cleaners, sealers, or coatings",LOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1800.010.099.F
+79,P.HM.220.000,home maintenance,septic system,,septic system treatment products,LDR,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,HM.1900.010.099.F
+80,P.HM.230.000,home maintenance,spray foam,,spray insulation and weatherstripping products,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1000.010.099.F
+81,P.HM.240.005,home maintenance,stain,exterior,"wood stains characterized as exterior use, including deck stains",LOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1400.060.040.F
+82,P.HM.240.999,home maintenance,stain,NOC,wood stains not characterized as interior or exterior use,LOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.1400.060.099.F
+83,P.HM.250.029,home maintenance,stripper,spray,paint and finish strippers (spray or aerosol formulation specified),SOS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,HM.1400.070.050.F
+84,P.HM.250.999,home maintenance,stripper,NOC,paint and finish strippers,LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,HM.1400.070.099.F
+85,P.HM.260.005,home maintenance,surface sealer,exterior,products for coating and protecting household surfaces characterized as exterior use,LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.2000.040.040.F
+86,P.HM.260.029,home maintenance,surface sealer,spray,products for coating and protecting household surfaces not characterized as interior or exterior use (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.2000.040.050.F
+87,P.HM.260.999,home maintenance,surface sealer,NOC,products for coating and protecting household surfaces not characterized as interior or exterior use,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.2000.040.099.F
+88,P.HM.270.000,home maintenance,welding,,"miscellaneous welding products including gases, fluxes, and adhesives",XXX,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,HM.2400.010.099.F
+89,P.HM.280.000,home maintenance,wood adhesive,,adhesives specifically characterized as wood glues,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,HM.0100.030.099.F
+90,P.HO.010.000,home office,printer ink,,ink for inkjet printers,LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,EL.0300.050.099.F
+91,P.HO.020.000,home office,printer toner,,laser printer toners,LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,EL.0300.060.099.F
+92,P.HO.030.000,home office,white out,,correction fluids for ink or type,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,AC.0700.030.099.F
+93,P.IH.010.007,inside the home,air freshener,gel,home air fresheners (gel formulation specified),SOL,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,CP.0100.010.051.F
+94,P.IH.010.013,inside the home,air freshener,liquid,home air fresheners (liquid formulation specified),LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,CP.0100.010.052.F
+95,P.IH.010.016,inside the home,air freshener,oil or diffuse,home air fresheners (oil formulations or diffusers),LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,CP.0100.010.054.F
+96,P.IH.010.029,inside the home,air freshener,spray,home air fresheners (spray or aerosol formulation specified),SIA,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,CP.0100.010.050.F
+97,P.IH.010.999,inside the home,air freshener,NOC,home air fresheners,SOL,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,CP.0100.010.099.F
+98,P.IH.020.000,inside the home,automatic dishwashing additive,,"rinse aids, spot removers, and dishwasher cleaners",LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.0400.020.099.F
+99,P.IH.030.007,inside the home,automatic dishwashing detergent,gel,detergents for automatic dishwashers (gel formulation specified),LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.0400.030.051.F
+100,P.IH.030.023,inside the home,automatic dishwashing detergent,powder,detergents for automatic dishwashers (powder formulation specified),DAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.0400.030.053.F
+101,P.IH.030.999,inside the home,automatic dishwashing detergent,NOC,detergents for automatic dishwashers,LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.0400.030.099.F
+102,P.IH.040.029,inside the home,bathroom cleaner,spray,"bathtub, tile, and toilet surface cleaners (spray or aerosol formulation specified)",SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.0200.010.050.F
+103,P.IH.040.999,inside the home,bathroom cleaner,NOC,"bathtub, tile, and toilet surface cleaners",LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.0200.010.099.F
+104,P.IH.050.000,inside the home,bleach,,bleaches (including color-safe bleaches),LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.0700.010.099.F
+105,P.IH.060.000,inside the home,candles,,candles,SOL,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,NA
+106,P.IH.070.029,inside the home,carpet cleaner,spray,carpet cleaning products and machine solutions (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.35,0.35,0.7,NA,CP.0300.010.050.F
+107,P.IH.070.999,inside the home,carpet cleaner,NOC,carpet cleaning products and machine solutions,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0.35,0.35,0.7,NA,CP.0300.010.099.F
+108,P.IH.080.000,inside the home,carpet deodorizer,,carpet deodorizers,DIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.6,0.6,NA,CP.0300.020.099.F
+109,P.IH.090.000,inside the home,dish soap,,hand dish washing liquids and detergents,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,1,CP.0400.040.099.F
+110,P.IH.100.029,inside the home,disinfectant,spray,disinfecting liquids (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.0700.020.050.F
+111,P.IH.100.999,inside the home,disinfectant,NOC,disinfecting liquids (including wipes),LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0.9,0.09,0.99,NA,CP.0700.020.099.F
+112,P.IH.110.000,inside the home,drain,,drain openers or digesters,LDR,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.0500.010.099.F
+113,P.IH.120.000,inside the home,dry cleaner,,dry cleaning fluids or kits for home use,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1200.010.099.F
+114,P.IH.130.000,inside the home,dryer sheets,,dryer fabric softener sheets,DAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1200.020.099.F
+115,P.IH.140.029,inside the home,electronics cleaner,spray,miscellaneous products for cleaning home electronic equipment (including surface cleaners or cleaners for interior parts)  (spray or aerosol formulation spec,SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,EL.0400.010.050.F
+116,P.IH.140.999,inside the home,electronics cleaner,NOC,miscellaneous products for cleaning home electronic equipment (including surface cleaners or cleaners for interior parts),LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,EL.0400.010.099.F
+117,P.IH.150.000,inside the home,fabric deodorizer,,spray fabric deodorizers,SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1200.030.099.F
+118,P.IH.160.000,inside the home,fabric protectant,,fabric protectants and wrinkle releasers,SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1200.040.099.F
+119,P.IH.170.000,inside the home,fabric softener,,fabric softeners (excluding dryer sheets),LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1200.050.099.F
+120,P.IH.180.000,inside the home,fireplace,,miscellaneous fireplace and firepit products,XXX,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,CP.0600.010.099.F
+121,P.IH.190.000,inside the home,floor cleaner,,hard floor cleaners (including  premoistened wipes and pads),LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0.97,0,0.97,NA,CP.0300.030.099.F
+122,P.IH.200.000,inside the home,floor polish,,hard floor shining and waxing products,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.4,0.4,NA,CP.0300.040.099.F
+123,P.IH.210.029,inside the home,glass cleaner,spray,glass and window cleaners (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,CP.0700.030.050.F
+124,P.IH.210.999,inside the home,glass cleaner,NOC,glass and window cleaners,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,CP.0700.030.099.F
+125,P.IH.220.000,inside the home,hand cleaner,,products marketed as hand cleaners (solvent-based),LBS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,1,CP.0800.010.099.F
+126,P.IH.230.029,inside the home,heavy duty cleaner,spray,heavy duty or concentrated multipurpose cleaners (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.0900.010.050.F
+127,P.IH.230.999,inside the home,heavy duty cleaner,NOC,heavy duty or concentrated multipurpose cleaners,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.0900.010.099.F
+128,P.IH.240.029,inside the home,houseplant care,spray,"houseplant and cut flower foods, fertilizers, or pesticides (spray or aerosol formulation specified)",SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,CP.1000.010.050.F
+129,P.IH.240.999,inside the home,houseplant care,NOC,"houseplant and cut flower foods, fertilizers, or pesticides",SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,CP.1000.010.099.F
+130,P.IH.250.000,inside the home,lamp oil/lighter fluid,,"lighters, lighter fluids, and other indoor fuels",LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,CP.1100.010.099.F
+131,P.IH.260.013,inside the home,laundry detergent,liquid,laundry detergents and soaps (liquid formulation specified),LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1200.060.052.F
+132,P.IH.260.023,inside the home,laundry detergent,powder,laundry detergents and soaps (powder formulation specified),DAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1200.060.053.F
+133,P.IH.260.999,inside the home,laundry detergent,NOC,laundry detergents and soaps,LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1200.060.099.F
+134,P.IH.270.000,inside the home,laundry fragrance,,scent products to be added to wash,LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1200.070.099.F
+135,P.IH.280.029,inside the home,laundry stain remover,spray,stain removers or laundry pre-treatment products (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1200.080.050.F
+136,P.IH.280.999,inside the home,laundry stain remover,NOC,stain removers or laundry pre-treatment products,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1200.080.099.F
+137,P.IH.290.029,inside the home,laundry starch,spray,fabric starches (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1200.090.050.F
+138,P.IH.290.999,inside the home,laundry starch,NOC,fabric starches,SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1200.090.099.F
+139,P.IH.300.000,inside the home,lime remover,,products for removing lime or scale from surfaces,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0.99,0,0.99,NA,CP.1300.010.099.F
+140,P.IH.310.000,inside the home,metal polish,,cleaning products for metal surfaces,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,CP.1400.010.099.F
+141,P.IH.320.029,inside the home,oven cleaner,spray,oven and grill cleaners (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,CP.1500.010.050.F
+142,P.IH.320.999,inside the home,oven cleaner,NOC,oven and grill cleaners,SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,CP.1500.010.099.F
+143,P.IH.330.000,inside the home,shoe polish or protectant,,"shoe polishes, cleaners, and protectants",LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,CP.1600.010.099.F
+144,P.IH.340.029,inside the home,surface cleaner,spray,hard surface and kitchen surface cleaners (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.48,0.48,0.96,NA,CP.0700.040.050.F
+145,P.IH.340.999,inside the home,surface cleaner,NOC,hard surface and kitchen surface cleaners,SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.48,0.48,0.96,NA,CP.0700.040.099.F
+146,P.IH.350.000,inside the home,upholstery cleaner,,upholstery fabric cleaners,SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0.35,0.35,0.7,NA,CP.1700.010.099.F
+147,P.IH.360.029,inside the home,wood polish,spray,wood or furniture dusting or polishing products (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,CP.1800.010.050.F
+148,P.IH.360.999,inside the home,wood polish,NOC,wood or furniture dusting or polishing products,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.97,0.97,NA,CP.1800.010.099.F
+149,P.LY.010.005,landscape/yard,cleaner,exterior,"exterior surface (e.g. deck, house, driveway) cleaners",LOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0.97,0,0.97,NA,LY.0100.010.040.F
+150,P.LY.020.000,landscape/yard,garden care,,miscellaneous garden care products not otherwise characterized (e.g. rooting powders),DOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,LY.0600.010.099.F
+151,P.LY.030.000,landscape/yard,garden fertilizer,,"fertilizers for vegetable or flower gardens, including in combination with pest/weed controllers",DOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,LY.0600.020.099.F
+152,P.LY.040.000,landscape/yard,grill/camping fuel,,"grill, lantern and camping stove fuels, including briquets",LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,LY.0200.010.099.F
+153,P.LY.050.029,landscape/yard,herbicide,spray,"herbicides, weed killers, and brush killers (spray or aerosol formulation specified)",SOS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,LY.0300.010.050.F
+154,P.LY.050.999,landscape/yard,herbicide,NOC,"herbicides, weed killers, and brush killers",LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,LY.0300.010.099.F
+155,P.LY.060.000,landscape/yard,lawn fertilizer,,"fertilizers for lawns, including in combination with pest/weed controllers",DOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,LY.0400.010.099.F
+156,P.LY.070.000,landscape/yard,lawnmower fluids,,oils and other fluids for lawnmowers or other small yard care equipment,LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,LY.0500.010.099.F
+157,P.LY.080.000,landscape/yard,mulch,,"mulches, including those with weed controllers",DOS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,LY.0600.030.099.F
+158,P.LY.090.002,landscape/yard,pool chemicals,algaecide,"algaecidal products for pools, hot tubs, and spas",XXX,NA,NA,0,0.99,0,0.99,0.99,0,0.99,1,0,1,NA,LY.0700.010.030.F
+159,P.LY.090.003,landscape/yard,pool chemicals,chlorinating,"chlorinating products for pools, hot tubs, and spas",XXX,NA,NA,0,0.99,0,0.99,0.99,0,0.99,1,0,1,NA,LY.0700.010.031.F
+160,P.LY.090.022,landscape/yard,pool chemicals,ph control,"ph control products for pools, hot tubs, and spas",XXX,NA,NA,0,0.99,0,0.99,0.99,0,0.99,1,0,1,NA,LY.0700.010.032.F
+161,P.LY.090.025,landscape/yard,pool chemicals,shock,"shock products for pools, hot tubs, and spas",XXX,NA,NA,0,0.99,0,0.99,0.99,0,0.99,1,0,1,NA,LY.0700.010.033.F
+162,P.LY.090.999,landscape/yard,pool chemicals,NOC,"products not otherwise characterized for pools, hot tubs, and spas",XXX,NA,NA,0,0.99,0,0.99,0.99,0,0.99,1,0,1,NA,LY.0700.010.099.F
+163,P.LY.100.000,landscape/yard,potting soil,,potting soil and vermiculite,DIS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,LY.0600.040.099.F
+164,P.LY.110.000,landscape/yard,surface deicer,,products for deicing surfaces,LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0.97,0,0.97,NA,LY.0800.010.099.F
+165,P.LY.120.000,landscape/yard,trees,,miscellaneous tree care products including sealers,LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.1,0.1,NA,LY.0600.050.099.F
+166,P.PC.010.029,personal care,acne spot treatment,spray,creams and wipes for spot-treating acne (spray or aerosol formulation specified,SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.0100.010.050.F
+167,P.PC.010.999,personal care,acne spot treatment,NOC,creams and wipes for spot-treating acne,LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.0100.010.099.F
+168,P.PC.020.000,personal care,aftershave,,"lotions, balms, liquids, and gels for post-shave applications (usually fragranced)",LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2700.040.099.F
+169,P.PC.030.000,personal care,baby lotion,,baby cream or lotion (excluding diaper creams),LBS,0.1,0.7,0.8,0,0,0,0,0,0,0,0,0,1,PC.0800.010.001.F
+170,P.PC.040.000,personal care,baby oil,,skin oils specifically marketed for babies,LBS,0.1,0.7,0.8,0,0,0,0,0,0,0,0,0,1,PC.0800.020.001.F
+171,P.PC.040.000,personal care,baby oil,,skin oils specifically marketed for babies,LBS,0.1,0.7,0.8,0,0,0,0,0,0,0,0,0,1,PC.0800.020.001.F
+172,P.PC.050.000,personal care,baby powder,,powders specifically marketed for babies,DBS,0,1,1,0,0,0,0.99,0,0.99,0,0,0,NA,PC.0800.030.001.F
+173,P.PC.060.000,personal care,baby shampoo,,shampoos specifically marketed for babies,LBS,0.1,0.7,0.8,0,0,0,0.99,0,0.99,0,0,0,1,PC.0800.040.001.F
+174,P.PC.060.000,personal care,baby shampoo,,shampoos specifically marketed for babies,LBS,0.1,0.7,0.8,0,0,0,0.99,0,0.99,0,0,0,1,PC.0800.040.001.F
+175,P.PC.070.000,personal care,baby wash,,body washes and cleaners specifically marketed for babies,LBS,0.1,0.7,0.8,0,0,0,0.99,0,0.99,0,0,0,1,PC.0800.050.001.F
+176,P.PC.070.000,personal care,baby wash,,body washes and cleaners specifically marketed for babies,LBS,0.1,0.7,0.8,0,0,0,0.99,0,0.99,0,0,0,1,PC.0800.050.001.F
+177,P.PC.080.000,personal care,baby wipes,,diaper and other baby wipes,LBS,0.1,0.7,0.8,0,0,0,0,0.5,0.5,0,0,0,NA,PC.0800.060.001.F
+178,P.PC.080.000,personal care,baby wipes,,diaper and other baby wipes,LBS,0.1,0.7,0.8,0,0,0,0,0.5,0.5,0,0,0,NA,PC.0800.060.001.F
+179,P.PC.090.000,personal care,bar soap,,bar and other solid soaps,SOL,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0,0,1,PC.0500.010.099.F
+180,P.PC.100.000,personal care,bath oil,,bath oils or oil-filled beads,BAT,0.1,0.9,1,0.99,0,0.99,0.99,0,0.99,0,0,0,1,PC.2800.010.099.F
+181,P.PC.110.000,personal care,bath paints/crayons,,bath paints or bath crayons,SOL,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0,0,1,PC.0800.070.001.F
+182,P.PC.120.000,personal care,bath salts,,"bath salts, soaks, and fizzes",BAT,0.1,0.9,1,0.99,0,0.99,0.99,0,0.99,0,0,0,1,PC.2800.020.099.F
+183,P.PC.130.000,personal care,bite relief,,soothing treatments for insect bites,LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.0200.010.099.F
+184,P.PC.140.000,personal care,blush/bronzer,,"cheek blushes, bronzers, and rouges",DBS,0,1,1,0,0,0,0.99,0,0.99,0,0,0,NA,PC.2300.010.099.F
+185,P.PC.150.000,personal care,body adhesive,,NA,LBS,0,1,1,NA,NA,0,0,0,0,0,0,0,NA,PC.0300.010.099.F
+186,P.PC.160.000,personal care,body care set,,multicomponent body care or bath set for which individual products are not designated,LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,1,PC.0400.010.099.F
+187,P.PC.170.029,personal care,body oil,spray,"body oils (not including baby or bath oils, spray or aerosol formulation specified)",SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.0600.010.050.F
+188,P.PC.170.999,personal care,body oil,NOC,body oils (not including baby or bath oils),LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.0600.010.099.F
+189,P.PC.180.000,personal care,body powder,,talcum and dusting powders for the body,DBS,0,1,1,0,0,0,0.99,0,0.99,0,0,0,NA,PC.0700.010.099.F
+190,P.PC.190.000,personal care,body scrub,,body cleaners containing abrasives or exfoliants,LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.0500.020.099.F
+191,P.PC.200.000,personal care,body wash,,"body cleaners, washes, shower gels",LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.0500.030.099.F
+192,P.PC.210.000,personal care,body wipes,,body wipes and towelettes (excluding diaper or baby wipes),LBS,0.2,0.8,1,0.99,0,0.99,0,0.5,0.5,0,0,0,NA,PC.0500.040.099.F
+193,P.PC.220.000,personal care,bubble bath,,bubble baths,BAT,0.1,0.9,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2800.030.099.F
+194,P.PC.230.000,personal care,clipper lubricant/cleaner,,cleaning and lubricating products for hair clippers,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2700.050.099.F
+195,P.PC.240.029,personal care,contact care,spray,contact lense cleaners and solutions (spray or aerosol formulation specified),SBS,0.05,0.95,1,0.99,0,0.99,0,0.5,0.5,0,0,0,NA,PC.1100.020.050.F
+196,P.PC.240.999,personal care,contact care,NOC,contact lense cleaners and solutions,LBS,0,1,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1100.020.099.F
+197,P.PC.250.000,personal care,cosmetic tool cleaner,,NA,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2300.020.099.F
+198,P.PC.260.000,personal care,denture adhesive,,denture adhesives,LGI,0,0.99,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.0900.030.099.F
+199,P.PC.270.000,personal care,denture cleaner,,denture cleansers,LGI,0,0.99,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.0900.040.099.F
+200,P.PC.280.007,personal care,deodorant,gel,deodorants and antiperspirants (gel formulation specified),LBS,0,1,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1000.010.051.F
+201,P.PC.280.028,personal care,deodorant,solid,deodorants and antiperspirants (solid formulation specified),LBS,0,1,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1000.010.056.F
+202,P.PC.280.029,personal care,deodorant,spray,deodorants and antiperspirants (spray or aerosol formulation specified),SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1000.010.050.F
+203,P.PC.280.999,personal care,deodorant,NOC,deodorants and antiperspirants not otherwise characterized,LBS,0,1,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1000.010.099.F
+204,P.PC.290.029,personal care,depilatory,spray,chemical products for removal of body or facial hair (spray or aerosol formulation specified),SBS,0.05,0.95,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2700.060.050.F
+205,P.PC.290.999,personal care,depilatory,NOC,chemical products for removal of body or facial hair,LBS,0.1,0.9,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2700.060.099.F
+206,P.PC.300.000,personal care,diaper cream,,diaper creams and ointments,LBS,0.1,0.7,0.8,NA,NA,0,0,0,0,0,0,0,NA,PC.0800.080.001.F
+207,P.PC.300.000,personal care,diaper cream,,diaper creams and ointments,LBS,0.1,0.7,0.8,NA,NA,0,0,0,0,0,0,0,NA,PC.0800.080.001.F
+208,P.PC.310.029,personal care,dry shampoo,spray,dry shampoos for removing hair oils (spray or aerosol formulation specified),SBS,0,1,1,0,0,0,0,0,0,0,0,0,NA,PC.2000.070.050.F
+209,P.PC.310.999,personal care,dry shampoo,NOC,dry shampoos for removing hair oils,DBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2000.070.099.F
+210,P.PC.320.000,personal care,ethnic hair care,,"products for ethnic hair care, including wrap set lotions and pressing lotions (excluding relaxers)",LBS,0.01,0.99,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2000.080.099.F
+211,P.PC.330.000,personal care,eye cream,,creams and moisturizers for specific treatment of eye area,LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1100.030.099.F
+212,P.PC.340.000,personal care,eye drops,,products for lubricating eyes or treating redness,LBS,0,1,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1100.040.099.F
+213,P.PC.350.000,personal care,eye lid spray,spray,NA,SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1100.050.050.F
+214,P.PC.360.013,personal care,eye liner,liquid,eye liners or brow coloring products (liquid or gel formulation specified),LBS,0.01,0.99,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2300.030.052.F
+215,P.PC.360.999,personal care,eye liner,NOC,eye liners or brow coloring products,LBS,0.01,0.99,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2300.030.099.F
+216,P.PC.370.000,personal care,eye makeup,NOC,miscellaneous cosmetic eye products including lash adhesives and tints,LBS,0.01,0.99,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2300.040.099.F
+217,P.PC.380.000,personal care,eye products,NOC,NA,LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1100.060.099.F
+218,P.PC.390.000,personal care,eye shadow,,products for coloring eye lids,DBS,0.01,0.99,1,0,0,0,0,0,0,0,0,0,NA,PC.2300.050.099.F
+219,P.PC.400.000,personal care,face cleansing wipes,,textile wipes or pads treated with cleansing solution,LBS,0.2,0.8,1,0.99,0,0.99,0,0.5,0.5,0,0,0,NA,PC.1200.010.099.F
+220,P.PC.410.029,personal care,face cream/moisturizer,spray,"moisturizers, lotions, and creams for primarily treating the face (excluding eye-specific products) (spray or aerosol formulation specified)",SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1200.020.050.F
+221,P.PC.410.999,personal care,face cream/moisturizer,NOC,"moisturizers, lotions, and creams for primarily treating the face (excluding eye-specific products)",LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1200.020.099.F
+222,P.PC.420.000,personal care,face mask,,leave-on masks or peels for treatment of the face,LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.1200.030.099.F
+223,P.PC.430.000,personal care,face powder,,pressed or loose powders for face,DBS,0.01,0.99,1,0,0,0,0,0,0,0,0,0,NA,PC.2300.060.099.F
+224,P.PC.440.001,personal care,face scrub,acne,"facial cleansing products containing exfoliating particles, for acne treatment",LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.0100.020.099.F
+225,P.PC.440.999,personal care,face scrub,NOC,facial cleansing products containing exfoliating particles (excluding products for acne),LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.1200.040.099.F
+226,P.PC.450.001,personal care,face wash,acne,"facial cleansing products (excluding scrubs), for acne treatment",LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.0100.030.099.F
+227,P.PC.450.029,personal care,face wash,spray,facial cleansing products (excluding scrubs) (spray or aerosol formulation specified),SBS,0.05,0.95,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.1200.050.050.F
+228,P.PC.450.999,personal care,face wash,NOC,facial cleansing products (excluding scrubs and products for acne),LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.1200.050.099.F
+229,P.PC.460.029,personal care,foot care,spray,"miscellaneous products for application to feet, including scrubs, lotions, and deodorants (spray or aerosol formulation specified)",SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1500.010.050.F
+230,P.PC.460.999,personal care,foot care,NOC,"miscellaneous products for application to feet, including scrubs, lotions, and deodorants",LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1500.010.099.F
+231,P.PC.470.000,personal care,foundation/concealer,,liquid or cream foundation make-ups and concealers,LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2300.070.099.F
+232,P.PC.480.029,personal care,fragrance,spray,"fragrances, colognes, and perfumes (spray or aerosol formulation specified)",SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1600.010.050.F
+233,P.PC.480.999,personal care,fragrance,NOC,"fragrances, colognes, and perfumes",LBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1600.010.099.F
+234,P.PC.490.000,personal care,glitter,,powder products containing reflective particles for face or body,DBS,0.01,0.99,1,0,0,0,0,0,0,0,0,0,NA,PC.1800.010.099.F
+235,P.PC.500.000,personal care,hair bleach,,products for lightening or removing color from hair on the head,LBS,0.01,0.99,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.1900.010.099.F
+236,P.PC.510.019,personal care,hair color,permanent,hair colors and dyes characterized as permanent,LBS,0.01,0.99,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.1900.030.099.F
+237,P.PC.510.024,personal care,hair color,professional,hair colors and dyes characterized as for professional use,LBS,0.01,0.99,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.1900.040.099.F
+238,P.PC.510.030,personal care,hair color,temporary,hair colors and dyes characterized as temporary,LBS,0.01,0.99,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.1900.050.099.F
+239,P.PC.510.031,personal care,hair color,temporary|spra,hair colors and dyes characterized as temporary (spray or aerosol formulation specified),SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.1900.050.050.F
+240,P.PC.510.999,personal care,hair color,NOC,hair coloring products not otherwise categorized,LBS,0.01,0.99,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.1900.020.099.F
+241,P.PC.520.000,personal care,hair color activator,,chemical activators for hair coloring products,LBS,0.01,0.99,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.1900.060.099.F
+242,P.PC.530.000,personal care,hair color developer,,chemical developers for hair coloring products,LBS,0.01,0.99,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.1900.070.099.F
+243,P.PC.540.000,personal care,hair color toner,,chemical toners for hair coloring products,LBS,0.01,0.99,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.1900.080.099.F
+244,P.PC.550.011,personal care,hair conditioner,leave-in,leave-in everyday hair conditioners and detanglers,LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2000.100.099.F
+245,P.PC.550.012,personal care,hair conditioner,leave-in|spray,leave-in everyday hair conditioners (spray or aerosol formulation specified),SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2000.100.050.F
+246,P.PC.550.029,personal care,hair conditioner,spray,rinse-out everyday hair conditioners (excluding combo shampoo/conditioner products) (spray or aerosol formulation specified),SBS,0.05,0.95,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2000.090.050.F
+247,P.PC.550.999,personal care,hair conditioner,NOC,rinse-out everyday hair conditioners (excluding combo shampoo/conditioner products),LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2000.090.099.F
+248,P.PC.560.024,personal care,hair conditioning treatment,professional,hair conditioning and moisturizing treatments for occasional use characterized as for professional use,LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2000.120.099.F
+249,P.PC.560.029,personal care,hair conditioning treatment,spray,hair conditioning and moisturizing treatments for occasional use (spray or aerosol formulation specified),LBS,0.05,0.95,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2000.110.050.F
+250,P.PC.560.999,personal care,hair conditioning treatment,NOC,hair conditioning and moisturizing treatments for occasional use,LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2000.110.099.F
+251,P.PC.570.000,personal care,hair relaxer,,chemical hair relaxers,LBS,0.01,0.99,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2000.130.099.F
+252,P.PC.580.000,personal care,hair spray,,spray fixatives for hair,SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2000.140.099.F
+253,P.PC.590.007,personal care,hair styling,gel,"hair styling products for hold, shine, or texture (gel formulation indicated)",LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2000.160.051.F
+254,P.PC.590.008,personal care,hair styling,gel|spray,"hair styling products for hold, shine, or texture (gel and spray formulation indicated)",SBS,0.05,0.95,1,0.99,0,0.99,NA,NA,0,0,0,0,NA,PC.2000.160.057.F
+255,P.PC.590.014,personal care,hair styling,mousse,foaming hair styling products,LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2000.170.058.F
+256,P.PC.590.015,personal care,hair styling,mousse|spray,NA,SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2000.170.059.F
+257,P.PC.590.023,personal care,hair styling,powder,NA,DBS,0,1,1,0,0,0,0,0,0,0,0,0,NA,PC.2000.150.053.F
+258,P.PC.590.029,personal care,hair styling,spray,"hair styling products for hold, shine, or texture (spray or aerosol formulation specified)",SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2000.150.050.F
+259,P.PC.590.999,personal care,hair styling,NOC,"hair styling products for hold, shine, or texture",LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2000.150.099.F
+260,P.PC.600.029,personal care,hand sanitizer,spray,antibacterial products for hands (spray or aerosol formulation specified),SBS,0.05,0.95,1,0,0,0,0,0,0,0,0,0,NA,PC.0500.050.050.F
+261,P.PC.600.999,personal care,hand sanitizer,NOC,antibacterial products for hands,LBS,1,0,1,0,0,0,0,0,0,0,0,0,NA,PC.0500.050.099.F
+262,P.PC.610.000,personal care,hand soap,,liquid hand soaps,LBS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.0500.060.099.F
+263,P.PC.620.000,personal care,hand wipes,,wipes and solution primarily for hands,LBS,1,0,1,0,0,0,0,0.5,0.5,0,0,0,NA,PC.0500.070.099.F
+264,P.PC.630.007,personal care,hand/body lotion,gel,lotions and creams primarily for hands and body (gel formulations indicated),LBS,0.2,0.8,1,0,0,0,0,0,0,0,0,0,NA,PC.1700.010.051.F
+265,P.PC.630.008,personal care,hand/body lotion,gel|spray,lotions and creams primarily for hands and body (gel and spray or aerosol formulation specified),SBS,0.05,0.95,1,0,0,0,0,0,0,0,0,0,NA,PC.1700.010.057.F
+266,P.PC.630.029,personal care,hand/body lotion,spray,lotions and creams primarily for hands and body (spray or aerosol formulation specified),SBS,0.05,0.95,1,0,0,0,0,0,0,0,0,0,NA,PC.1700.010.050.F
+267,P.PC.630.999,personal care,hand/body lotion,NOC,lotions and creams primarily for hands and body,LBS,0.2,0.8,1,0,0,0,0,0,0,0,0,0,NA,PC.1700.010.099.F
+268,P.PC.640.000,personal care,lice shampoo,,shampoos for the treatment of head lice,LBS,0.01,0.99,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2000.180.099.F
+269,P.PC.650.000,personal care,liniment,,liniments and ointments for treatment of muscle or joint pain,LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2200.010.099.F
+270,P.PC.660.000,personal care,lip balm,,lip products primarily for protection,LGI,0.01,0.99,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2300.080.099.F
+271,P.PC.670.000,personal care,lip color,,"colored lip products, excluding glosses",LGI,0.01,0.99,1,0.99,0,0.99,0,0.4,0.4,0,0,0,NA,PC.2300.090.099.F
+272,P.PC.680.000,personal care,lip gloss,,glossy lip products,LGI,0.01,0.99,1,0.99,0,0.99,0,0.4,0.4,0,0,0,NA,PC.2300.100.099.F
+273,P.PC.690.000,personal care,lip liner,,pencils for lining lips,LGI,0.01,0.99,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2300.110.099.F
+274,P.PC.700.000,personal care,makeup primer,,products for priming face for make-up,LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2300.120.099.F
+275,P.PC.710.000,personal care,makeup remover,,products for removing face make-ups,LBS,0.2,0.8,1,0.99,0,0.99,0,0.99,0.99,0,0,0,NA,PC.2300.130.099.F
+276,P.PC.720.000,personal care,makeup set,,multicomponent make-up set set for which individual products are not designated,DBS,0,1,1,0,0,0,0,0,0,0,0,0,NA,PC.2300.140.099.F
+277,P.PC.730.000,personal care,mascara,,eyelash mascaras,LBS,0.01,0.99,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2300.150.099.F
+278,P.PC.740.029,personal care,mouthwash,spray,antiseptic and dental mouthwashes and rinses (spray or aerosol formulation specified),SBS,0.05,0.95,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.0900.050.050.F
+279,P.PC.740.999,personal care,mouthwash,NOC,antiseptic and dental mouthwashes and rinses,LBS,0.01,0.99,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.0900.050.099.F
+280,P.PC.750.000,personal care,nail adhesive,,adhesives for reparing fingernails or attaching artificial nails,LBS,1,0,1,0,0,0,0,0,0,0,0,0,NA,PC.2400.010.099.F
+281,P.PC.760.000,personal care,nail polish,,"clear or colored nail enamels, polishes, basecoats, topcoats, and other acrylic coatings",LBS,1,0,1,0,0,0,0,0,0,0,0,0,NA,PC.2400.020.099.F
+282,P.PC.770.000,personal care,nail polish remover,,products for removing nail polish or artificial nails,LBS,1,0,1,0.99,0,0.99,0,0.99,0.99,0,0,0,NA,PC.2400.030.099.F
+283,P.PC.780.018,personal care,nail products,other|spray,miscellaneous products for nail or cuticle treatment not otherwise characterized  (spray or aerosol formulation specified),LBS,1,0,1,0,0,0,0,0.5,0.5,0,0,0,NA,PC.2400.040.050.F
+284,P.PC.780.999,personal care,nail products,NOC,miscellaneous products for nail or cuticle treatment not otherwise characterized,LBS,1,0,1,0,0,0,0,0.5,0.5,0,0,0,NA,PC.2400.040.099.F
+285,P.PC.790.029,personal care,scalp treatment,spray,"products for treating the scalp, including products dandruff or hair loss (spray or aerosol formulation specified)",SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2000.190.050.F
+286,P.PC.790.999,personal care,scalp treatment,NOC,"products for treating the scalp, including products dandruff or hair loss",LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2000.190.099.F
+287,P.PC.800.029,personal care,self-tanner,spray,"chemical products for tanning, staining, or coloring the skin (spray or aerosol formulation specified)",SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2500.010.050.F
+288,P.PC.800.999,personal care,self-tanner,NOC,"chemical products for tanning, staining, or coloring the skin",LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2500.010.099.F
+289,P.PC.810.000,personal care,sexual wellness,,"sexual wellness products, including personal lubricants",LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PC.2600.010.099.F
+290,P.PC.820.004,personal care,shampoo,dandruff,"shampoos, including dual shampoo/conditioner products for treatment of dandruff",LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2000.200.099.F
+291,P.PC.820.999,personal care,shampoo,NOC,"shampoos, including dual shampoo/conditioner products",LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2000.210.099.F
+292,P.PC.830.007,personal care,shaving cream,gel,"shaving creams, foams, balms and soaps (gel formulation specified)",LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2700.070.051.F
+293,P.PC.830.999,personal care,shaving cream,NOC,"shaving creams, foams, balms and soaps",LBS,0.2,0.8,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.2700.070.099.F
+294,P.PC.840.029,personal care,sunscreen,spray,suncreens and blocks (spray or aerosol formulations specified),SBS,0.05,0.95,1,0,0,0,0,0,0,0,0,0,NA,PC.2900.010.050.F
+295,P.PC.840.100,personal care,sunscreen,children,suncreens and blocks marketed to children or babies,LBS,0.1,0.8,0.9,0,0,0,0,0,0,0,0,0,NA,PC.2900.010.001.F
+296,P.PC.840.100,personal care,sunscreen,children,suncreens and blocks marketed to children or babies,LBS,0.1,0.8,0.9,0,0,0,0,0,0,0,0,0,NA,PC.2900.010.001.F
+297,P.PC.840.101,personal care,sunscreen,children|spray,suncreens and blocks marketed to children or babies (spray or aerosol formulations specified,SBS,0.05,0.85,0.9,0,0,0,0,0,0,0,0,0,NA,PC.2900.010.011.F
+298,P.PC.840.101,personal care,sunscreen,children|spray,suncreens and blocks marketed to children or babies (spray or aerosol formulations specified,SBS,0.05,0.85,0.9,0,0,0,0,0,0,0,0,0,NA,PC.2900.010.011.F
+299,P.PC.840.999,personal care,sunscreen,NOC,suncreens and blocks,LBS,0.2,0.8,1,0,0,0,0,0,0,0,0,0,NA,PC.2900.010.099.F
+300,P.PC.850.000,personal care,teeth whitener,,teeth whitening products (excluding toothpastes),LGI,0.01,0.99,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.0900.060.099.F
+301,P.PC.860.000,personal care,toner,,face and skin toners and astringents,LBS,0.2,0.8,1,0.99,0,0.99,0,0.99,0.99,0,0,0,NA,PC.2300.160.099.F
+302,P.PC.870.007,personal care,toothpaste,gel,toothpastes and dentrifices (gel formulation specified),LGI,0.01,0.99,1,0.99,0,0.99,0,0.97,0.97,0,0,0,NA,PC.0900.070.051.F
+303,P.PC.870.999,personal care,toothpaste,NOC,toothpastes and dentrifices,LGI,0.01,0.99,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PC.0900.070.099.F
+304,P.PC.880.000,personal care,waxing,,wax products for removing hair from face or body,LBS,0.1,0.9,1,0.99,0,0.99,0,0.99,0.99,0,0,0,NA,PC.2700.080.099.F
+305,P.PE.010.029,pesticides,animal repellent,spray,chemical animal repellents (spray or aerosol formulation specified),SOS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0100.010.050.F
+306,P.PE.010.999,pesticides,animal repellent,NOC,chemical animal repellents,LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0100.010.099.F
+307,P.PE.020.029,pesticides,fungicide,spray,fungicides for garden or home use  (spray or aerosol formulation specified),SOS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0200.010.050.F
+308,P.PE.020.999,pesticides,fungicide,NOC,fungicides for garden or home use,LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0200.010.099.F
+309,P.PE.030.005,pesticides,insect repellent,exterior,"miscellaneous products for repelling insects, exterior use indicated",LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0300.020.099.F
+310,P.PE.030.006,pesticides,insect repellent,exterior|spray,"miscellaneous products for repelling insects, exterior use indicated  (spray or aerosol formulation specified)",SOS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0300.020.050.F
+311,P.PE.030.026,pesticides,insect repellent,skin,products for repelling insects from skin,LBS,0.2,0.8,1,0.99,0,0.99,0,0,0,0,0,0,NA,PE.0300.030.099.F
+312,P.PE.030.027,pesticides,insect repellent,skin|spray,products for repelling insects from skin (spray or aerosol formulation specified),SBS,0.05,0.95,1,0.99,0,0.99,0,0,0,0,0,0,NA,PE.0300.030.050.F
+313,P.PE.030.029,pesticides,insect repellent,spray,miscellaneous products for repelling insects (excluding products to be applied to skin) (spray or aerosol formulation specified),SBS,0.05,0.95,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0300.010.050.F
+314,P.PE.030.999,pesticides,insect repellent,NOC,miscellaneous products for repelling insects (excluding products to be applied to skin),SBS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0300.010.099.F
+315,P.PE.040.005,pesticides,insecticide,exterior,"insecticides, exterior use indicated -  including lawn and gardens",LOS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0400.020.099.F
+316,P.PE.040.006,pesticides,insecticide,exterior|spray,"insecticides, exterior use indicated (spray or aerosol formulation specified)",SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0400.020.050.F
+317,P.PE.040.009,pesticides,insecticide,interior,"insecticides, interior use indicated",LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0400.030.099.F
+318,P.PE.040.010,pesticides,insecticide,interior|spray,"insecticides, interior use indicated (spray or aerosol formulation specified)",SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0400.030.050.F
+319,P.PE.040.029,pesticides,insecticide,spray,insecticides not otherwise characterized (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0400.010.050.F
+320,P.PE.040.999,pesticides,insecticide,NOC,insecticides not otherwise characterized,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0400.010.099.F
+321,P.PE.050.000,pesticides,rodenticide,,rodenticides for interior or exterior use,DIS,0.9,0.1,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PE.0500.010.099.F
+322,P.PT.010.000,pet care,aquarium,,miscellaneous aquarium treatment products,LAP,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PT.0400.010.099.F
+323,P.PT.020.000,pet care,cat litter,,cat litters,SOL,NA,NA,0,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PT.0200.010.099.F
+324,P.PT.030.029,pet care,other pet treatments,spray,miscellaneous pet treatments (excluding pesticides)  (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PT.0100.060.050.F
+325,P.PT.030.999,pet care,other pet treatments,NOC,miscellaneous pet treatments (excluding pesticides),LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PT.0100.060.099.F
+326,P.PT.040.020,pet care,pesticide,pet,pesticides for application to  pets,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PT.0100.070.099.F
+327,P.PT.040.021,pet care,pesticide,pet|spray,pesticides for application to  pets  (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PT.0100.070.050.F
+328,P.PT.050.000,pet care,pet shampoo,,pet shampoos (inclduing those contain pesticides),LIS,0.8,0.2,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PT.0100.080.099.F
+329,P.PT.060.029,pet care,pet stain cleaner,spray,carpet and upholstery cleaners for pet stains (spray or aerosol formulation specified),SIS,0.95,0.05,1,0.99,0,0.99,0.99,0,0.99,0,0,0,NA,PT.0100.090.050.F
+330,P.PT.060.999,pet care,pet stain cleaner,NOC,carpet and upholstery cleaners for pet stains,LIS,1,0,1,0.99,0,0.99,0.99,0,0.99,0,0.7,0.7,NA,PT.0100.090.099.F
