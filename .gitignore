@@ -34,5 +34,6 @@ vignettes/*.pdf
 
 
 ##not including /input and /output directories
-/input/
-/output/
+/input/NEW_composition_for_S2D.csv
+/output/ABM/
+.Rproj.user
