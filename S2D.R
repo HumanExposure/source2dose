@@ -1,9 +1,10 @@
-#Master script to run S2D in batch mode
-
+# Source-to-dose module (S2D) for the Human Exposure Mofdel (HEM) 
+# Written for EPA by Graham Glen at ICF, Feb - May 2017
+# Last modified on June 11, 2018
+wd <- "C:/HEMforICF/QA"
+setwd(wd)
 
 s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
-  wd <- "C:/main/HEM/May2018"
-  setwd(wd)
   library(data.table)
   library(stringr)
   library(plyr)
@@ -19,7 +20,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   ############# Start of function definitions #######################
   ###################################################################
   
-  # Distrib returns samples from distributions - first written for SHEDS-HT
+  # Distrib returns samples from distributions - Written by WGG for SHEDS-HT in 2012
   
   distrib = function(shape="",par1=NA,par2=NA,par3=NA,par4=NA,lt=NA,
                      ut=NA, resamp="y",n=1,q=NA,p=c(1),v="" ) {
@@ -267,6 +268,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
       brands[[i]] <- c(unique(chem.fracs$product_id[chem.fracs$source.id==puc[i]]))
     }
     brand.list  <- data.table(puc,brands)
+    setorder(brand.list,puc)
     return(brand.list)
   }
   
@@ -439,11 +441,11 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     prod.thick <- prod.vol / prod.area 
     h            <- prod.thick / 100        # convert cm to meters
     h[length(h)] <- pucs.areas$h[length(h)]
-    h            <- pmax(5E-8,h)            # minimum of 0.05 micron to avoid division by zero below
+    h            <- pmax(1E-5,h)            # minimum of 10 microns 
     source.id <- rep(pucs.areas$source.id,nc)
     dtxsid    <- unlist(lapply(fug.cvars$dtxsid,rep,np))
-    rates     <- data.table(source.id,dtxsid,matrix(0,length(dtxsid),ncol=5))
-    setnames(rates,c("source.id","dtxsid","hw","kh","kr","ka","ks"))
+    rates     <- data.table(source.id,dtxsid,matrix(0,length(dtxsid),ncol=6))
+    setnames(rates,c("source.id","dtxsid","hw","kh","kr","ka","ks","h"))
     rates$hw <- hw
     rates$kh <- kh
     rates$kr <- kr
@@ -453,6 +455,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
         rates$ks[p+(c-1)*np] <- 1/(h[[p]]/kp[[c]]    + h[[p]]/phi.w[[c]])  # rate into skin
       }
     }
+    rates$h  <- h
     rates[is.na(rates)] <- 0
     if (g$prog=="y") cat("\n  Evaluating dermal rates complete")
     if (g$save.r.objects=="y") write.csv(rates,paste0(g$out,"/Temp/dermal_rates_",house.num,"_",run.name,".csv"))
@@ -483,7 +486,9 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     post.derm    <- as.data.frame(matrix(skin3,nrow=np,ncol=nc))
     post.hand    <- post.derm * puc.wipe.rinse$fhands
     post.body    <- post.derm * puc.wipe.rinse$fbody
-    vol.cloud    <- pucs$hand.dur/2                         # cloud size is 0.5 m3 for each minute of handling
+    vol.cloud    <- 2                                        # personal cloud size
+    aer.cloud    <- 10                                       # cloud exchanges air 10 times per hour
+    dur.cloud    <- pucs$hand.dur/60                         # handling time in hours
     rates        <- as.data.table(dermal.rates)[!dermal.rates$source.id=="Indirect"]
     f.hands      <- puc.wipe.rinse$fhands
     f.hands[is.na(f.hands)] <- 0.05
@@ -500,8 +505,8 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
               "post.inhal.abs","post.inges.abs")
     zero   <- data.table(matrix(0,nrow=nrow(pucs),ncol=length(vars)))
     setnames(zero,vars)
-    dp     <- data.table(pucs$source.id,f.hands,pucs$hand.dur,pucs$hand.dur/60,vol.cloud)
-    setnames(dp,c("source.id","f.hands","use.dur.min","use.dur.hr","vol.cloud"))
+    dp     <- data.table(pucs$source.id,f.hands,pucs$hand.dur,pucs$hand.dur/60,vol.cloud,aer.cloud)
+    setnames(dp,c("source.id","f.hands","use.dur.min","use.dur.hr","vol.cloud","aer.cloud"))
     if (g$prog=="y") cat("\n     direct initiation complete...")
     for (c in 1:nc) {
       dp <- cbind(dp,zero)
@@ -512,7 +517,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
         kh <- pmax(0.00001,rates$kh[rates$dtxsid==chem.list[c]])
         kr <- pmax(0.00001,rates$kr[rates$dtxsid==chem.list[c]])
         hw <- pmax(0.00001,rates$hw[rates$dtxsid==chem.list[c]])
-        dp$f.use.lost       <- 1-exp(-(ka+ks)*dp$use.dur.hr) #?
+        dp$f.use.lost       <- 1-exp(-(ka+ks)*dp$use.dur.hr)    # fraction of hand loading lost during product usage time
         dp$use.avg.air      <- use.avg.air[c]
         dp$use.avg.derm     <- use.avg.derm[c]
         dp$use.hands.exp    <- use.avg.derm[c] * dp$f.hands
@@ -525,7 +530,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
         dp$use.body.load    <- dp$use.body.exp  / body.area
         dp$use.dermal.abs   <- dp$use.hands.abs + dp$use.body.abs
         dp$use.air.mass     <- dp$use.avg.air + dp$use.hands.air + dp$use.body.air
-        dp$use.air.conc     <- dp$use.air.mass/dp$vol.cloud   
+        dp$use.air.conc     <- dp$use.air.mass/(vol.cloud*aer.cloud*dur.cloud)
         dp$use.inhal.exp    <- dp$use.air.conc * dp$use.dur.hr/24             # converted to daily avg
         dp$use.inhal.mass   <- dp$use.inhal.exp * prime$basal.vent * pucs$met
         dp$use.inges.exp    <- use.gut[c]                                     # amount in fgi compartment
@@ -549,7 +554,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
         dp$post.body.load   <- dp$post.body.exp  / body.area
         dp$post.dermal.abs  <- dp$post.hands.abs+dp$post.body.abs
         dp$post.air.rate    <- (dp$post.hands.air + dp$post.body.air)/8       # hourly emission rate into cloud
-        dp$post.air.conc    <- dp$post.air.rate/(2*30)                        # assume 2 m3 cloud with AER=30 per hour 
+        dp$post.air.conc    <- dp$post.air.rate/(vol.cloud*aer.cloud)         # inflow in 1 hour / ouflow in 1 hour 
         dp$post.inhal.exp   <- dp$post.air.conc * 8/24                        # convert to daily avg
         dp$post.inhal.mass  <- dp$post.inhal.exp * prime$basal.vent * 2.2     # assume post-use mean MET is 2.2
         dp$post.inhal.abs   <- dp$post.inhal.mass * 0.16                      # assume 16% absorption
@@ -622,7 +627,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
             derm.abs[day,c]   <- sum(dd[uha][c],dd[uba][c],dd[pha][c],dd[pba][c])
             inhal.exp[day,c]  <- sum(dd[uie][c],dd[pie][c])
             inhal.mass[day,c] <- sum(dd[uim][c],dd[pim][c])
-            inhal.max[day,c]  <- max(0,unlist(dd[uac][c]),unlist(dd[pac][c]))
+            inhal.max[day,c]  <- max(0,unlist(dd[uac][c]),unlist(dd[pac][c]),unlist(dd[uie][c]),unlist(dd[pie][c]))
             inhal.abs[day,c]  <- sum(dd[uia][c],dd[pia][c])
             inges.exp[day,c]  <- sum(dd[pgh][c])
             inges.abs[day,c]  <- sum(dd[uga][c],dd[pga][c])
@@ -1019,6 +1024,8 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     ing.abs <- matrix(0,nrow=364,ncol=nc)
     tc.hands <- 300                           # transfer coefficient for hands is 300 cm2/hr (assumption)
     hand.area <-  0.05*prime$skin.area        # assumed hand skin area is 5% of total 
+    vol.cloud <- 2                            # personal cloud has volume of 2 m3
+    aer.cloud <- 10                           # personal cloud exchanges its air 10 times per hour.
     
     for (c in 1:nc) {
       survar       <- str_c("sur",c)
@@ -1029,7 +1036,8 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
         kh <- max(0.00001,rates$kh[rates$dtxsid==chem.list[c]])
         kr <- max(0.00001,rates$kr[rates$dtxsid==chem.list[c]])
         hw <- max(0.00001,rates$hw[rates$dtxsid==chem.list[c]])
-        f.hands.lost <- 1-exp(-(ka+ks+kh+kr)*8/hw)                        # dur on hands is (8/handwashes) hours
+        dur.indirect <- 8/hw                                              # indirect exposure lasts (8 hr /handwashes per day)
+        f.hands.lost <- 1-exp(-(ka+ks+kh+kr)*dur.indirect)                # amount lost from hands
         sur.eff      <- as.vector(unlist(fug[survar]))
         sur.conc     <- as.vector(sur.eff/(10000*hp$area.sur))            # units are converted to [mg/cm2]
         f.avail      <- 0.5                                               # assumed availability fraction
@@ -1038,10 +1046,10 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
         hands.abs    <- hands.exp * ks/(ka+ks+kh+kr) * f.hands.lost       # assumes effect is all on current hour
         hands.air    <- hands.exp * ka/(ka+ks+kh+kr) * f.hands.lost
         hands.ing    <- hands.exp * kh/(ka+ks+kh+kr) * f.hands.lost
-        hands.aconc  <- hands.air/2                                       # assumes personal cloud = 2 m3
+        hands.aconc  <- hands.air / (vol.cloud*aer.cloud*dur.indirect)    # personal cloud conc. from hands
         
         air.eff      <- as.vector(unlist(fug[airvar]))
-        air.conc     <- air.eff/(hp$area.sur*hp$height) + hands.aconc
+        air.conc     <- air.eff/(hp$area.sur*hp$height) + hands.aconc     # add house term and personal cloud
         inhal.exp    <- air.conc * (fug$min.sleep+fug$min.awake)/60
         inhal.mass1  <- air.conc * fug$min.sleep/60 * prime$basal.vent/24         # convert m3/day to m3/hr
         inhal.mass2  <- air.conc * fug$min.awake/60 * prime$basal.vent/24 * 2.2   # assume MET=2.2 when awake
@@ -1169,7 +1177,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   
   # eval.prod.chem produces a table of chemical masses and compartment fractions for each PUC
   
-  eval.prod.chem = function(pucs,brand.list,chem.list,chem.fracs,release.fracs,q,house.num) {
+  eval.prod.chem = function(pucs,puc.list,brand.list,chem.list,chem.fracs,release.fracs,q,house.num) {
     y  <- pucs$source.id
     nc <- length(chem.list)
     f  <- matrix(0,nrow=length(y),ncol=nc)
@@ -1177,8 +1185,8 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     form <- vector("integer",length(y))
     for (i in 1:length(y)) {
       p <- y[i]
-      qname1 <- str_c("prod.id",i)
-      qname2 <- str_c("form.id",i)
+      qname1 <- str_c("prod.id",which(puc.list==p))
+      qname2 <- str_c("form.id",which(puc.list==p))
       z <- chem.fracs[chem.fracs$source.id==p]
       nprod   <- brand.list$brands[brand.list$puc==p][[1]]
       prod[i] <- nprod[ceiling(q[[qname1]]*length(nprod))]
@@ -1254,7 +1262,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
         cchild <- x$body_mult[i]
         dchild <- cchild/x$child[i]-cchild
         x$f.adult[i] <- x$f.adult[i] + qbeta(q[[qname]],cadult,dadult)*0.95
-        x$f.child[i] <- x$f.adult[i] + qbeta(q[[qname]],cchild,dchild)*0.95
+        x$f.child[i] <- x$f.child[i] + qbeta(q[[qname]],cchild,dchild)*0.95
       }
     }
     x$h                <- NA
@@ -1273,7 +1281,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     y$body_variability <- "none"
     y$f.adult          <- 0.04
     y$f.child          <- 0.04
-    y$h                <- 5E-8 + 1.45E-6*q$thick.indir
+    y$h                <- 1E-6 + 9E-6*q$thick.indir
     x                  <- rbind(x,y)
     return(x)
   }
@@ -1550,7 +1558,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     pran   <- data.table(matrix(0,nrow=nsam,ncol=npvar*np))
     setnames(pran,ran.vars[[2]])
     for (p in 1:np) {
-      j      <- 953 * puc.types[p]$hem.id
+      j      <- 953 * puc.types[source.id==puc.list[p]]$hem.id
       pseeds <- get.seeds(g$puc.seed+j,npvar)
       for (i in 1:npvar) {
         b1 <- 2*i + flag-1
@@ -1713,7 +1721,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   read.chem.props = function(chem.file,chem.list) {
     if (is.null(chem.file)) chem.file <- g$chem.file
     # Read chemical properties input file
-    dt <- as.data.table(fread(paste0("input/",chem.file),na.strings=c("",". ","."," .","NA")))
+    dt <- as.data.table(fread(paste0("input/",chem.file)))
     setnames(dt,names(dt),tolower(str_replace_all(names(dt),"_",".")))
     mode(dt$cas) <- "character"
     mode(dt$kp) <- "numeric"
@@ -1935,6 +1943,10 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     }
     x$code    <- toupper(x$code)
     puc.types <- x[x$code!="XXX"]
+    setorder(puc.types,source.id)
+    if (g$save.r.objects=="y") {
+      write.csv(puc.types,paste0(g$out,"/Temp/puc_types_",run.name,".csv"))
+    }
     return(puc.types)
   }
   
@@ -2110,7 +2122,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
       pucs$spray         <- substr(pucs$code,1,1)=="S"
       pucs.areas         <- eval.pucs.areas(pucs,skin.areas,q)
       puc.wipe.rinse     <- eval.puc.wipe.rinse(pucs,removal.fracs)
-      prod.chem          <- eval.prod.chem(pucs,brand.list,chem.list,chem.fracs,release.fracs,q,house.num)
+      prod.chem          <- eval.prod.chem(pucs,puc.list,brand.list,chem.list,chem.fracs,release.fracs,q,house.num)
       use.chem           <- eval.use.chem(pucs,prod.chem,nc)
       chem.totals        <- list(rep(0,nc))
       if (sum(use.chem)>0) {
@@ -2282,7 +2294,6 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   write.all.houses()
   write.all.annual()
 }
-
 
 ###################################################################
 ############## End of S2D code ####################################
