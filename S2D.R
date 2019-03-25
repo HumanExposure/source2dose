@@ -1,8 +1,9 @@
 # Source-to-dose module (S2D) for the Human Exposure Mofdel (HEM) 
 # Written for EPA by Graham Glen at ICF, Feb - May 2017
-# Last modified on June 11, 2018
-
-wd <- "C:/HEMforICF/QA"
+# Last modified by GG on November 28, 2018
+# This version adds chemical infiltration from outdoor air 
+# Now all houses are run, even ones that use no products containing the chemical agent
+wd <- "C:/main/HEM/Nov2018"
 setwd(wd)
 
 s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
@@ -310,8 +311,9 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     decay.air  <- vector("numeric",nc)
     decay.sur  <- vector("numeric",nc)
     diffus.air <- vector("numeric",nc)
+    conc.out   <- vector("numeric",nc)
     qf         <- as.data.frame(q)[ran.vars[[3]]]
-    qx         <- data.table(matrix(qf,nrow=nc,ncol=6,byrow=TRUE))
+    qx         <- data.table(matrix(qf,nrow=nc,ncol=ncol(qf)/nc,byrow=TRUE))
     setnames(qx,unique(unlist(lapply(names(qf),strip.n))))
     if(g$save.r.objects=="y") write.csv(unlist(qx),paste0(g$out,"/Temp/qx_",run.name,".csv"))
     for (c in 1:nc) {
@@ -336,6 +338,11 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
         decay.sur[c]  <- distrib("logn",par1=dc.surGM,par2=1.5,lt=dc.surGM/10,ut=dc.surGM*10,q=qc$decay.sur)
         diffusGM      <- (2.05*(1/29+1/molwt[c])^0.5)/molwt[c]^0.33 * 86400 / 10000 
         diffus.air[c] <- distrib("logn",par1=diffusGM,par2=1.3,lt=diffusGM/5,ut=diffusGM*5,q=qc$diffus.air)
+        backGM        <- cvars$backgm
+        backGSD       <- cvars$backgsd
+        if (backGM>0) {
+          conc.out[c] <- distrib("logn",par1=backGM,par2=backGSD,lt=backGM/10,ut=backGM*10,q=qc$conc.out)
+        } else conc.out[c] <- 0
       } else {
         molwt[c]      <- 100
         vapor[c]      <- 1
@@ -344,10 +351,11 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
         decay.air[c]  <- 0.01
         decay.sur[c]  <- 0.001
         diffus.air[c] <- 0.01
+        conc.out[c]   <- 0
       }  
     }
-    props <- data.table(chem.list,molwt,vapor,solub,kow,decay.air,decay.sur,diffus.air)
-    setnames(props,names(props),c("dtxsid","molwt","vapor","solub","kow","decay.air","decay.sur","diffus.air"))
+    props <- data.table(chem.list,molwt,vapor,solub,kow,decay.air,decay.sur,diffus.air,conc.out)
+    setnames(props,names(props),c("dtxsid","molwt","vapor","solub","kow","decay.air","decay.sur","diffus.air","conc.out"))
     if(g$prog=="y") cat("\n  Evaluating chem props complete")
     return(props)
   }
@@ -404,8 +412,10 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   # eval.chem.totals sets the annual household usage of each chemical in mg
   
   eval.chem.totals = function(chem.release,chem.list,house.num) {
-    x <- select(as.data.frame(chem.release),starts_with("tot"))
-    y <- as.data.table(matrix(colSums(x),nrow=1,ncol=length(chem.list)))
+    if (!is.null(chem.release)) {
+      x <- select(as.data.frame(chem.release),starts_with("tot"))
+      y <- as.data.table(matrix(colSums(x),nrow=1,ncol=length(chem.list)))
+    } else y <- as.data.table(matrix(0,nrow=1,ncol=length(chem.list)))
     setnames(y,chem.list)
     write.csv(y,paste0(g$out,"/Chem/House_",house.num,".csv"),row.names=TRUE)
     return(y)
@@ -648,48 +658,52 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   # eval.env.impact produces a daily summary of emissions from the house
   
   eval.env.impact = function(diary,use.data,pucs,fug.day,compart.list,chem.totals,nc) {
-    chems   <- as.data.frame(chem.totals)
-    d       <- diary[diary$source.id %in% pucs$source.id]
-    np      <- nrow(pucs)
-    out.sur <- matrix(use.data[,3,compart.list=="fos",],nrow=np,ncol=nc)
-    out.air <- matrix(use.data[,3,compart.list=="foa",],nrow=np,ncol=nc)
-    drain   <- matrix(use.data[,3,compart.list=="fdr",],nrow=np,ncol=nc)
-    waste   <- matrix(use.data[,3,compart.list=="fws",],nrow=np,ncol=nc)
-    rels    <- data.table(pucs$source.id,drain,waste,out.sur,out.air)
-    nam.os  <- str_c(rep("out.sur",nc),1:nc)
-    nam.oa  <- str_c(rep("out.air",nc),1:nc)
-    nam.dr  <- str_c(rep("drain",nc),1:nc)
-    nam.ws  <- str_c(rep("waste",nc),1:nc)
-    setnames(rels,c("source.id",nam.dr,nam.ws,nam.os,nam.oa))
-    setkey(d,source.id)
-    setkey(rels,source.id)
-    drel <- left_join(d,rels,by="source.id")
-    dir.os <- matrix(0,nrow=364,ncol=nc)
-    dir.oa <- matrix(0,nrow=364,ncol=nc)
-    dir.dr <- matrix(0,nrow=364,ncol=nc)
-    dir.ws <- matrix(0,nrow=364,ncol=nc)
-    os  <- select_vars(names(drel),starts_with("out.sur"))
-    oa  <- select_vars(names(drel),starts_with("out.air"))
-    dr  <- select_vars(names(drel),starts_with("drain"))
-    ws  <- select_vars(names(drel),starts_with("waste"))
-    fwn <- select_vars(names(fug.day),starts_with("win"))
-    fws <- select_vars(names(fug.day),starts_with("was"))
-    for (c in 1:nc) {
-      if(chems[c]>0) {
-        for (i in 1:364) {
-          dd          <- as.data.frame(drel[drel$daynum==i])
-          if (nrow(dd)>0) {
-            fd          <- as.data.frame(fug.day[fug.day$daynum==i])
-            dir.os[i,c] <- sum(dd[os][c])
-            dir.oa[i,c] <- sum(dd[oa][c],fd[fwn][c])
-            dir.dr[i,c] <- sum(dd[dr][c])
-            dir.ws[i,c] <- sum(dd[ws][c],fd[fws][c])
+    if (!is.null(use.data)) {
+      chems   <- as.data.frame(chem.totals)
+      d       <- diary[diary$source.id %in% pucs$source.id]
+      np      <- nrow(pucs)
+      out.sur <- matrix(use.data[,3,compart.list=="fos",],nrow=np,ncol=nc)
+      out.air <- matrix(use.data[,3,compart.list=="foa",],nrow=np,ncol=nc)
+      drain   <- matrix(use.data[,3,compart.list=="fdr",],nrow=np,ncol=nc)
+      waste   <- matrix(use.data[,3,compart.list=="fws",],nrow=np,ncol=nc)
+      rels    <- data.table(pucs$source.id,drain,waste,out.sur,out.air)
+      nam.os  <- str_c(rep("out.sur",nc),1:nc)
+      nam.oa  <- str_c(rep("out.air",nc),1:nc)
+      nam.dr  <- str_c(rep("drain",nc),1:nc)
+      nam.ws  <- str_c(rep("waste",nc),1:nc)
+      setnames(rels,c("source.id",nam.dr,nam.ws,nam.os,nam.oa))
+      setkey(d,source.id)
+      setkey(rels,source.id)
+      drel <- left_join(d,rels,by="source.id")
+      dir.os <- matrix(0,nrow=364,ncol=nc)
+      dir.oa <- matrix(0,nrow=364,ncol=nc)
+      dir.dr <- matrix(0,nrow=364,ncol=nc)
+      dir.ws <- matrix(0,nrow=364,ncol=nc)
+      os  <- select_vars(names(drel),starts_with("out.sur"))
+      oa  <- select_vars(names(drel),starts_with("out.air"))
+      dr  <- select_vars(names(drel),starts_with("drain"))
+      ws  <- select_vars(names(drel),starts_with("waste"))
+      fwn <- select_vars(names(fug.day),starts_with("win"))
+      fws <- select_vars(names(fug.day),starts_with("was"))
+      for (c in 1:nc) {
+        if(chems[c]>0) {
+          for (i in 1:364) {
+            dd          <- as.data.frame(drel[drel$daynum==i])
+            if (nrow(dd)>0) {
+              fd          <- as.data.frame(fug.day[fug.day$daynum==i])
+              dir.os[i,c] <- sum(dd[os][c])
+              dir.oa[i,c] <- sum(dd[oa][c],fd[fwn][c])
+              dir.dr[i,c] <- sum(dd[dr][c])
+              dir.ws[i,c] <- sum(dd[ws][c],fd[fws][c])
+            }  
           }  
-        }  
+        }
       }
-    }
-    env.impact <- data.table(1:364,dir.os,dir.oa,dir.dr,dir.ws)
-    setnames(env.impact,c("daynum",os,oa,dr,ws))
+      env.impact <- data.table(1:364,dir.os,dir.oa,dir.dr,dir.ws)
+      setnames(env.impact,c("daynum",os,oa,dr,ws))
+    } else {
+      env.impact <- data.table(0)
+    }  
     if (g$prog=="y") cat("\n  Evaluating environmental impacts complete")
     return(env.impact)
   }
@@ -759,35 +773,49 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     sur.mass    <- as.data.table(matrix(0,nrow=8736,ncol=nc))
     waste.mass  <- as.data.table(matrix(0,nrow=364,ncol=nc))
     window.mass <- as.data.table(matrix(0,nrow=364,ncol=nc))
-    if(length(indoor.hrs)>0) {
+    air <- rep(0,nc) 
+    sur <- rep(0,nc)
+    was <- rep(0,nc)
+    win <- rep(0,nc)
+    if (!is.null(chem.release)) {
       yair        <- select_vars(names(chem.release),starts_with("air"))
       ysur        <- select_vars(names(chem.release),starts_with("sur"))
       df          <- as.data.frame(chem.release)
       new.air     <- as.data.table(df[yair])                # chemical mass in mg 
       new.sur     <- as.data.table(df[ysur])                # chemical mass in mg
-      air <- rep(0,nc) 
-      sur <- rep(0,nc)
-      was <- rep(0,nc)
-      win <- rep(0,nc)
-      fac   <- 24
-      fromair <- flows$a/fac                               # get hourly flow rates
-      toair   <- flows$b/fac
-      tosur   <- flows$c/fac
-      fromsur <- flows$d/fac
-      rterm   <- sqrt(fromair^2+4*toair*tosur-2*fromair*fromsur+fromsur^2)
-      lam1    <- (fromair+fromsur+rterm)/2                 # eigenvalues of J
-      lam2    <- (fromair+fromsur-rterm)/2                 # eigenvalues of J
-      maxlag  <- max(indoor.gaps)+1
-      hrvec   <- 1:maxlag
-      elt1    <- as.data.frame(matrix(0,nrow=maxlag,ncol=nc))
-      elt2    <- as.data.frame(matrix(0,nrow=maxlag,ncol=nc))
-      for (c in 1:nc) {
-        elt1[c] <- as.data.frame.vector(lapply(-lam1[c]*hrvec,exp))
-        elt2[c] <- as.data.frame.vector(lapply(-lam2[c]*hrvec,exp))
-      }
-      towin   <- flows$aer.out/fac
-      cl.air  <- flows$cln.air/fac
-      cl.sur  <- flows$cln.sur/fac
+    } else {
+      new.air <- rep(0,8736)
+      new.sur <- rep(0,8736)
+    }
+    air <- rep(0,nc) 
+    sur <- rep(0,nc)
+    was <- rep(0,nc)
+    win <- rep(0,nc)
+    fac   <- 24
+    fromair <- flows$a/fac                               # get hourly flow rates
+    toair   <- flows$b/fac
+    tosur   <- flows$c/fac
+    fromsur <- flows$d/fac
+    rterm   <- sqrt(fromair^2+4*toair*tosur-2*fromair*fromsur+fromsur^2)
+    lam1    <- (fromair+fromsur+rterm)/2                 # eigenvalues of J
+    lam2    <- (fromair+fromsur-rterm)/2                 # eigenvalues of J
+    maxlag  <- max(8735,indoor.gaps)+1
+    hrvec   <- 1:maxlag
+    elt1    <- as.data.frame(matrix(0,nrow=maxlag,ncol=nc))
+    elt2    <- as.data.frame(matrix(0,nrow=maxlag,ncol=nc))
+    for (c in 1:nc) {
+      elt1[c] <- as.data.frame.vector(lapply(-lam1[c]*hrvec,exp))
+      elt2[c] <- as.data.frame.vector(lapply(-lam2[c]*hrvec,exp))
+    }
+    towin   <- flows$aer.out/fac
+    cl.air  <- flows$cln.air/fac
+    cl.sur  <- flows$cln.sur/fac
+    # new code to handle outdoor background as a source
+    cout    <- flows$conc.out/1000                                     # convert from ug/m3 to mg/m3     
+    src.air <- cout*flows$aer.out*flows$vol.air                        # units are mg/day
+    mc.air  <- src.air*flows$d / (flows$a*flows$d - flows$b*flows$c)   # units are mg
+    mc.sur  <- src.air*flows$c / (flows$a*flows$d - flows$b*flows$c)   # units are mg
+    if(length(indoor.hrs)>0) {
       for (hrnum in 1:length(indoor.hrs)) {
         hr  <- as.integer(indoor.hrs[hrnum])
         hr1 <- as.integer(max(1,hr-1))
@@ -803,12 +831,15 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
             t1 <- as.numeric(unlist(elt1[lag,]))
             t2 <- as.numeric(unlist(elt2[lag,]))
             row <- as.integer(hr+lag-1)
-            set(air.mass,row,1:nc,k1a*t1+k2a*t2)
-            set(sur.mass,row,1:nc,k1s*t1+k2s*t2)
+            set(air.mass,row,1:nc,mc.air+k1a*t1+k2a*t2)
+            set(sur.mass,row,1:nc,mc.sur+k1s*t1+k2s*t2)
           }  
         }  
       }
-    }
+    } else {
+      air.mass  <- as.data.table(matrix(rep(mc.air,each=8736),nrow=8736))
+      sur.mass  <- as.data.table(matrix(rep(mc.air,each=8736),nrow=8736))
+    }  
     day.air  <- colMeans(array(as.matrix(air.mass),c(24,364,nc)),dim=1)
     day.sur  <- colMeans(array(as.matrix(sur.mass),c(24,364,nc)),dim=1)
     day.win  <- day.air*flows[1]$aer.out
@@ -1184,22 +1215,24 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     f  <- matrix(0,nrow=length(y),ncol=nc)
     prod <- vector("integer",length(y))
     form <- vector("integer",length(y))
-    for (i in 1:length(y)) {
-      p <- y[i]
-      qname1 <- str_c("prod.id",which(puc.list==p))
-      qname2 <- str_c("form.id",which(puc.list==p))
-      z <- chem.fracs[chem.fracs$source.id==p]
-      nprod   <- brand.list$brands[brand.list$puc==p][[1]]
-      prod[i] <- nprod[ceiling(q[[qname1]]*length(nprod))]
-      nform   <- unique(z$formulation_id[z$product_id==prod[i]])
-      choice <- NULL
-      if(length(nform)>0) {
-        form[i] <- nform[ceiling(q[[qname2]]*length(nform))]
-        choice  <- z[z$product_id==prod[i] & z$formulation_id==form[i]]
-      }  
-      for (j in 1:length(chem.list)) {
-        cc <- choice[choice$dtxsid==chem.list[j]]
-        if (!is.null(cc)) {if (nrow(cc)==1) f[i,j] <- cc$weight_fraction  }
+    if (length(y)>0) {
+      for (i in 1:length(y)) {
+        p <- y[i]
+        qname1 <- str_c("prod.id",which(puc.list==p))
+        qname2 <- str_c("form.id",which(puc.list==p))
+        z <- chem.fracs[chem.fracs$source.id==p]
+        nprod   <- brand.list$brands[brand.list$puc==p][[1]]
+        prod[i] <- nprod[ceiling(q[[qname1]]*length(nprod))]
+        nform   <- unique(z$formulation_id[z$product_id==prod[i]])
+        choice <- NULL
+        if(length(nform)>0) {
+          form[i] <- nform[ceiling(q[[qname2]]*length(nform))]
+          choice  <- z[z$product_id==prod[i] & z$formulation_id==form[i]]
+        }  
+        for (j in 1:length(chem.list)) {
+          cc <- choice[choice$dtxsid==chem.list[j]]
+          if (!is.null(cc)) {if (nrow(cc)==1) f[i,j] <- cc$weight_fraction  }
+        }
       }
     }
     t <- as.data.table(data.frame(y,prod,form,f))
@@ -1235,36 +1268,38 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   eval.pucs.areas = function(pucs,skin.areas,q) {
     x <- left_join(pucs,select(skin.areas,source.id,adult,child,hand_variability,body_variability),by="source.id")
     mode(x$mass) <- "numeric"
-    x$adult[is.na(x$adult)] <- 0.01
-    x$child[is.na(x$child)] <- 0.01
-    x$hand_variability[is.na(x$hand_variability)] <- "low"
-    x$body_variability[is.na(x$body_variability)] <- "low"
     x$f.adult <- 0.01
     x$f.child <- 0.01
-    x$hand_mult[x$hand_variability=="low"]    <- 12
-    x$hand_mult[x$hand_variability=="medium"] <- 4
-    x$hand_mult[x$hand_variability=="high"]   <- 1
-    x$body_mult[x$body_variability=="low"]    <- 12
-    x$body_mult[x$body_variability=="medium"] <- 4
-    x$body_mult[x$body_variability=="high"]   <- 1
-    for (i in 1:nrow(x)) {
-      qname <- str_c("skin.frac",i)
-      if (x$hand_variability[i]!="none") {
-        cadult <- x$hand_mult[i]
-        dadult <- cadult/x$adult[i]-cadult
-        cchild <- x$hand_mult[i]
-        dchild <- cchild/x$child[i]-cchild
-        x$f.adult[i] <- qbeta(q[[qname]],cadult,dadult)*0.05
-        x$f.child[i] <- qbeta(q[[qname]],cchild,dchild)*0.05
-      }
-      if (x$body_variability[i]!="none") {
-        cadult <- x$body_mult[i]
-        dadult <- cadult/x$adult[i]-cadult
-        cchild <- x$body_mult[i]
-        dchild <- cchild/x$child[i]-cchild
-        x$f.adult[i] <- x$f.adult[i] + qbeta(q[[qname]],cadult,dadult)*0.95
-        x$f.child[i] <- x$f.child[i] + qbeta(q[[qname]],cchild,dchild)*0.95
-      }
+    if (nrow(x)>0) {
+      x$adult[is.na(x$adult)] <- 0.01
+      x$child[is.na(x$child)] <- 0.01
+      x$hand_variability[is.na(x$hand_variability)] <- "low"
+      x$body_variability[is.na(x$body_variability)] <- "low"
+      x$hand_mult[x$hand_variability=="low"]    <- 12
+      x$hand_mult[x$hand_variability=="medium"] <- 4
+      x$hand_mult[x$hand_variability=="high"]   <- 1
+      x$body_mult[x$body_variability=="low"]    <- 12
+      x$body_mult[x$body_variability=="medium"] <- 4
+      x$body_mult[x$body_variability=="high"]   <- 1
+      for (i in 1:nrow(x)) {
+        qname <- str_c("skin.frac",i)
+        if (x$hand_variability[i]!="none") {
+          cadult <- x$hand_mult[i]
+          dadult <- cadult/x$adult[i]-cadult
+          cchild <- x$hand_mult[i]
+          dchild <- cchild/x$child[i]-cchild
+          x$f.adult[i] <- qbeta(q[[qname]],cadult,dadult)*0.05
+          x$f.child[i] <- qbeta(q[[qname]],cchild,dchild)*0.05
+        }
+        if (x$body_variability[i]!="none") {
+          cadult <- x$body_mult[i]
+          dadult <- cadult/x$adult[i]-cadult
+          cchild <- x$body_mult[i]
+          dchild <- cchild/x$child[i]-cchild
+          x$f.adult[i] <- x$f.adult[i] + qbeta(q[[qname]],cadult,dadult)*0.95
+          x$f.child[i] <- x$f.child[i] + qbeta(q[[qname]],cchild,dchild)*0.95
+        }
+      }  
     }
     x$h                <- NA
     y                  <- x[1]
@@ -1354,7 +1389,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
       ind.names <- select_vars(var.list,starts_with("ind"))
       setnames(y, unlist(lapply(ind.names,str_c,1:nc)))
     }
-    if(!is.null(nrow(env.impact))) { z <-select(env.impact,-daynum) } else {
+    if(!is.null(nrow(env.impact)) & ncol(env.impact)>1) { z <-select(env.impact,-daynum) } else {
       z <- data.table(matrix(0,nrow=ndays,ncol=4*nc))
       env.names <- var.list[(nvars-3):nvars]
       setnames(z, unlist(lapply(env.names,str_c,1:nc)))
@@ -1606,7 +1641,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
       y <- c(y,str_c(prod.rv,i))
     }  
     ran.prod <- y[-1]
-    chem.rv        <- c("vapor","solub","kow","decay.air","decay.sur","diffus.air")
+    chem.rv        <- c("vapor","solub","kow","decay.air","decay.sur","diffus.air","conc.out")
     z <- ""
     for (j in 1:nc) {
       z <- c(z,str_c(chem.rv,j))
@@ -2117,56 +2152,60 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     indirect           <- 0
     env.impact         <- 0
     lcia               <- NULL
+    chem.props         <- eval.chem.props(fug.cvars,chem.list,ran.vars,q)
+    flows              <- eval.flows(hp,chem.props)
+    setorder(pucs,source.id)
+    pucs$met           <- puc.codes$met[puc.types$source.id %in% pucs$source.id]
+    pucs$spray         <- substr(pucs$code,1,1)=="S"
+    pucs.areas         <- eval.pucs.areas(pucs,skin.areas,q)
+    puc.wipe.rinse     <- eval.puc.wipe.rinse(pucs,removal.fracs)
+    prod.chem          <- eval.prod.chem(pucs,puc.list,brand.list,chem.list,chem.fracs,release.fracs,q,house.num)
+    dermal.rates       <- eval.dermal.rates(fug.cvars,hp,prime,pucs.areas,prod.chem,nc,house.num)
+    chem.release       <- NULL
+    indoor.gaps        <- NULL
+    indoor.hrs         <- NULL
+    use.data           <- NULL
+    d                  <- diary[diary$person==prime$pnum]
+    chem.totals        <- 0
     if (nrow(pucs)>0) {
-      setorder(pucs,source.id)
-      pucs$met           <- puc.codes$met[puc.types$source.id %in% pucs$source.id]
-      pucs$spray         <- substr(pucs$code,1,1)=="S"
-      pucs.areas         <- eval.pucs.areas(pucs,skin.areas,q)
-      puc.wipe.rinse     <- eval.puc.wipe.rinse(pucs,removal.fracs)
-      prod.chem          <- eval.prod.chem(pucs,puc.list,brand.list,chem.list,chem.fracs,release.fracs,q,house.num)
       use.chem           <- eval.use.chem(pucs,prod.chem,nc)
-      chem.totals        <- list(rep(0,nc))
       if (sum(use.chem)>0) {
         compart.list     <- select_vars(names(prod.chem),starts_with("f"),exclude="formulation_id")
-        chem.props       <- eval.chem.props(fug.cvars,chem.list,ran.vars,q)
-        flows            <- eval.flows(hp,chem.props)
-        dermal.rates     <- eval.dermal.rates(fug.cvars,hp,prime,pucs.areas,prod.chem,nc,house.num)
         use.data         <- eval.use.data(pucs,prod.chem,fug.cvars,dermal.rates,puc.wipe.rinse,nc,house.num)
         chem.release     <- eval.chem.release(pucs,use.data,use.chem,compart.list,diary,nc,calendar.hours)
         if (g$save.r.objects=="y" & any(chem.release[8:ncol(chem.release)]>0)) {
           write.csv(chem.release,paste0(g$out,"/Temp/chem.release_",house.num,"_",run.name,".csv"))
-        }  
+        } 
+        chem.totals      <- eval.chem.totals(chem.release,chem.list,house.num)
         release.times    <- eval.release.times(chem.release)
         release.hrs      <- unlist(release.times[1])
         release.gaps     <- unlist(release.times[2])
         indoor.hrs       <- unlist(release.times[3])
         indoor.gaps      <- unlist(release.times[4])
-        chem.totals      <- eval.chem.totals(chem.release,chem.list,house.num)
-        d                <- diary[diary$person==prime$pnum]
         direct           <- eval.direct(d,use.data,use.chem,pucs,dermal.rates,compart.list,prime,puc.wipe.rinse,chem.list,fug.cvars,chem.totals)
         if (g$save.r.objects=="y" & any(direct[2:ncol(direct)]>0)) write.csv(direct,paste0(g$out,"/Temp/direct_",house.num,"_",run.name,".csv"))
-        fug.day          <- as.data.table(matrix(0,nrow=364,ncol=4*nc+2))
-        setnames(fug.day,c("daynum","hour",str_c(c(rep("air",nc),rep("sur",nc),rep("win",nc),rep("was",nc)),rep(1:nc,4))))
-        fug.day$daynum   <- 1:364
-        if (length(indoor.hrs)>0) {
-          fugs           <- eval.fug.concs.an(chem.release,flows,indoor.hrs,indoor.gaps)
-          fug.day        <- select(fugs[1:364],c(1,3:(4*nc+2)))
-          if (g$save.r.objects=="y" & any(fug.day[,2:ncol(fug.day)]>0)) write.csv(fug.day,paste0(g$out,"/Temp/fug.day_",house.num,"_",run.name,".csv"))
-          fug.hour       <- select(fugs[365:9100],c(1:(2*nc+2)))
-          if (g$save.r.objects=="y" & any(fug.hour[,2:ncol(fug.hour)]>0)) write.csv(fug.hour,paste0(g$out,"/Temp/fug.hour_",house.num,"_",run.name,".csv"))
-          indirect       <- eval.indirect(d,fug.hour,dermal.rates,hp,nc,prime,fug.cvars,chem.list)
-          if (g$save.r.objects=="y" & any(indirect[2:ncol(indirect)]>0)) write.csv(indirect,paste0(g$out,"/Temp/indirect_",house.num,"_",run.name,".csv"))
-        }  
-        env.impact       <- eval.env.impact(diary,use.data,pucs,fug.day,compart.list,chem.totals,nc)
-        if (g$save.r.objects=="y" & any(env.impact[2:ncol(env.impact)]>0)) write.csv(env.impact,paste0(g$out,"/Temp/env.impact_",house.num,"_",run.name,".csv"))
-      }  
-      annual      <- eval.summary(direct,indirect,env.impact,g$run.name,house.num,nc,chem.list,chem.totals)
-      if (g$save.r.objects=="y" & any(as.data.frame(annual)[3:ncol(annual)]>0)) write.csv(annual,paste0(g$out,"/Temp/annual_",house.num,"_",run.name,".csv"))
-      if (length(puc.list)==1 & nrow(pucs)==1) {
-        lcia <- eval.lcia(puc.list,chem.list,prod.chem,diary,annual,house.num,nc)
-        if (any(lcia$chem.mass>0)) write.csv(lcia,file=paste0(g$out,"/LCIA/LCIA_",house.num,".csv"),row.names=FALSE)
-      }  
-    } 
+      }
+    }  
+    fug.day        <- as.data.table(matrix(0,nrow=364,ncol=4*nc+2))
+    setnames(fug.day,c("daynum","hour",str_c(c(rep("air",nc),rep("sur",nc),rep("win",nc),rep("was",nc)),rep(1:nc,4))))
+    fug.day$daynum <- 1:364
+    fugs           <- eval.fug.concs.an(chem.release,flows,indoor.hrs,indoor.gaps)
+    fug.day        <- select(fugs[1:364],c(1,3:(4*nc+2)))
+    if (g$save.r.objects=="y" & any(fug.day[,2:ncol(fug.day)]>0)) write.csv(fug.day,paste0(g$out,"/Temp/fug.day_",house.num,"_",run.name,".csv"))
+    fug.hour       <- select(fugs[365:9100],c(1:(2*nc+2)))
+    if (g$save.r.objects=="y" & any(fug.hour[,2:ncol(fug.hour)]>0)) write.csv(fug.hour,paste0(g$out,"/Temp/fug.hour_",house.num,"_",run.name,".csv"))
+    indirect       <- eval.indirect(d,fug.hour,dermal.rates,hp,nc,prime,fug.cvars,chem.list)
+    if (g$save.r.objects=="y" & any(indirect[2:ncol(indirect)]>0)) write.csv(indirect,paste0(g$out,"/Temp/indirect_",house.num,"_",run.name,".csv"))
+    env.impact       <- eval.env.impact(diary,use.data,pucs,fug.day,compart.list,chem.totals,nc)
+    if (g$save.r.objects=="y" & ncol(env.impact)>1 & any(env.impact[2:ncol(env.impact)]>0)) {
+      write.csv(env.impact,paste0(g$out,"/Temp/env.impact_",house.num,"_",run.name,".csv"))
+    }
+    annual      <- eval.summary(direct,indirect,env.impact,g$run.name,house.num,nc,chem.list,chem.totals)
+    if (g$save.r.objects=="y" & any(as.data.frame(annual)[3:ncol(annual)]>0)) write.csv(annual,paste0(g$out,"/Temp/annual_",house.num,"_",run.name,".csv"))
+    if (length(puc.list)==1 & nrow(pucs)==1) {
+      lcia <- eval.lcia(puc.list,chem.list,prod.chem,diary,annual,house.num,nc)
+      if (any(lcia$chem.mass>0)) write.csv(lcia,file=paste0(g$out,"/LCIA/LCIA_",house.num,".csv"),row.names=FALSE)
+    }  
     return(lcia)
   }    
   
