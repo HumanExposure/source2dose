@@ -1,8 +1,7 @@
-# Source-to-dose module (S2D) for the Human Exposure Mofdel (HEM) 
+# Source-to-dose module (S2D) for the Human Exposure Model (HEM) 
 # Written for EPA by Graham Glen at ICF, Feb - May 2017
-# Last modified by GG on November 28, 2018
-# This version adds chemical infiltration from outdoor air 
-# Now all houses are run, even ones that use no products containing the chemical agent
+# Last modified by GG on April 3, 2019
+# This version produces the same output as the June 2018 version, but is much faster
 wd <- "C:/main/HEM/Nov2018"
 setwd(wd)
 
@@ -907,6 +906,84 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   
   
   
+  
+  # This is a faster version of eval.fug.concs.an for time-varying emissions
+  
+  eval.fug.varying = function(flows, p.times, use.data, compart.list, np, nc) {
+    if (g$prog=="y") cat("\n  Starting fugacity calculations")
+    fac     <- 24                                           # 24 hours in one day  
+    # the variables below (until u2.sur) have a component for each chemical
+    j11     <- flows$a/fac                                  # hourly flow rates from daily rates
+    j12     <- -flows$b/fac
+    j21     <- -flows$c/fac
+    j22     <- flows$d/fac
+    rterm   <- sqrt((j11-j22)^2 + 4*j12*j21)
+    lam1    <- (j11+j22+rterm)/2                            # larger  eigenvalue of J
+    lam2    <- (j11+j22-rterm)/2                            # smaller eigenvalue of J
+    u1.air  <- rterm+j11-j22
+    u2.air  <- rterm-j11+j22
+    u1.sur  <- 2*j21
+    u2.sur  <- -2*j21
+    
+    hours   <- 8736                                         # hours in simulation = 24*364
+    cutoff  <- -log(1E-15)                                  # cutoff at 1E-12 of first value
+    air.mass <- array(0,dim=c(hours,nc,np))
+    sur.mass <- array(0,dim=c(hours,nc,np))
+    for (c in 1:nc) {
+      lam    <- lam1[c]
+      hmax   <- min(ceiling(cutoff/lam),hours)              
+      v1     <- rep(0,hours)      
+      v1[1:hmax] <- lapply(-lam*1:hmax,exp)                 # set non-zero values for eig 1
+      lam    <- lam2[c]
+      hmax   <- min(ceiling(cutoff/lam),hours)
+      v2     <- rep(0,hours)
+      v2[1:hmax] <- lapply(-lam*1:hmax,exp)                 # set non-zero values for eig 2
+      for (p in 1:np) {
+        m0.air <- use.data[p,3,compart.list=="fia",c] 
+        m0.sur <- use.data[p,3,compart.list=="fis",c] 
+        b1     <- (m0.air*u2.sur[c]-m0.sur*u2.air[c])/(u1.air[c]*u2.sur[c]-u1.sur[c]*u2.air[c])
+        b2     <- (m0.sur*u1.air[c]-m0.air*u1.sur[c])/(u1.air[c]*u2.sur[c]-u1.sur[c]*u2.air[c])
+        bv1a   <- lapply(v1,"*",b1*u1.air[c])
+        bv1s   <- lapply(v1,"*",b1*u1.sur[c])
+        bv2a   <- lapply(v2,"*",b2*u2.air[c])
+        bv2s   <- lapply(v2,"*",b2*u2.sur[c])
+        t      <- unlist(p.times[p])
+        for (i in 1:8736) {
+          y      <- i-t[(i-t)>=0]+1
+          if (length(y)>0) {
+            air.mass[i,c,p] <- sum(unlist(bv1a[y])+unlist(bv2a[y]))
+            sur.mass[i,c,p] <- sum(unlist(bv1s[y])+unlist(bv2s[y]))
+          }   
+        }
+      }  
+    }
+    prod.day.air  <<- colMeans(array(as.matrix(air.mass),c(24,364,nc,np)),dim=1)
+    prod.day.sur  <<- colMeans(array(as.matrix(sur.mass),c(24,364,nc,np)),dim=1)
+    day.air  <- rowSums(prod.day.air,dim=2)                                           # sum air over products
+    day.sur  <- rowSums(prod.day.sur,dim=2)                                           # sum surfaces over products 
+    day.win  <- day.air*flows[1]$aer.out
+    day.was  <- day.air*flows[1]$cln.air + day.sur*flows[1]$cln.sur                   # all rows have same value  
+    fug.day  <- as.data.table(cbind(1:364,day.air,day.sur,day.win,day.was))
+    setnames(fug.day,c("daynum",str_c(c(rep("air",nc),rep("sur",nc),rep("win",nc),rep("was",nc)),rep(1:nc,4)))) 
+    hour.air <- as.data.table(rowSums(air.mass,dims=2))
+    hour.sur <- as.data.table(rowSums(sur.mass,dims=2))
+    air.mass <- as.data.table(air.mass)
+    sur.mass <- as.data.table(sur.mass)
+    setnames(hour.air,str_c(c(rep("air",nc)),1:nc))
+    setnames(hour.sur,str_c(c(rep("sur",nc)),1:nc))
+    setnames(air.mass,c("hour","chem","prod","air"))
+    setnames(sur.mass,c("hour","chem","prod","sur"))
+    hour.air <<- hour.air
+    hour.sur <<- hour.sur
+    air.mass <<- air.mass
+    sur.mass <<- sur.mass
+    if (g$prog=="y") cat("\n  Evaluating fugacity concentrations complete \n")
+    return(fug.day)
+  }
+  
+  
+  
+  
   # eval.hm rate sets the hand-to-mouth rate constant for the primary person
   # based on results from SHEDS soil-dust model runs (up to age 20) 
   # top age group extended to all adults
@@ -1121,7 +1198,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     nam.ga    <- str_c(rep("ind.ingest.abs",nc),1:nc)
     indirect <- data.table(1:364,der.exp,der.max,der.abs,air.exp,air.max,air.mass,air.abs,ing.exp,ing.abs)
     setnames(indirect,c("daynum",nam.de,nam.dm,nam.da,nam.ihe,nam.ihm,nam.am,nam.aa,nam.ing,nam.ga))
-    if (g$prog=="y") cat("\n  Evaluating indirect exposures complete")
+    if (g$prog=="y") cat("  Evaluating indirect exposures complete")
     return(indirect)
   }
   
@@ -1260,6 +1337,25 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     return(prod.chem)
   }
   
+  
+  
+  
+  # eval.product.times lists the hours when each specific product is used
+  
+  eval.product.times = function(pucs,use.data,diary,compart.list,nc) {
+    np        <- nrow(pucs)
+    air       <- matrix(use.data[,3,compart.list=="fia",],nrow=np,ncol=nc)
+    sur       <- matrix(use.data[,3,compart.list=="fis",],nrow=np,ncol=nc)
+    d         <- select(diary[diary$mass!=0 & diary$indoor_outdoor=="I"],source.id,row,person,daynum,hour,mass)
+    d         <- d[d$source.id %in% pucs$source.id]
+    d$hournum <- as.integer(24*(d$daynum-1)+d$hour)
+    p.times   <- vector("list",length=np)
+    for (i in 1:np) {
+      prod    <- pucs[i]$source.id
+      p.times[i] <- list(d[d$source.id==prod]$hournum)
+    } 
+    return(p.times)   
+  }
   
   
   
@@ -1777,7 +1873,13 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     if(exists("log.kow",dt))          dt$kow     <- 10^dt$log.kow
     if(exists("half.sediment.hr",dt)) dt$decay.s <- 24*log(2)/dt$half.sediment.hr 
     if(exists("half.air.hr",dt))      dt$decay.a <- 24*log(2)/dt$half.air.hr 
-    dt <- dt[order(dt$dtxsid,chem.list)]
+    if (any(!chem.list %in% dt$dtxsid)) {
+      for (i in 1:length(chem.list)) {
+        if (!chem.list[i] %in% dt$dtxsid)  cat(" chemical ",chem.list[i]," not in chem.props file \n")
+      }
+    }
+    new.list <- chem.list[chem.list %in% dt$dtxsid]
+    dt <- dt[order(dt$dtxsid,new.list)]
     return(dt) 
   }
   
@@ -1931,7 +2033,6 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   
   # read.pophouse reads the output from the HEM RPGen module 
   
-  
   read.pophouse = function(run.name) {
     if (g$prog=="y") cat("\n  Reading pophouse...")
     if (is.null(run.name)) run.name <- g$run.name
@@ -1988,7 +2089,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   
   
   
-  #read.removals reads the file with rinse-off and wipe-off fractions by PUC
+  # read.removals reads the file with rinse-off and wipe-off fractions by PUC
   
   read.removals = function(removal.file) {
     if (is.null(removal.file)) removal.file <- g$removal.file
@@ -2012,6 +2113,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   }
   
   
+  
   # read.vent.file reads the .csv file with basal ventilation rates in (m3/day)
   
   read.vent.file = function(vent.file){
@@ -2032,6 +2134,19 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
       if(i==1) {y <- x} else {y <- rbind(y,x)}
     }
     return(y)
+  }
+  
+  
+  
+  # utility for removing house-specific files from output folders
+  
+  remove.house.files = function(out,house.num) {
+    fname <- paste0(out,"/Annual/House_",house.num)
+    if (file.exists(fname)) file.remove(fname)
+    fname <- paste0(out,"/Chem/House_",house.num)
+    if (file.exists(fname)) file.remove(fname)
+    fname <- paste0(out,"/Daily/House_",house.num)
+    if (file.exists(fname)) file.remove(fname)
   }
   
   
@@ -2076,6 +2191,8 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   
   
   
+  # write.all.annual writes the "all_houses_annual" summary file in the /Annual folder
+  
   write.all.annual = function() {
     ann.list <- list.files(paste0(g$out,"/Annual"),pattern="^[House_]")
     n <- length(ann.list)
@@ -2094,6 +2211,8 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
   }   
   
   
+  
+  # write.all.houses writes the "all_houses" summary file in the /Chem folder
   
   write.all.houses = function() {
     houses <- list.files(paste0(g$out,"/Chem"),pattern="^[House_]")
@@ -2137,6 +2256,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     
     house.num          <- i
     if (g$prog=="y") cat("\nHouse=", house.num)
+    remove.house.files(g$out,house.num)
     pd                 <- person.data[person.data$house==house.num]
     hp                 <- house.props[house.props$house==house.num]
     q                  <- q.randoms[q.randoms$house==house.num]
@@ -2167,6 +2287,8 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     use.data           <- NULL
     d                  <- diary[diary$person==prime$pnum]
     chem.totals        <- 0
+    fug.day            <- as.data.table(matrix(0,nrow=364,ncol=4*nc+1))
+    fug.hour           <- as.data.table(matrix(0,nrow=8736,ncol=2*nc+2))
     if (nrow(pucs)>0) {
       use.chem           <- eval.use.chem(pucs,prod.chem,nc)
       if (sum(use.chem)>0) {
@@ -2184,24 +2306,21 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
         indoor.gaps      <- unlist(release.times[4])
         direct           <- eval.direct(d,use.data,use.chem,pucs,dermal.rates,compart.list,prime,puc.wipe.rinse,chem.list,fug.cvars,chem.totals)
         if (g$save.r.objects=="y" & any(direct[2:ncol(direct)]>0)) write.csv(direct,paste0(g$out,"/Temp/direct_",house.num,"_",run.name,".csv"))
+        p.times  <- eval.product.times(pucs,use.data,diary,compart.list,nc)
+        fug.day  <- eval.fug.varying(flows, p.times, use.data, compart.list, nrow(pucs), nc)
+        fug.hour <- cbind(rep(1:364,each=24),rep(1:24,364),hour.air,hour.sur)
+        if (g$save.r.objects=="y" & any(fug.day[,2:ncol(fug.day)]>0)) write.csv(fug.day,paste0(g$out,"/Temp/fug.day_",house.num,"_",run.name,".csv"))
+        if (g$save.r.objects=="y" & any(fug.hour[,2:ncol(fug.hour)]>0)) write.csv(fug.hour,paste0(g$out,"/Temp/fug.hour_",house.num,"_",run.name,".csv"))
+        indirect       <- eval.indirect(d,fug.hour,dermal.rates,hp,nc,prime,fug.cvars,chem.list)
+        if (g$save.r.objects=="y" & any(indirect[2:ncol(indirect)]>0)) write.csv(indirect,paste0(g$out,"/Temp/indirect_",house.num,"_",run.name,".csv"))
+        env.impact       <- eval.env.impact(diary,use.data,pucs,fug.day,compart.list,chem.totals,nc)
+        if (g$save.r.objects=="y" & ncol(env.impact)>1 & any(env.impact[2:ncol(env.impact)]>0)) {
+          write.csv(env.impact,paste0(g$out,"/Temp/env.impact_",house.num,"_",run.name,".csv"))
+        }  
+        annual      <- eval.summary(direct,indirect,env.impact,g$run.name,house.num,nc,chem.list,chem.totals)
+        if (g$save.r.objects=="y" & any(as.data.frame(annual)[3:ncol(annual)]>0)) write.csv(annual,paste0(g$out,"/Temp/annual_",house.num,"_",run.name,".csv"))
       }
     }  
-    fug.day        <- as.data.table(matrix(0,nrow=364,ncol=4*nc+2))
-    setnames(fug.day,c("daynum","hour",str_c(c(rep("air",nc),rep("sur",nc),rep("win",nc),rep("was",nc)),rep(1:nc,4))))
-    fug.day$daynum <- 1:364
-    fugs           <- eval.fug.concs.an(chem.release,flows,indoor.hrs,indoor.gaps)
-    fug.day        <- select(fugs[1:364],c(1,3:(4*nc+2)))
-    if (g$save.r.objects=="y" & any(fug.day[,2:ncol(fug.day)]>0)) write.csv(fug.day,paste0(g$out,"/Temp/fug.day_",house.num,"_",run.name,".csv"))
-    fug.hour       <- select(fugs[365:9100],c(1:(2*nc+2)))
-    if (g$save.r.objects=="y" & any(fug.hour[,2:ncol(fug.hour)]>0)) write.csv(fug.hour,paste0(g$out,"/Temp/fug.hour_",house.num,"_",run.name,".csv"))
-    indirect       <- eval.indirect(d,fug.hour,dermal.rates,hp,nc,prime,fug.cvars,chem.list)
-    if (g$save.r.objects=="y" & any(indirect[2:ncol(indirect)]>0)) write.csv(indirect,paste0(g$out,"/Temp/indirect_",house.num,"_",run.name,".csv"))
-    env.impact       <- eval.env.impact(diary,use.data,pucs,fug.day,compart.list,chem.totals,nc)
-    if (g$save.r.objects=="y" & ncol(env.impact)>1 & any(env.impact[2:ncol(env.impact)]>0)) {
-      write.csv(env.impact,paste0(g$out,"/Temp/env.impact_",house.num,"_",run.name,".csv"))
-    }
-    annual      <- eval.summary(direct,indirect,env.impact,g$run.name,house.num,nc,chem.list,chem.totals)
-    if (g$save.r.objects=="y" & any(as.data.frame(annual)[3:ncol(annual)]>0)) write.csv(annual,paste0(g$out,"/Temp/annual_",house.num,"_",run.name,".csv"))
     if (length(puc.list)==1 & nrow(pucs)==1) {
       lcia <- eval.lcia(puc.list,chem.list,prod.chem,diary,annual,house.num,nc)
       if (any(lcia$chem.mass>0)) write.csv(lcia,file=paste0(g$out,"/LCIA/LCIA_",house.num,".csv"),row.names=FALSE)
