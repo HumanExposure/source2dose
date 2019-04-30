@@ -2407,7 +2407,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     setnames(x,tolower(names(x)))
     if(exists("id",x))  setnames(x,"id","source.id")
     if(exists("shedsid",x)) setnames(x,"shedsid","source.id")
-    x$weight_fraction[is.na(x$weight_fraction)] <- 0
+    x <- x[!is.na(x$weight_fraction)] 
     if(length(puc.list)>0) x <- x[x$source.id %in% puc.list] 
     if(g$comp.method==2) x <- x[x$dtxsid %in% chem.list]
     if(g$comp.method==2) x <- x[x$weight_fraction>0]           # for comp.method=1, do this after making brand.list
