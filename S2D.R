@@ -1,8 +1,8 @@
 # Source-to-dose module (S2D) for the Human Exposure Model (HEM) 
 # Written for EPA by Graham Glen at ICF, Feb - May 2017
-# Last modified by GG on April 25, 2019
-# This version runs faster and includes updated an fugacity function to track products separately and 
-# now includes the diet component, articles, and ambient air
+# Last modified by GG on April 30, 2019
+# This version runs faster and includes updated an fugacity function to track products separately and the diet component
+# It also fixes a bug in the 06/11/2018 version relating to multiple PUC runs
 
 wd <- "C:/HEM_JL"
 setwd(wd)
@@ -648,6 +648,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
     uia <- vars_select(names(ddata),starts_with("use.inhal.abs"))
     pia <- vars_select(names(ddata),starts_with("post.inhal.abs"))
     pgh <- vars_select(names(ddata),starts_with("post.inges.hand"))
+    uge <- vars_select(names(ddata),starts_with("use.inges.exp"))
     ugm <- vars_select(names(ddata),starts_with("use.inges.mass"))
     uga <- vars_select(names(ddata),starts_with("use.inges.abs"))
     pga <- vars_select(names(ddata),starts_with("post.inges.abs"))
@@ -680,7 +681,7 @@ s2d = function(control.file="control_file.txt", number.of.houses= NULL) {
             inhal.mass[day,c] <- inhal.mass[day,c] + sum(dd[uim][c],dd[pim][c])
             inhal.max[day,c]  <- max(inhal.max[day,c],unlist(dd[uac][c]),unlist(dd[pac][c]),unlist(dd[uie][c]),unlist(dd[pie][c]))
             inhal.abs[day,c]  <- inhal.abs[day,c] + sum(dd[uia][c],dd[pia][c])
-            inges.exp[day,c]  <- inges.exp[day,c] + sum(dd[pgh][c])
+            inges.exp[day,c]  <- inges.exp[day,c] + sum(dd[uge][c],dd[pgh][c])
             inges.abs[day,c]  <- inges.abs[day,c] + sum(dd[uga][c],dd[pga][c])
             release[day,c]    <- release[day,c] + sum(dd[tot][c])
             cb                <- 3*(c-1)
